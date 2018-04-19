@@ -1,4 +1,4 @@
-package itesm.mx.proyectofinal;
+package itesm.mx.proyectofinal.Glosario;
 
 /**
  * Created by 59159 on 18/04/2018.

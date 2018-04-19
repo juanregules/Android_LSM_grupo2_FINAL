@@ -14,12 +14,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        app:layout_constraintTop_toTopOf="parent">>
         <FrameLayout
             android:id="@+id/pantalla"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="90">
 
             <ImageView
@@ -30,7 +29,21 @@
                 tools:layout_editor_absoluteX="8dp"
                 tools:layout_editor_absoluteY="16dp" />
         </FrameLayout>
+    </LinearLayout>
 
+
+    <android.support.design.widget.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:background="?android:attr/windowBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:menu="@menu/navigation" />
+<!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -59,5 +72,5 @@
                 android:text="usr" />
         </LinearLayout>
     </LinearLayout>
-
+-->
 </android.support.constraint.ConstraintLayout>

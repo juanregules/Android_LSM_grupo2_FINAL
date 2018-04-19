@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import itesm.mx.proyectofinal.R;
-import itesm.mx.proyectofinal.Word;
+import itesm.mx.proyectofinal.Glosario.Word;
 import mx.itesm.expandablerecyclerview.models.ExpandableGroup;
 import mx.itesm.expandablerecyclerview.viewholders.GroupViewHolder;
 

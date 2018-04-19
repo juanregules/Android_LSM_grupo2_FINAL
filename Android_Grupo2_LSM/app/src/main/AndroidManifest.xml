@@ -17,8 +17,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="itesm.mx.proyectofinal.expand.ExpandActivity"
-            android:parentActivityName="itesm.mx.proyectofinal.MainActivity" />
+            android:name=".expand.ExpandActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

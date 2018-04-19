@@ -1,4 +1,4 @@
-package itesm.mx.proyectofinal;
+package itesm.mx.proyectofinal.Glosario;
 
 import java.util.List;
 

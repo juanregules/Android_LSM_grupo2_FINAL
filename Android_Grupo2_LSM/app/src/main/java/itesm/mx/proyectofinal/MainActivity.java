@@ -1,17 +1,42 @@
 package itesm.mx.proyectofinal;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, PantallaUsuario.IMyUserScreen {
-
+public class MainActivity extends AppCompatActivity implements PantallaUsuario.IMyUserScreen {
     public static String PACKAGE_NAME;
-    Button btnA, btnB, btnC;
     ImageView fondo;
     Button gamemano, gamep2p;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    cargarGlosario();
+                    fondo.setVisibility(View.INVISIBLE);
+                    return true;
+                case R.id.navigation_dashboard:
+                    cargarDummy();
+                    fondo.setVisibility(View.INVISIBLE);
+                    return true;
+                case R.id.navigation_notifications:
+                    cargarUsuario();
+                    fondo.setVisibility(View.INVISIBLE);
+                    return true;
+            }
+            return false;
+        }
+    };
+
 
     @Override
     public void onStart() {
@@ -23,29 +48,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fondo = (ImageView) findViewById(R.id.imageView);
-
         PACKAGE_NAME = getApplicationContext().getPackageName();
-
-
-        btnA = findViewById(R.id.a);
-        btnB = findViewById(R.id.b);
-        btnC = findViewById(R.id.c);
-        btnA.setOnClickListener(this);
-        btnB.setOnClickListener(this);
-        btnC.setOnClickListener(this);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         gamemano = findViewById(R.id.botonmano);
         gamep2p = findViewById(R.id.botonp2p);
         //gamemano.setOnClickListener(this);
         //gamep2p.setOnClickListener(this);
     }
-
+/*
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.c:
                 cargarUsuario();
                 fondo.setVisibility(View.INVISIBLE);
-
                 break;
             case R.id.b:
                 cargarDummy();
@@ -63,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
+*/
     private void cargarUsuario() {
         if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
             getFragmentManager().beginTransaction().replace(R.id.pantalla, new PantallaUsuario()).commit();

@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import itesm.mx.proyectofinal.Content;
+import itesm.mx.proyectofinal.Glosario.Content;
 import itesm.mx.proyectofinal.R;
-import itesm.mx.proyectofinal.Word;
+import itesm.mx.proyectofinal.Glosario.Word;
 import mx.itesm.expandablerecyclerview.ExpandableRecyclerViewAdapter;
 import mx.itesm.expandablerecyclerview.models.ExpandableGroup;
 

@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
+import itesm.mx.proyectofinal.Glosario.GlosarioAnimales;
 import itesm.mx.proyectofinal.expand.ExpandActivity;
 
 /**
@@ -26,15 +28,17 @@ public class PantallaGlosario extends Fragment{
     @Override
     public void onActivityCreated(Bundle b) {
         super.onActivityCreated(b);
-        Button expand = (Button) getActivity().findViewById(R.id.button2);
-        expand.setOnClickListener(myClickListener);
+        ImageButton animalesBtn = (ImageButton) getActivity().findViewById(R.id.animalesBtn);
+        animalesBtn.setOnClickListener(myClickListener);
     }
 
     private View.OnClickListener myClickListener = new View.OnClickListener() {
         public void onClick(View v) {
-            Intent intent = new Intent(getActivity(), ExpandActivity.class);
-            startActivity(intent);
-
+            if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
+                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioAnimales()).commit();
+            } else {
+                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioAnimales()).commit();
+            }
         }
     };
 

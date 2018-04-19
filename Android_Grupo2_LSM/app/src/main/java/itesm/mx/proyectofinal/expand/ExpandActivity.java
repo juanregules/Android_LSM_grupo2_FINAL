@@ -1,20 +1,9 @@
 package itesm.mx.proyectofinal.expand;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-
-import itesm.mx.proyectofinal.R;
-import itesm.mx.proyectofinal.WordDataFactory;
 
 public class ExpandActivity extends AppCompatActivity {
-
+/*
     public WordAdapter adapter;
 
     @Override
@@ -59,4 +48,6 @@ public class ExpandActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         adapter.onRestoreInstanceState(savedInstanceState);
     }
+    */
+//Ya no se usa se cambio de actividad a fragmento
 }
