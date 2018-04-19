@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:weightSum="100"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_weight="25"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="100">
+            <TextView
+                android:layout_weight="25"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/usrscn_ivPhoto"
+                    android:src="@color/colorPrimaryDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <Button
+                    android:visibility="invisible"
+                    android:id="@+id/usrscn_btnPhotoEdith"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="@color/colorAccent" />
+            </RelativeLayout>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_weight="20"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <TextView
+                android:id="@+id/usrscn_tvUsrName"
+                android:layout_marginTop="30dp"
+                android:gravity="center_horizontal"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:text="ElDonJuan_777"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:visibility="invisible"
+                android:id="@+id/usrscn_etUsrName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:hint="Escribe tu nuevo nombre"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="40"
+            android:weightSum="100"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/usrscn_btnScores"
+                android:layout_marginTop="120dp"
+                android:layout_weight="1"
+                android:text="puntuaciones"
+                android:layout_marginLeft="110dp"
+                android:layout_marginRight="110dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+            <Button
+                android:layout_marginTop="70dp"
+                android:id="@+id/usrscn_btnEdith"
+                android:layout_weight="1"
+                android:text="Editar datos"
+                android:layout_marginLeft="110dp"
+                android:layout_marginRight="110dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+            <Button
+                android:id="@+id/usrscn_btnFinishEdith"
+                android:text="guardar"
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="110dp"
+                android:layout_marginRight="110dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+            <Button
+                android:text="cancelar"
+                android:id="@+id/usrscn_btnCancelEdith"
+                android:layout_marginTop="120dp"
+                android:layout_marginLeft="110dp"
+                android:layout_marginRight="110dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
