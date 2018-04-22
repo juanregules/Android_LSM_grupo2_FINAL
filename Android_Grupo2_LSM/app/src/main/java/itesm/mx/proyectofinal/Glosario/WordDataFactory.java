@@ -8,7 +8,8 @@ import itesm.mx.proyectofinal.R;
 
 public class WordDataFactory {
 
-    public static List<Word> makeWords() {
+    public static List<Word> makeWords(String type) {
+        if (type == "animales")
         return Arrays.asList(
                 makeAbejaWord(),
                 makeAguilaWord(),
@@ -37,6 +38,35 @@ public class WordDataFactory {
                 makeTortugaWord(),
                 makeVacaWord(),
                 makeVivoraWord());
+        else
+            return Arrays.asList(
+                    makeALetterWord()   /*,
+                    makeBLetterWord(),
+                    makeCLetterWord(),
+                    makeDLetterWord(),
+                    makeELetterWord(),
+                    makeFLetterWord(),
+                    makeGLetterWord(),
+                    makeHLetterWord(),
+                    makeILetterWord(),
+                    makeJLetterWord(),
+                    makeKLetterWord(),
+                    makeLLetterWord(),
+                    makeMLetterWord(),
+                    makeNLetterWord(),
+                    makeNNLetterWord(),
+                    makeOLetterWord(),
+                    makePLetterWord(),
+                    makeQLetterWord(),
+                    makeRLetterWord(),
+                    makeSLetterWord(),
+                    makeTLetterWord(),
+                    makeULetterWord(),
+                    makeVLetterWord(),
+                    makeWLetterWord(),
+                    makeXLetterWord(),
+                    makeYLetterWord(),
+                    makeZLetterWord()  */);
     }
 
 
@@ -316,6 +346,19 @@ public class WordDataFactory {
         Content video = new Content(name, true);
         return Arrays.asList(video);
     }
+
+
+
+    public static Word makeALetterWord() {
+        return new Word("A", makeALetterContents(), R.drawable.vivora);
+    }
+
+    public static List<Content> makeALetterContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.vibora;
+        Content video = new Content(name, true);
+        return Arrays.asList(video);
+    }
+
 
 
 }

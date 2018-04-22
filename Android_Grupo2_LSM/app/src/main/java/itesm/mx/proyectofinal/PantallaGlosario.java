@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import itesm.mx.proyectofinal.Glosario.GlosarioAbecedario;
 import itesm.mx.proyectofinal.Glosario.GlosarioAnimales;
 import itesm.mx.proyectofinal.expand.ExpandActivity;
 
@@ -29,15 +30,27 @@ public class PantallaGlosario extends Fragment{
     public void onActivityCreated(Bundle b) {
         super.onActivityCreated(b);
         ImageButton animalesBtn = (ImageButton) getActivity().findViewById(R.id.animalesBtn);
-        animalesBtn.setOnClickListener(myClickListener);
+        ImageButton abecedarioBtn = (ImageButton) getActivity().findViewById(R.id.abecedarioBtn);
+        animalesBtn.setOnClickListener(animalesAction);
+        abecedarioBtn.setOnClickListener(abecedarioAction);
     }
 
-    private View.OnClickListener myClickListener = new View.OnClickListener() {
+    private View.OnClickListener animalesAction = new View.OnClickListener() {
         public void onClick(View v) {
             if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
                 getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioAnimales()).commit();
             } else {
                 getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioAnimales()).commit();
+            }
+        }
+    };
+
+    private View.OnClickListener abecedarioAction = new View.OnClickListener() {
+        public void onClick(View v) {
+            if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
+                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioAbecedario()).commit();
+            } else {
+                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioAbecedario()).commit();
             }
         }
     };
