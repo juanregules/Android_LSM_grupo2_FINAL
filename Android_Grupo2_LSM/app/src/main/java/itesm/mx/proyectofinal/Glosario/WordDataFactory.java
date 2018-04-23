@@ -354,8 +354,8 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeALetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.vaca;
-        Content video = new Content(name, false);
+        String name = "amin";
+        Content video = new Content(name, true);
         return Arrays.asList(video);
     }
 
@@ -448,7 +448,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeJLetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.vaca;
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.j;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -459,7 +459,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeKLetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.vaca;
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.k;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -502,7 +502,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeNNLetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.vaca;
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.nn;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -535,7 +535,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeQLetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.vaca;
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.q;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -613,14 +613,14 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeXLetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.vaca;
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.x;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
 
 
     public static Word makeYLetterWord() {
-        return new Word("Y", makeALetterContents(), R.drawable.y);
+        return new Word("Y", makeYLetterContents(), R.drawable.y);
     }
 
     public static List<Content> makeYLetterContents() {
@@ -636,7 +636,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeZLetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.vaca;
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.z;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
