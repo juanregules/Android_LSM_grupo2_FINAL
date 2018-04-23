@@ -40,6 +40,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     Button botondedo4;
     Button botondedo5;
     Button botonbackmano;
+    Button botonreiniciar;
 
     Activity a;
     int dedomovido=0;
@@ -62,6 +63,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
        botondedo3=a.findViewById(R.id.botondedo3);
        botondedo4=a.findViewById(R.id.botondedo4);
        botondedo5=a.findViewById(R.id.botondedo5);
+       botonreiniciar=a.findViewById(R.id.reiniciar);
 
 
 //        boton.setOnClickListener(this);
@@ -70,6 +72,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
         botondedo3.setOnClickListener(this);
         botondedo4.setOnClickListener(this);
         botondedo5.setOnClickListener(this);
+        botonreiniciar.setOnClickListener(this);
 
         juega();
         contexto = getActivity();
