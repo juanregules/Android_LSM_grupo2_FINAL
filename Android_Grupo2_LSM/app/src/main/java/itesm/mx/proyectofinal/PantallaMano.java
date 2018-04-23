@@ -15,6 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import itesm.mx.proyectofinal.extras.IMyScreen;
+import itesm.mx.proyectofinal.usuario.ListaControlador;
+import itesm.mx.proyectofinal.usuario.PerfilControlador;
+import itesm.mx.proyectofinal.usuario.PuntajesControlador;
 
 /**
  * Created by 59159 on 16/04/2018.
@@ -41,7 +44,9 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     Activity a;
     int dedomovido=0;
     int dedoanterior=0;
-    IMyScreen userScreen;
+    Context contexto;
+    IMyScreen fatherActivity;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
@@ -52,12 +57,12 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     public void onActivityCreated(Bundle b) {
         super.onActivityCreated(b);
        //boton= a.findViewById(R.id.botonmanoA);
-       botondedo1=a.findViewById(R.id.botondedo1);
+       botondedo1=a.findViewById(R.id.botondedo1a);
        botondedo2=a.findViewById(R.id.botondedo2);
        botondedo3=a.findViewById(R.id.botondedo3);
        botondedo4=a.findViewById(R.id.botondedo4);
        botondedo5=a.findViewById(R.id.botondedo5);
-       botonbackmano=a.findViewById(R.id.backmano);
+
 
 //        boton.setOnClickListener(this);
         botondedo1.setOnClickListener(this);
@@ -65,19 +70,41 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
         botondedo3.setOnClickListener(this);
         botondedo4.setOnClickListener(this);
         botondedo5.setOnClickListener(this);
-        botonbackmano.setOnClickListener(this);
+
         juega();
+        contexto = getActivity();
+        setFatherActivity();
+        fatherActivity.establecerPantallaAnterior(new ListaControlador());
+
+
+
 
 
     }
-    //miriam baez
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    private void setFatherActivity() {
+        try{
+            fatherActivity = (IMyScreen) contexto;
+        }
+        catch (Exception e){
+
+        }
+    }
+
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             //case R.id.botonmanoA:
               //  cambiarimagen();
                 //break;
-            case R.id.botondedo1:
+            case R.id.botondedo1a:
                 if(dedo1b=="false"){dedo1b="true";}else{dedo1b="false";}
                 cambiarimagen();
                 juega();
@@ -110,11 +137,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
                 dedo1b="true";dedo2b="true";dedo3b="true";dedo4b="true";dedo5b="true";
                 cambiarimagen();
                 juega();break;
-            case R.id.backmano:
-                getFragmentManager().beginTransaction().replace(R.id.pantalla, new MenuDeActividades()).commit();
 
-                //codigo de boton de back
-                break;
 
             default:
                 // Try catch vacio. Adrmiralo un momento
@@ -133,7 +156,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
         super.onAttach(con);
         a = (Activity) con;
         try {
-            userScreen = (IMyScreen) a;
+            fatherActivity = (IMyScreen) a;
         } catch (Exception e) {
             e.printStackTrace();
         }

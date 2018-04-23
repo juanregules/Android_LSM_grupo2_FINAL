@@ -11,13 +11,6 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/backmano"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="back" />
-
         <TextView
             android:id="@+id/formaletra"
             android:layout_width="match_parent"
@@ -48,7 +41,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/botondedo1"
+            android:id="@+id/botondedo1a"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_weight="1"
