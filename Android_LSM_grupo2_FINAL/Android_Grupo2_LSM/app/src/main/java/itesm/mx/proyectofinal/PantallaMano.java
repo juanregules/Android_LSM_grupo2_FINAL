@@ -6,14 +6,13 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import itesm.mx.proyectofinal.extras.IMyScreen;
 
 /**
  * Created by 59159 on 16/04/2018.
@@ -35,10 +34,12 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     Button botondedo3;
     Button botondedo4;
     Button botondedo5;
+    Button botonbackmano;
+
     Activity a;
     int dedomovido=0;
     int dedoanterior=0;
-    IMyScreen userScreen;
+    PantallaUsuario.IMyUserScreen userScreen;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
@@ -54,13 +55,17 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
        botondedo3=a.findViewById(R.id.botondedo3);
        botondedo4=a.findViewById(R.id.botondedo4);
        botondedo5=a.findViewById(R.id.botondedo5);
+       botonbackmano=a.findViewById(R.id.backmano);
+
 //        boton.setOnClickListener(this);
         botondedo1.setOnClickListener(this);
         botondedo2.setOnClickListener(this);
         botondedo3.setOnClickListener(this);
         botondedo4.setOnClickListener(this);
         botondedo5.setOnClickListener(this);
+        botonbackmano.setOnClickListener(this);
         juega();
+
 
     }
     //miriam baez
@@ -99,6 +104,15 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
                 cambiarimagen();
                 juega();
                 break;
+            case R.id.reiniciar:
+                dedo1b="true";dedo2b="true";dedo3b="true";dedo4b="true";dedo5b="true";
+                cambiarimagen();
+                juega();break;
+            case R.id.backmano:
+                getFragmentManager().beginTransaction().replace(R.id.pantalla, new PantallaDummy()).commit();
+
+                //codigo de boton de back
+                break;
 
             default:
                 // Try catch vacio. Adrmiralo un momento
@@ -117,12 +131,15 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
         super.onAttach(con);
         a = (Activity) con;
         try {
-            userScreen = (IMyScreen) a;
+            userScreen = (PantallaUsuario.IMyUserScreen) a;
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
+
+
+
 
     public void juega(){
 
