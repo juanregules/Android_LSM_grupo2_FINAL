@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import itesm.mx.proyectofinal.extras.IMyScreen;
+
 /**
  * Created by 59159 on 16/04/2018.
  */
@@ -36,7 +38,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     Activity a;
     int dedomovido=0;
     int dedoanterior=0;
-    PantallaUsuario.IMyUserScreen userScreen;
+    IMyScreen userScreen;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
@@ -115,7 +117,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
         super.onAttach(con);
         a = (Activity) con;
         try {
-            userScreen = (PantallaUsuario.IMyUserScreen) a;
+            userScreen = (IMyScreen) a;
         } catch (Exception e) {
             e.printStackTrace();
         }

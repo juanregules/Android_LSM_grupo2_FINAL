@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="itesm.mx.proyectofinal.MainActivity">
+    tools:context="itesm.mx.proyectofinal.principal.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,11 +14,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">>
+        app:layout_constraintTop_toTopOf="parent">
         <FrameLayout
             android:id="@+id/pantalla"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="90">
 
             <ImageView
@@ -43,34 +43,4 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:menu="@menu/navigation" />
-<!--
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/a"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Glos" />
-
-            <Button
-                android:id="@+id/b"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Act" />
-
-            <Button
-                android:id="@+id/c"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="usr" />
-        </LinearLayout>
-    </LinearLayout>
--->
 </android.support.constraint.ConstraintLayout>

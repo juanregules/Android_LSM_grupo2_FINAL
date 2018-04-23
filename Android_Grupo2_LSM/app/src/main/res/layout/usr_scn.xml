@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/usrscn_ivPhoto"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="56dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <Button
+        android:visibility="invisible"
+        android:id="@+id/usrscn_btnPhotoEdith"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_photo"
+        app:layout_constraintBottom_toBottomOf="@+id/usrscn_ivPhoto"
+        app:layout_constraintEnd_toEndOf="@+id/usrscn_ivPhoto" />
+
+    <EditText
+        android:visibility="invisible"
+        android:id="@+id/usrscn_etUsrName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:hint="Escriba un nombre"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usrscn_ivPhoto" />
+
+    <TextView
+        android:id="@+id/usrscn_tvUsrName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:text="[NOMBRE]"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usrscn_ivPhoto" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="250dp"
+        android:layout_height="233dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usrscn_ivPhoto"
+        app:layout_constraintVertical_bias="1.0">
+
+        <Button
+            android:visibility="invisible"
+            android:id="@+id/usrscn_btnFinishEdith"
+            android:layout_width="150dp"
+            android:text="Aceptar"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/usrscn_btnScores"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/usrscn_btnScores"
+            app:layout_constraintTop_toTopOf="@+id/usrscn_btnScores" />
+
+        <Button
+            android:visibility="invisible"
+            android:id="@+id/usrscn_btnCancelEdith"
+            android:layout_width="150dp"
+            android:text="cancelar"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/usrscn_btnEdith"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/usrscn_btnEdith"
+            app:layout_constraintTop_toBottomOf="@+id/usrscn_btnScores" />
+        <Button
+            android:id="@+id/usrscn_btnEdith"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Editar datos"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/usrscn_btnScores"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="puntuaciones"
+            app:layout_constraintBottom_toTopOf="@+id/usrscn_btnEdith"
+            app:layout_constraintEnd_toEndOf="@+id/usrscn_btnEdith"
+            app:layout_constraintStart_toStartOf="@+id/usrscn_btnEdith" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

@@ -3,7 +3,7 @@ package itesm.mx.proyectofinal.Glosario;
 import java.util.Arrays;
 import java.util.List;
 
-import itesm.mx.proyectofinal.MainActivity;
+import itesm.mx.proyectofinal.principal.MainActivity;
 import itesm.mx.proyectofinal.R;
 
 public class WordDataFactory {
