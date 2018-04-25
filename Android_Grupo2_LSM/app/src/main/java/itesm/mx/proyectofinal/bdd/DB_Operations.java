@@ -24,7 +24,7 @@ import itesm.mx.proyectofinal.transports.P2PGameData;
  */
 
 /*CLASE ENCARGADA DE OPERACIONES COMUNES EN LA BASE DE DATOS. SON FUNCIONES MAS QUE NADA DE
-* CONSULTA Y ACTUALIZACION*/
+ * CONSULTA Y ACTUALIZACION*/
 public class DB_Operations {
     private DB_Handler DBHandler;
     private SQLiteDatabase db;
@@ -95,7 +95,7 @@ public class DB_Operations {
         return null;
     }
 
-    public void agregarPuntuacion(GameData data) throws ParseException {
+    public void agregarPuntuacion(GameData data) {
         switch (data.getTipoJuego()){
 
             case DB_Schema.ManoTable.TABLE:
@@ -206,7 +206,7 @@ public class DB_Operations {
             c.close();
         }
     }
-    private void agregarPuntuacionP2P(GameData data) throws ParseException {
+    private void agregarPuntuacionP2P(GameData data) {
         P2PGameData p;
         String query;
         Cursor c;
@@ -225,7 +225,12 @@ public class DB_Operations {
              */
             Pair<Date, Integer> fechaMenor = new Pair<>(new Date(), -1);
             while(c.moveToNext()){
-                Date fechaRegistro = dateFormat.parse(c.getString(1));
+                Date fechaRegistro = null;
+                try {
+                    fechaRegistro = dateFormat.parse(c.getString(1));
+                } catch (ParseException e) {
+                    fechaRegistro = new Date();
+                    ;                }
                 int diferencia = fechaMenor.first.compareTo(fechaRegistro);
 
                 if(diferencia >= 0){
