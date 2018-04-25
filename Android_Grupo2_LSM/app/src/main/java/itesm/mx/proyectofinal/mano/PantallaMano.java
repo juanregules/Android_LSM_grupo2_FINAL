@@ -188,9 +188,8 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
         db_operations.open();
 
         ManoGameData manoGameData=new ManoGameData(puntos, Calendar.getInstance().getTime());
-        try{db_operations.agregarPuntuacion((GameData)manoGameData);}
-        catch (Exception e){
-            Log.d("Error","Error:"+e);}
+        db_operations.agregarPuntuacion((GameData)manoGameData);
+
     }
     public void juega(){
 
