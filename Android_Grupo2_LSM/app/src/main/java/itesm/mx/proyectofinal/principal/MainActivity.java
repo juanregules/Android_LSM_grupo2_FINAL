@@ -7,13 +7,10 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import itesm.mx.proyectofinal.MenuDeActividades;
 import itesm.mx.proyectofinal.PantallaGlosario;
-import itesm.mx.proyectofinal.PantallaMano;
-import itesm.mx.proyectofinal.PantallaP2p;
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.extras.IMyScreen;
 import itesm.mx.proyectofinal.usuario.PerfilControlador;

@@ -1,37 +1,18 @@
-package itesm.mx.proyectofinal;
+package itesm.mx.proyectofinal.mano;
 
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.app.Activity;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.extras.IMyScreen;
 import itesm.mx.proyectofinal.usuario.ListaControlador;
-import itesm.mx.proyectofinal.usuario.PerfilControlador;
-import itesm.mx.proyectofinal.usuario.PuntajesControlador;
 
-
-import android.app.Activity;
-
-import android.content.Context;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 /**
  * Created by 59159 on 25/04/2018.
  */
