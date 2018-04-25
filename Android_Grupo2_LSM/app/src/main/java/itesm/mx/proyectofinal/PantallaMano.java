@@ -7,14 +7,23 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Calendar;
+import java.util.Date;
+
+import itesm.mx.proyectofinal.bdd.DB_Operations;
+import itesm.mx.proyectofinal.bdd.DB_Schema;
 import itesm.mx.proyectofinal.extras.IMyScreen;
+import itesm.mx.proyectofinal.transports.GameData;
+import itesm.mx.proyectofinal.transports.ManoGameData;
 import itesm.mx.proyectofinal.usuario.ListaControlador;
 import itesm.mx.proyectofinal.usuario.PerfilControlador;
 import itesm.mx.proyectofinal.usuario.PuntajesControlador;
@@ -25,6 +34,7 @@ import itesm.mx.proyectofinal.usuario.PuntajesControlador;
 
 public class PantallaMano extends Fragment implements View.OnClickListener {
     TextView text;
+
     String letraactual="a";
     int puntos=0;
    String dedo1b="true";
@@ -41,6 +51,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     Button botondedo5;
     Button botonbackmano;
     Button botonreiniciar;
+
 
     Activity a;
     int dedomovido=0;
@@ -73,6 +84,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
         botondedo4.setOnClickListener(this);
         botondedo5.setOnClickListener(this);
         botonreiniciar.setOnClickListener(this);
+
 
         juega();
         contexto = getActivity();
@@ -142,6 +154,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
                 juega();break;
 
 
+
             default:
                 // Try catch vacio. Adrmiralo un momento
                 try {
@@ -168,7 +181,16 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
 
 
 
+    //AGREGA LOS PUNTOS A BASE DE DATOS
+    public void agregarabasededatos(int puntos){
+        DB_Operations db_operations=new DB_Operations(contexto);
+        db_operations.open();
 
+        ManoGameData manoGameData=new ManoGameData(puntos, Calendar.getInstance().getTime());
+        try{db_operations.agregarPuntuacion((GameData)manoGameData);}
+        catch (Exception e){
+            Log.d("Error","Error:"+e);}
+    }
     public void juega(){
 
 
@@ -177,6 +199,9 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
                 if (dedo1b == "false" && dedo2b == "false" && dedo3b == "false" && dedo4b == "false" && dedo5b == "true") {
                     TextView resultado = (TextView) a.findViewById(R.id.resultado);
                     puntos++;
+
+                    agregarabasededatos(puntos);
+
                     resultado.setText("CORRECTO!! puntos:" + puntos);
                     TextView formaletra = (TextView) a.findViewById(R.id.formaletra);
                     formaletra.setText("forma la letra b");
@@ -192,6 +217,10 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
                 if (dedo1b == "true" && dedo2b == "true" && dedo3b == "true" && dedo4b == "true" && dedo5b == "false") {
                     TextView resultado = (TextView) a.findViewById(R.id.resultado);
                     puntos++;
+
+                    agregarabasededatos(puntos);
+
+
                     resultado.setText("CORRECTO!! puntos:" + puntos);
                     TextView formaletra = (TextView) a.findViewById(R.id.formaletra);
                     formaletra.setText("forma la letra e");
@@ -203,6 +232,9 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
                 if (dedo1b == "false" && dedo2b == "false" && dedo3b == "false" && dedo4b == "false" && dedo5b == "false") {
                     TextView resultado = (TextView) a.findViewById(R.id.resultado);
                     puntos++;
+
+                    agregarabasededatos(puntos);
+
                     resultado.setText("CORRECTO!! puntos:" + puntos);
                     TextView formaletra = (TextView) a.findViewById(R.id.formaletra);
                     formaletra.setText("forma la letra i");
@@ -220,6 +252,10 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
                 if (dedo1b == "true" && dedo2b == "false" && dedo3b == "false" && dedo4b == "false" && dedo5b == "false") {
                     TextView resultado = (TextView) a.findViewById(R.id.resultado);
                     puntos++;
+
+
+                    agregarabasededatos(puntos);
+
                     resultado.setText("CORRECTO!! puntos:" + puntos);
                     TextView formaletra = (TextView) a.findViewById(R.id.formaletra);
                     formaletra.setText("forma la letra L");
@@ -236,6 +272,10 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
                 if (dedo1b == "false" && dedo2b == "false" && dedo3b == "false" && dedo4b == "true" && dedo5b == "true") {
                     TextView resultado = (TextView) a.findViewById(R.id.resultado);
                     puntos++;
+
+
+                    agregarabasededatos(puntos);
+
                     resultado.setText("CORRECTO!! puntos:" + puntos);
                     TextView formaletra = (TextView) a.findViewById(R.id.formaletra);
                     formaletra.setText("forma la letra v");
@@ -253,6 +293,9 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
                 if (dedo1b == "false" && dedo2b == "false" && dedo3b == "true" && dedo4b == "true" && dedo5b == "false") {
                     TextView resultado = (TextView) a.findViewById(R.id.resultado);
                     puntos++;
+
+                    agregarabasededatos(puntos);
+
                     resultado.setText("CORRECTO!! puntos:" + puntos);
                     TextView formaletra = (TextView) a.findViewById(R.id.formaletra);
                     formaletra.setText("forma la letra w");
@@ -268,6 +311,9 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
             case "w":if(dedo1b=="false"&&dedo2b=="true"&&dedo3b=="true"&&dedo4b=="true"&&dedo5b=="false"){
                 TextView resultado=(TextView)a.findViewById(R.id.resultado);
                 puntos++;
+
+                agregarabasededatos(puntos);
+
                 resultado.setText("CORRECTO!! puntos:"+puntos);
                 TextView formaletra=(TextView)a.findViewById(R.id.formaletra);
                 formaletra.setText("HAZ GANADO");
