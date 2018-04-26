@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.support.v7.app.AppCompatActivity;
 
 import itesm.mx.proyectofinal.extras.IMyScreen;
+import itesm.mx.proyectofinal.mano.intromanoclass;
 
 /**
  * Created by Martin RB on 27/03/2018.
@@ -58,10 +58,10 @@ public class MenuDeActividades extends Fragment implements View.OnClickListener 
             case R.id.botonmano:
             {
                 if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new PantallaMano()).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new intromanoclass()).commit();//PantallaMano
                     //cargaba PantallaDummy()
                 } else {
-                    getFragmentManager().beginTransaction().add(R.id.pantalla, new PantallaMano()).commit();
+                    getFragmentManager().beginTransaction().add(R.id.pantalla, new intromanoclass()).commit();  //PantallaMano
                     //cargaba PantallaDummy()
                 }
 

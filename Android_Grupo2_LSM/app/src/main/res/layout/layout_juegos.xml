@@ -18,11 +18,11 @@
             android:layout_height="300dp"
             app:srcCompat="@drawable/mano2" />
 
-        <Button
-            android:id="@+id/botonmano"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+    <Button
+        android:id="@+id/botonmano"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="INDIVIDUAL" />
     </LinearLayout>
 
     <LinearLayout
@@ -40,6 +40,6 @@
             android:id="@+id/botonp2p"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="P2P" />
     </LinearLayout>
 </LinearLayout>
