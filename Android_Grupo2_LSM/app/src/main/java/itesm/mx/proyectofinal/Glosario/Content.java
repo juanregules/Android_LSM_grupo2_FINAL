@@ -4,6 +4,7 @@ package itesm.mx.proyectofinal.Glosario;
  * Created by 59159 on 18/04/2018.
  */
 
+import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -22,9 +23,17 @@ public class Content implements Parcelable {
     };
     private String name;
     private boolean isFavorite;
+    private Drawable drawable;
 
     public Content(String name, boolean isFavorite) {
+        this.drawable = null;
         this.name = name;
+        this.isFavorite = isFavorite;
+    }
+
+    public Content(String name, Drawable drawable, boolean isFavorite) {
+        this.name = "";
+        this.drawable = drawable;
         this.isFavorite = isFavorite;
     }
 
@@ -34,6 +43,9 @@ public class Content implements Parcelable {
 
     public String getName() {
         return name;
+    }
+    public Drawable getDrawable() {
+        return drawable;
     }
 
     public boolean isFavorite() {

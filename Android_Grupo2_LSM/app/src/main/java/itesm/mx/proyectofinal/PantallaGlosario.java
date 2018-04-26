@@ -12,6 +12,10 @@ import android.widget.TextView;
 
 import itesm.mx.proyectofinal.Glosario.GlosarioAbecedario;
 import itesm.mx.proyectofinal.Glosario.GlosarioAnimales;
+import itesm.mx.proyectofinal.Glosario.GlosarioColores;
+import itesm.mx.proyectofinal.Glosario.GlosarioComida;
+import itesm.mx.proyectofinal.Glosario.GlosarioDias;
+import itesm.mx.proyectofinal.Glosario.GlosarioMeses;
 import itesm.mx.proyectofinal.expand.ExpandActivity;
 
 /**
@@ -31,8 +35,16 @@ public class PantallaGlosario extends Fragment{
         super.onActivityCreated(b);
         ImageButton animalesBtn = (ImageButton) getActivity().findViewById(R.id.animalesBtn);
         ImageButton abecedarioBtn = (ImageButton) getActivity().findViewById(R.id.abecedarioBtn);
+        ImageButton coloresBtn = (ImageButton) getActivity().findViewById(R.id.coloresBtn);
+        ImageButton comidaBtn = (ImageButton) getActivity().findViewById(R.id.comidaBtn);
+        ImageButton diasBtn = (ImageButton) getActivity().findViewById(R.id.diasBtn);
+        ImageButton mesesBtn = (ImageButton) getActivity().findViewById(R.id.mesesBtn);
         animalesBtn.setOnClickListener(animalesAction);
         abecedarioBtn.setOnClickListener(abecedarioAction);
+        coloresBtn.setOnClickListener(coloresAction);
+        comidaBtn.setOnClickListener(comidaAction);
+        diasBtn.setOnClickListener(diasAction);
+        mesesBtn.setOnClickListener(mesesAction);
     }
 
     private View.OnClickListener animalesAction = new View.OnClickListener() {
@@ -54,6 +66,49 @@ public class PantallaGlosario extends Fragment{
             }
         }
     };
+
+    private View.OnClickListener coloresAction = new View.OnClickListener() {
+        public void onClick(View v) {
+            if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
+                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioColores()).commit();
+            } else {
+                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioColores()).commit();
+            }
+        }
+    };
+
+    private View.OnClickListener comidaAction = new View.OnClickListener() {
+        public void onClick(View v) {
+            if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
+                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioComida()).commit();
+            } else {
+                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioComida()).commit();
+            }
+        }
+    };
+
+
+    private View.OnClickListener diasAction = new View.OnClickListener() {
+        public void onClick(View v) {
+            if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
+                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioDias()).commit();
+            } else {
+                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioDias()).commit();
+            }
+        }
+    };
+
+
+    private View.OnClickListener mesesAction = new View.OnClickListener() {
+        public void onClick(View v) {
+            if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
+                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioMeses()).commit();
+            } else {
+                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioMeses()).commit();
+            }
+        }
+    };
+
 
 
 

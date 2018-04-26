@@ -37,7 +37,10 @@ public class WordAdapter extends ExpandableRecyclerViewAdapter<WordViewHolder, C
                                       ExpandableGroup group, int childIndex) {
 
         final Content artist = ((Word) group).getItems().get(childIndex);
+        if(!artist.isFavorite())
         holder.setContentName(artist.getName());
+        else
+        holder.setContentName(artist.getName(), artist.getDrawable());
     }
 
     @Override

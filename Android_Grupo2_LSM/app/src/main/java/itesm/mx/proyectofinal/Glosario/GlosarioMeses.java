@@ -21,7 +21,7 @@ import itesm.mx.proyectofinal.expand.WordAdapter;
  * Created by ArturoCantu on 4/19/2018.
  */
 
-public class GlosarioAnimales extends Fragment {
+public class GlosarioMeses extends Fragment {
     TextView text;
     public WordAdapter adapter;
 

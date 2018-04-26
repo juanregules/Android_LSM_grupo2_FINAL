@@ -1,5 +1,6 @@
 package itesm.mx.proyectofinal.expand;
 
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,17 +23,16 @@ public class ContentViewHolder extends ChildViewHolder {
     }
 
     public void setContentName(String name) {
-        //childTextView.setText(name);
-        if (name.length() > 10) {
             childVideo.setVisibility(View.VISIBLE);
             childImage.setVisibility(View.INVISIBLE);
             childVideo.setVideoURI(Uri.parse(name));
-        }
-        else {
-            childImage.setVisibility(View.VISIBLE);
-            childVideo.setVisibility(View.INVISIBLE);
-            childImage.setImageResource(R.drawable.amin);
-        }
-        childVideo.start();
+            childVideo.start();
+
+    }
+
+    public void setContentName(String name, Drawable drawable){
+        childImage.setVisibility(View.VISIBLE);
+        childVideo.setVisibility(View.INVISIBLE);
+        childImage.setImageDrawable(drawable);
     }
 }
