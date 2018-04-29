@@ -198,7 +198,24 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
             case R.id.reiniciar:
                 dedo1b="true";dedo2b="true";dedo3b="true";dedo4b="true";dedo5b="true";
                 cambiarimagen();
+                Bitmap b5= BitmapFactory.decodeResource(this.getResources(),R.drawable.pulgaroff);
+                botondedo5.setImageBitmap(b5);
+
+                Bitmap b4= BitmapFactory.decodeResource(this.getResources(),R.drawable.indiceoff);
+                botondedo4.setImageBitmap(b4);
+
+                Bitmap bimage3= BitmapFactory.decodeResource(this.getResources(),R.drawable.mediooff);
+                botondedo3.setImageBitmap(bimage3);
+
+                Bitmap bimage2= BitmapFactory.decodeResource(this.getResources(),R.drawable.anularoff);
+                botondedo2.setImageBitmap(bimage2);
+
+                Bitmap bimage1= BitmapFactory.decodeResource(this.getResources(),R.drawable.meniqueoff);
+                botondedo1.setImageBitmap(bimage1);
+
                 juega();break;
+
+
 
 
 
