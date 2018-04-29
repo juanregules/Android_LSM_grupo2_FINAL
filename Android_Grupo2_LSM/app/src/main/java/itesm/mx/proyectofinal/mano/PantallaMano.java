@@ -33,6 +33,11 @@ import itesm.mx.proyectofinal.usuario.PuntajesControlador;
  * Created by 59159 on 16/04/2018.
  */
 
+//TOGLE BOTTON PARA QUE SE ENCIENDAN LOS BOTONES
+    //PONER EL DE REINICIAR ABAJO DE LOS 5 BOTONES
+    //que esten los botones formando una mano muy sencilla y que esten rojos o verdes diciendo up y down
+    //que tengan una forma de semicirculo
+
 public class PantallaMano extends Fragment implements View.OnClickListener {
     TextView text;
 
@@ -45,11 +50,11 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     String dedo5b="true";
 
     Button boton;
-    Button botondedo1;
-    Button botondedo2;
-    Button botondedo3;
-    Button botondedo4;
-    Button botondedo5;
+    ImageButton botondedo1;
+    ImageButton botondedo2;
+    ImageButton botondedo3;
+    ImageButton botondedo4;
+    ImageButton botondedo5;
     Button botonbackmano;
     Button botonreiniciar;
 
@@ -121,30 +126,71 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
               //  cambiarimagen();
                 //break;
             case R.id.botondedo1a:
-                if(dedo1b=="false"){dedo1b="true";}else{dedo1b="false";}
+                if(dedo1b=="false"){dedo1b="true";
+
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.meniqueoff);
+                    botondedo1.setImageBitmap(bimage);}
+
+                    else{dedo1b="false";
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.meniqueon);
+                    botondedo1.setImageBitmap(bimage);
+                }
                 cambiarimagen();
+
                 juega();
                 break;
             case R.id.botondedo2:
-                if(dedo2b=="false"){dedo2b="true";}else{dedo2b="false";}
+                if(dedo2b=="false"){dedo2b="true";
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.anularoff);
+                    botondedo2.setImageBitmap(bimage);
+                }else{dedo2b="false";
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.anularon);
+                    botondedo2.setImageBitmap(bimage);
+                }
                 dedomovido=2;
                 cambiarimagen();
                 juega();
                 break;
             case R.id.botondedo3:
-                if(dedo3b=="false"){dedo3b="true";}else{dedo3b="false";};
+                if(dedo3b=="false"){dedo3b="true";
+
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.mediooff);
+                    botondedo3.setImageBitmap(bimage);
+
+                }else{dedo3b="false";
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.medioon);
+                    botondedo3.setImageBitmap(bimage);
+                };
                 dedomovido=3;
                 cambiarimagen();
                 juega();
                 break;
             case R.id.botondedo4:
-                if(dedo4b=="false"){dedo4b="true";}else{dedo4b="false";}
+                if(dedo4b=="false"){dedo4b="true";
+
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.indiceoff);
+                    botondedo4.setImageBitmap(bimage);
+
+                }else{dedo4b="false";
+
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.indiceon);
+                    botondedo4.setImageBitmap(bimage);
+                }
                 dedomovido=4;
                 cambiarimagen();
                 juega();
                 break;
             case R.id.botondedo5:
-                if(dedo5b=="false"){dedo5b="true";}else{dedo5b="false";}
+                if(dedo5b=="false"){dedo5b="true";
+
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.pulgaroff);
+                    botondedo5.setImageBitmap(bimage);
+
+                }else{dedo5b="false";
+
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.pulgaron);
+                    botondedo5.setImageBitmap(bimage);
+                }
                 dedomovido=5;
                 cambiarimagen();
                 juega();

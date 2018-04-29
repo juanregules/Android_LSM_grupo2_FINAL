@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"><![CDATA[
@@ -12,7 +13,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="70dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
@@ -21,14 +22,17 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_weight="1"
-            android:text="forma la letra A" />
+            android:backgroundTint="@color/colorPrimary"
+            android:text="forma la letra A"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/resultado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="incorrecto" />
+            android:text="incorrecto"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -40,47 +44,10 @@
         app:srcCompat="@drawable/ttttt" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_weight="1"
         android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/botondedo1a"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:text="Meñique"
-            android:textSize="9sp" />
-
-        <Button
-            android:id="@+id/botondedo2"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:text="Anular"
-            android:textSize="10sp" />
-
-        <Button
-            android:id="@+id/botondedo3"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:text="medio" />
-
-        <Button
-            android:id="@+id/botondedo4"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:text="indice" />
-
-        <Button
-            android:id="@+id/botondedo5"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:text="pulgar" />
 
         <Button
             android:id="@+id/reiniciar"
@@ -88,6 +55,48 @@
             android:layout_height="70dp"
             android:layout_weight="1"
             android:text="reiniciar" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/botondedo1a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/meniqueoff" />
+
+        <ImageButton
+            android:id="@+id/botondedo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/anularoff" />
+
+        <ImageButton
+            android:id="@+id/botondedo3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/mediooff" />
+
+        <ImageButton
+            android:id="@+id/botondedo4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/indiceoff" />
+
+        <ImageButton
+            android:id="@+id/botondedo5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/pulgaroff" />
 
     </LinearLayout>
 
@@ -95,6 +104,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal"></LinearLayout>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/reiniciar"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="reiniciar" />
+    </LinearLayout>
 
 </LinearLayout>
