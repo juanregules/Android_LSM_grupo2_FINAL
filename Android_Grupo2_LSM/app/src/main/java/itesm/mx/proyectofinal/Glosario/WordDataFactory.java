@@ -14,35 +14,35 @@ public class WordDataFactory {
     public static List<Word> makeWords(String type, Context current) {
         context = current;
         if (type == "animales")
-        return Arrays.asList(
-                makeAbejaWord(),
-                makeAguilaWord(),
-                makeAranaWord(),
-                makeArdillaWord(),
-                makeBurroWord(),
-                makeCaballoWord(),
-                makeCerdoWord(),
-                makeChangoWord(),
-                makeConejoWord(),
-                makeGatoWord(),
-                makeGorillaWord(),
-                makeGusanoWord(),
-                makeJirafaWord(),
-                makeLeonWord(),
-                makeMariposaWord(),
-                makeOsoWord(),
-                makePajaroWord(),
-                makePalomaWord(),
-                makePatoWord(),
-                makePerroWord(),
-                makePezWord(),
-                makeRatonWord(),
-                makeTigreWord(),
-                makeToroWord(),
-                makeTortugaWord(),
-                makeVacaWord(),
-                makeVivoraWord());
-        if (type == "abecedario")
+            return Arrays.asList(
+                    makeAbejaWord(),
+                    makeAguilaWord(),
+                    makeAranaWord(),
+                    makeArdillaWord(),
+                    makeBurroWord(),
+                    makeCaballoWord(),
+                    makeCerdoWord(),
+                    makeChangoWord(),
+                    makeConejoWord(),
+                    makeGatoWord(),
+                    makeGorillaWord(),
+                    makeGusanoWord(),
+                    makeJirafaWord(),
+                    makeLeonWord(),
+                    makeMariposaWord(),
+                    makeOsoWord(),
+                    makePajaroWord(),
+                    makePalomaWord(),
+                    makePatoWord(),
+                    makePerroWord(),
+                    makePezWord(),
+                    makeRatonWord(),
+                    makeTigreWord(),
+                    makeToroWord(),
+                    makeTortugaWord(),
+                    makeVacaWord(),
+                    makeVivoraWord());
+        else if (type == "abecedario")
             return Arrays.asList(
                     makeALetterWord(),
                     makeBLetterWord(),
@@ -73,7 +73,7 @@ public class WordDataFactory {
                     makeXLetterWord(),
                     makeYLetterWord(),
                     makeZLetterWord());
-        else
+        else if (type == "abecedario")
             return Arrays.asList(
                     MakeAzulWord(),
                     MakeBlancoWord(),
@@ -88,6 +88,31 @@ public class WordDataFactory {
                     MakeRosaWord(),
                     MakeAmarilloWord(),
                     MakeVerdeWord());
+        else if (type == "dias")
+            return Arrays.asList(
+                    MakeLunesWord(),
+                    MakeMartesWord(),
+                    MakeMiercolesWord(),
+                    MakeJuevesWord(),
+                    MakeViernesWord(),
+                    MakeSabadoWord(),
+                    MakeDomingoWord());
+        else if (type == "Meses")
+            return Arrays.asList(
+                /*    MakeEneroWord(),
+                    MakeFebreroWord(),
+                    MakeMarzoWord(),
+                    MakeAbrilWord(),
+                    MakeMayoWord(),
+                    MakeJunioWord(),
+                    MakeJulioWord(),
+                    MakeAgostoWord(),
+                    MakeSeptiempreWord(),
+                    MakeOctubreWord(),
+                    MakeNoviembreWord(),
+                    MakeDiciembreWord() */ );
+        else
+            return Arrays.asList();
     }
 
 
@@ -799,7 +824,7 @@ public class WordDataFactory {
         return Arrays.asList(video);
     }
     public static Word MakeAmarilloWord() {
-        return new Word("Morado", makeAmarilloContents(), R.drawable.amarillo);
+        return new Word("Amarillo", makeAmarilloContents(), R.drawable.amarillo);
     }
 
     public static List<Content> makeAmarilloContents() {
@@ -808,9 +833,76 @@ public class WordDataFactory {
         return Arrays.asList(video);
     }
 
+    //Dias de la semana
+    public static Word MakeLunesWord() {
+        return new Word("Lunes", makeLunesContents(), R.drawable.blanco);
+    }
+
+    public static List<Content> makeLunesContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.lunes;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeMartesWord() {
+        return new Word("Martes", makeMartesContents(), R.drawable.blanco);
+    }
+
+    public static List<Content> makeMartesContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.martes;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
 
 
+    public static Word MakeMiercolesWord() {
+        return new Word("Miercoles", makeMiercolesContents(), R.drawable.blanco);
+    }
 
+    public static List<Content> makeMiercolesContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.miercoles;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeJuevesWord() {
+        return new Word("Jueves", makeJuevesContents(), R.drawable.blanco);
+    }
+
+    public static List<Content> makeJuevesContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.jueves;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeViernesWord() {
+        return new Word("Viernes", makeViernesContents(), R.drawable.blanco);
+    }
+
+    public static List<Content> makeViernesContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.viernes;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeSabadoWord() {
+        return new Word("Sábado", makeSabadoContents(), R.drawable.blanco);
+    }
+
+    public static List<Content> makeSabadoContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.sabado;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeDomingoWord() {
+        return new Word("Domingo", makeDomingoContents(), R.drawable.blanco);
+    }
+
+    public static List<Content> makeDomingoContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.domingo;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
 
 }
-
