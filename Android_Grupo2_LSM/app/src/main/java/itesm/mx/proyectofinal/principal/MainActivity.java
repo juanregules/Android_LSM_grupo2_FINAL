@@ -75,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
     }
     private void cargarGlosario() {
         if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-            getFragmentManager().beginTransaction().replace(R.id.pantalla, new PantallaGlosario()).addToBackStack(null).commit();
+            getFragmentManager().beginTransaction().replace(R.id.pantalla, new PantallaGlosario()).commit();
         } else {
-            getFragmentManager().beginTransaction().add(R.id.pantalla, new PantallaGlosario()).addToBackStack(null).commit();
+            getFragmentManager().beginTransaction().add(R.id.pantalla, new PantallaGlosario()).commit();
         }
     }
 

@@ -47,8 +47,6 @@ public class MenuDeActividades extends Fragment implements View.OnClickListener 
         botonpantallap2p=a.findViewById(R.id.botonp2p);
         botonpantallap2p.setOnClickListener(this);
         botonpantallamano.setOnClickListener(this);
-
-        userScreen.establecerPantallaAnterior(null);
     }
 
     @Override
@@ -58,10 +56,10 @@ public class MenuDeActividades extends Fragment implements View.OnClickListener 
             case R.id.botonmano:
             {
                 if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new intromanoclass()).commit();//PantallaMano
+                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new intromanoclass()).addToBackStack(null).commit();//PantallaMano
                     //cargaba PantallaDummy()
                 } else {
-                    getFragmentManager().beginTransaction().add(R.id.pantalla, new intromanoclass()).commit();  //PantallaMano
+                    getFragmentManager().beginTransaction().add(R.id.pantalla, new intromanoclass()).addToBackStack(null).commit();  //PantallaMano
                     //cargaba PantallaDummy()
                 }
 
@@ -72,10 +70,10 @@ public class MenuDeActividades extends Fragment implements View.OnClickListener 
             case R.id.botonp2p:
             {
                 if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new PantallaP2p()).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new PantallaP2p()).addToBackStack(null).commit();
                     //cargaba PantallaDummy()
                 } else {
-                    getFragmentManager().beginTransaction().add(R.id.pantalla, new PantallaP2p()).commit();
+                    getFragmentManager().beginTransaction().add(R.id.pantalla, new PantallaP2p()).addToBackStack(null).commit();
                     //cargaba PantallaDummy()
                 }
             };

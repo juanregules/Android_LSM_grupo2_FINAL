@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import itesm.mx.proyectofinal.MenuDeActividades;
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Schema;
 import itesm.mx.proyectofinal.extras.IMyScreen;
@@ -34,7 +35,6 @@ public class ListaControlador extends Fragment implements View.OnClickListener{
         vista = new ListaVista(contexto, this);
 
         // Procesos
-        fatherActivity.establecerPantallaAnterior(new PerfilControlador());
     }
 
     @Override
@@ -60,11 +60,16 @@ public class ListaControlador extends Fragment implements View.OnClickListener{
     }
 
     private void consultarPuntuacion(String nombreJuego){
+        /*
         PuntajesControlador controlador = new PuntajesControlador();
         Bundle b = new Bundle();
         b.putString("nombreJuego", nombreJuego);
         controlador.setArguments(b);
-
-        fatherActivity.cambiarPantalla(controlador);
+*/
+        if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
+            getFragmentManager().beginTransaction().replace(R.id.pantalla, new PuntajesControlador()).addToBackStack(null).commit();
+        } else {
+            getFragmentManager().beginTransaction().add(R.id.pantalla, new PuntajesControlador()).addToBackStack(null).commit();
+        }
     }
 }

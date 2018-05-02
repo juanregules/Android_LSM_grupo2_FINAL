@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import itesm.mx.proyectofinal.MenuDeActividades;
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
 import itesm.mx.proyectofinal.extras.IMyScreen;
@@ -52,7 +53,6 @@ public class PerfilControlador extends Fragment implements View.OnClickListener 
 
         /// Procesos
         // Establecer boton de back
-        fatherActivity.establecerPantallaAnterior(null);
 
         if(savedInstanceState != null){
             enEdicion = savedInstanceState.getBoolean("enEdicion");
@@ -157,7 +157,11 @@ public class PerfilControlador extends Fragment implements View.OnClickListener 
     }
 
     private void abrirPantallaPuntajes(){
-        fatherActivity.cambiarPantalla(new ListaControlador());
+        if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
+            getFragmentManager().beginTransaction().replace(R.id.pantalla, new ListaControlador()).addToBackStack(null).commit();
+        } else {
+            getFragmentManager().beginTransaction().add(R.id.pantalla, new ListaControlador()).addToBackStack(null).commit();
+        }
     }
 
     private void iniEditar(){

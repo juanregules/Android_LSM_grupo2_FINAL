@@ -75,16 +75,10 @@ public class intromanoclass extends android.app.Fragment implements View.OnClick
     @Override
     public void onActivityCreated(Bundle b) {
         super.onActivityCreated(b);
-
         botonintro=a.findViewById(R.id.botonintro);
         botonintro.setOnClickListener(this);
-
-
-
-
         contexto = getActivity();
-        setFatherActivity();
-        fatherActivity.establecerPantallaAnterior(new ListaControlador());
+
 
 
     }
