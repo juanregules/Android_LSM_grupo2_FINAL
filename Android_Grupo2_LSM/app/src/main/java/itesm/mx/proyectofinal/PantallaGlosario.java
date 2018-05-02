@@ -50,9 +50,9 @@ public class PantallaGlosario extends Fragment{
     private View.OnClickListener animalesAction = new View.OnClickListener() {
         public void onClick(View v) {
             if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioAnimales()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioAnimales()).addToBackStack(null).commit();
             } else {
-                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioAnimales()).commit();
+                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioAnimales()).addToBackStack(null).commit();
             }
         }
     };
@@ -60,9 +60,9 @@ public class PantallaGlosario extends Fragment{
     private View.OnClickListener abecedarioAction = new View.OnClickListener() {
         public void onClick(View v) {
             if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioAbecedario()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioAbecedario()).addToBackStack(null).commit();
             } else {
-                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioAbecedario()).commit();
+                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioAbecedario()).addToBackStack(null).commit();
             }
         }
     };
@@ -70,9 +70,9 @@ public class PantallaGlosario extends Fragment{
     private View.OnClickListener coloresAction = new View.OnClickListener() {
         public void onClick(View v) {
             if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioColores()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioColores()).addToBackStack(null).commit();
             } else {
-                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioColores()).commit();
+                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioColores()).addToBackStack(null).commit();
             }
         }
     };
@@ -80,9 +80,9 @@ public class PantallaGlosario extends Fragment{
     private View.OnClickListener comidaAction = new View.OnClickListener() {
         public void onClick(View v) {
             if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioComida()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioComida()).addToBackStack(null).commit();
             } else {
-                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioComida()).commit();
+                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioComida()).addToBackStack(null).commit();
             }
         }
     };
@@ -91,9 +91,9 @@ public class PantallaGlosario extends Fragment{
     private View.OnClickListener diasAction = new View.OnClickListener() {
         public void onClick(View v) {
             if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioDias()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioDias()).addToBackStack(null).commit();
             } else {
-                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioDias()).commit();
+                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioDias()).addToBackStack(null).commit();
             }
         }
     };
@@ -102,9 +102,9 @@ public class PantallaGlosario extends Fragment{
     private View.OnClickListener mesesAction = new View.OnClickListener() {
         public void onClick(View v) {
             if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioMeses()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.pantalla, new GlosarioMeses()).addToBackStack(null).commit();
             } else {
-                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioMeses()).commit();
+                getFragmentManager().beginTransaction().add(R.id.pantalla, new GlosarioMeses()).addToBackStack(null).commit();
             }
         }
     };
