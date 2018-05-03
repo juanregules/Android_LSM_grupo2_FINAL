@@ -3,4 +3,8 @@
     <color name="colorPrimary">#f44336</color>
     <color name="colorPrimaryDark">#D32F2F</color>
     <color name="colorAccent">#FFC107</color>
+
+    <color name="p2p_res_noRes">#ff00ff</color>
+    <color name="p2p_res_correct">#4d4</color>
+    <color name="p2p_res_incorrect">#d44</color>
 </resources>

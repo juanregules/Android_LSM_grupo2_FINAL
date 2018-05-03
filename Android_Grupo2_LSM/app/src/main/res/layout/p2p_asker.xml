@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/asker_btnRendirse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#EE5555"
+        android:text="Terminar partidA"
+        android:textSize="19sp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/asker_ivFoto"
+        android:src="@drawable/raton"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/asker_btnRendirse" />
+
+    <Button
+        android:id="@+id/asker_btnTomarFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tomar foto"
+        app:layout_constraintEnd_toEndOf="@+id/asker_ivFoto"
+        app:layout_constraintTop_toBottomOf="@+id/asker_ivFoto" />
+
+    <EditText
+        android:id="@+id/asker_etRespuesta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="16dp"
+        android:hint="Cual es la respuesta?"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/asker_btnTomarFoto" />
+
+    <Button
+        android:id="@+id/asker_btnPreguntar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Preguntar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/asker_etRespuesta"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/asker_etRespuesta"
+        app:layout_constraintTop_toBottomOf="@+id/asker_etRespuesta"
+        app:layout_constraintVertical_bias="0.333" />
+
+    <TextView
+        android:id="@+id/asker_tvEsperando"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Esperando a [nombre]"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/asker_ivFoto"
+        app:layout_constraintEnd_toEndOf="@+id/asker_ivFoto"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="@+id/asker_ivFoto"
+        app:layout_constraintTop_toTopOf="@+id/asker_ivFoto" />
+
+</android.support.constraint.ConstraintLayout>

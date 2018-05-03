@@ -16,7 +16,8 @@ public class PantallaP2p extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
-        return inflater.inflate(R.layout.layout_p2p, container, false);
+        //return inflater.inflate(R.layout.layout_p2p, container, false);
+        return null;
     }
 
     @Override

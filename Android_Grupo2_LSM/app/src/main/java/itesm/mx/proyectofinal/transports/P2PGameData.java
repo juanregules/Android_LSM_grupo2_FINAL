@@ -15,7 +15,7 @@ public class P2PGameData extends GameData {
     private int puntajeMio;
     private Date fecha;
 
-    public P2PGameData(String nombreVs, int puntajeVs, String nombreMio, int puntajeMio, Date fecha) {
+    public P2PGameData(String nombreMio, int puntajeMio, String nombreVs, int puntajeVs, Date fecha) {
         this.nombreVs = nombreVs;
         this.puntajeVs = puntajeVs;
         this.nombreMio = nombreMio;

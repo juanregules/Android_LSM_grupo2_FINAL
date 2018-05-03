@@ -1,0 +1,282 @@
+package itesm.mx.proyectofinal.p2p;
+
+import android.app.Fragment;
+import android.content.Context;
+import android.os.Parcel;
+import android.os.ParcelFileDescriptor;
+import android.support.annotation.NonNull;
+import android.widget.Toast;
+
+import com.google.android.gms.nearby.Nearby;
+import com.google.android.gms.nearby.connection.AdvertisingOptions;
+import com.google.android.gms.nearby.connection.ConnectionInfo;
+import com.google.android.gms.nearby.connection.ConnectionLifecycleCallback;
+import com.google.android.gms.nearby.connection.ConnectionResolution;
+import com.google.android.gms.nearby.connection.ConnectionsClient;
+import com.google.android.gms.nearby.connection.ConnectionsStatusCodes;
+import com.google.android.gms.nearby.connection.DiscoveredEndpointInfo;
+import com.google.android.gms.nearby.connection.DiscoveryOptions;
+import com.google.android.gms.nearby.connection.EndpointDiscoveryCallback;
+import com.google.android.gms.nearby.connection.Payload;
+import com.google.android.gms.nearby.connection.PayloadCallback;
+import com.google.android.gms.nearby.connection.PayloadTransferUpdate;
+import com.google.android.gms.nearby.connection.Strategy;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import itesm.mx.proyectofinal.extras.Tuple;
+import itesm.mx.proyectofinal.transports.P2PIngameData;
+
+public class CommSystem {
+
+    private Fragment controller;
+    private ConnectionsClient clientConns;
+    private String elOtroEndpoint;
+    private String miEndpoint;
+    private Context contexto;
+    private static CommSystem disObj;
+
+
+
+    private CommSystem(Context contexto, Fragment controller, String miEndpoint){
+        this.controller = controller;
+        this.miEndpoint = miEndpoint;
+        this.contexto = contexto;
+
+        clientConns = Nearby.getConnectionsClient(contexto);
+    }
+    public static CommSystem createCommSystem(Context contexto, Fragment controller, String miNombre){
+        if(disObj == null) {
+            disObj = new CommSystem(contexto, controller, miNombre);
+        }
+        else{
+            if(!contexto.equals(CommSystem.disObj.contexto)){
+                CommSystem.disObj.contexto = contexto;
+            }
+            if(!controller.equals(CommSystem.disObj.controller)){
+                CommSystem.disObj.controller = controller;
+            }
+        }
+        return disObj;
+    }
+
+
+    public void startAnnounce(){
+        clientConns.startAdvertising(miEndpoint, contexto.getPackageName(), announce_clC, new AdvertisingOptions.Builder().setStrategy(Strategy.P2P_STAR).build())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Notificar buen funcionamiento
+                        Toast.makeText(contexto, "Buscando...", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Notificar el error
+                        Toast.makeText(contexto, "Error al buscar...", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                        int a = 0; // TODO
+                    }
+                });
+    }
+    private final ConnectionLifecycleCallback announce_clC = new ConnectionLifecycleCallback() {
+        @Override
+        public void onConnectionInitiated(@NonNull String endPointID, @NonNull ConnectionInfo connectionInfo) {
+            clientConns.acceptConnection(endPointID, announce_pC);
+            // Notificar una conexion entrante
+            Toast.makeText(contexto, "Conectandose con " + endPointID, Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onConnectionResult(@NonNull String endPointID, @NonNull ConnectionResolution connectionResolution) {
+            // Si la conexion es correcta. Saltar al asker
+            elOtroEndpoint = endPointID;
+            switch (connectionResolution.getStatus().getStatusCode()){
+                case ConnectionsStatusCodes.STATUS_OK:
+                    ((P2PWaitConn_c)controller).conexionEntrante(miEndpoint, elOtroEndpoint);
+                    break;
+                case ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED:
+                    Toast.makeText(contexto, "Conexion negada", Toast.LENGTH_SHORT).show();
+                    break;
+                case ConnectionsStatusCodes.STATUS_ERROR:
+                    Toast.makeText(contexto, "Error en la conexion", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+
+        @Override
+        public void onDisconnected(@NonNull String endPointID) {
+            // Guardar datos y salir al menu principal
+            try{
+                ((P2PGame_c)controller).desconeccion();
+            }
+            catch (Exception e){
+                Toast.makeText(contexto, "Debes presionar el boton de rendicion. No se guardaran los datos", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        }
+    };
+    private final PayloadCallback announce_pC = new PayloadCallback() {
+        @Override
+        public void onPayloadReceived(@NonNull String endPointID, @NonNull Payload payload) {
+            // Realizar acciones dependiendo del tipo de dato
+            P2PIngameData data = new P2PIngameData(
+                    fromPayloadToByteArr(payload)
+            );
+
+            switch (data.getTipo()){
+                case P2PIngameData.GAME_PREGUNTA:
+                    Tuple<String, byte[]> tempP = data.obtenerDatos_pregunta();
+                    ((P2PGame_c)controller).endWaitMode(tempP.getFirst(), tempP.getSecond());
+                    break;
+                case P2PIngameData.GAME_RESPUESTA:
+                    boolean tempR = data.obtenerDatos_resultados();
+                    ((P2PGame_c)controller).irAResultados(data.obtenerDatos_resultados());
+                    break;
+                case P2PIngameData.RESULTS_SIGUIENTEPREGUNTA:
+                    ((P2PResult_c)controller).siguientePregunta();
+                    break;
+            }
+        }
+
+        @Override
+        public void onPayloadTransferUpdate(@NonNull String endPointID, @NonNull PayloadTransferUpdate payloadTransferUpdate) {
+            // No c xd
+        }
+    };
+
+
+
+    public void startDiscovery(){
+        clientConns.startDiscovery(contexto.getPackageName(), discov_edC, new DiscoveryOptions.Builder().setStrategy(Strategy.P2P_STAR).build())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(contexto, "Buscando...", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(contexto, "Error al buscar!", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                        int a= 0; // TODO
+                    }
+                });
+    }
+    private final EndpointDiscoveryCallback discov_edC = new EndpointDiscoveryCallback() {
+        @Override
+        public void onEndpointFound(@NonNull String endpointID, @NonNull DiscoveredEndpointInfo discoveredEndpointInfo) {
+            // Enviar nuevo endpoint
+            ((P2PWaitConn_c)controller).agregarConexion(endpointID);
+        }
+
+        @Override
+        public void onEndpointLost(@NonNull String endPointID) {
+            // Remover endpoint
+            ((P2PWaitConn_c)controller).eliminarConexion(endPointID);
+        }
+    };
+
+    public void conectar(String endpoint){
+        clientConns.requestConnection(contexto.getPackageName(), endpoint, discov_clC);
+    }
+    private final ConnectionLifecycleCallback discov_clC = new ConnectionLifecycleCallback() {
+        @Override
+        public void onConnectionInitiated(@NonNull String endpointID, @NonNull ConnectionInfo connectionInfo) {
+            clientConns.acceptConnection(endpointID, discov_pC);
+            // Notificar que se esta conectando
+            Toast.makeText(contexto, "Conectando a " + endpointID, Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onConnectionResult(@NonNull String endpointID, @NonNull ConnectionResolution connectionResolution) {
+            // Si ya se conecto, notificar y pasar al answerer
+            // Guardar el dato en la clase actual
+            elOtroEndpoint = endpointID;
+            switch (connectionResolution.getStatus().getStatusCode()){
+                case ConnectionsStatusCodes.STATUS_OK:
+                    Toast.makeText(contexto, "Conectado con " + elOtroEndpoint, Toast.LENGTH_SHORT).show();
+                    break;
+                case ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED:
+                    Toast.makeText(contexto, "Conexion negada", Toast.LENGTH_SHORT).show();
+                    break;
+                case ConnectionsStatusCodes.STATUS_ERROR:
+                    Toast.makeText(contexto, "Error en la conexion", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+
+        @Override
+        public void onDisconnected(@NonNull String s) {
+            // Salir al menu principal
+            try{
+                ((P2PGame_c)controller).desconeccion();
+            }
+            catch (Exception e){
+                Toast.makeText(contexto, "Debes presionar el boton de rendicion. No se guardaran los datos", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        }
+    };
+    private final PayloadCallback discov_pC = new PayloadCallback() {
+        @Override
+        public void onPayloadReceived(@NonNull String endpointID, @NonNull Payload payload) {
+            // Realizar acciones dependiendo del tipo de dato
+            P2PIngameData data = new P2PIngameData(
+                    fromPayloadToByteArr(payload)
+            );
+
+            switch (data.getTipo()){
+                case P2PIngameData.GAME_PREGUNTA:
+                    Tuple<String, byte[]> tempP = data.obtenerDatos_pregunta();
+                    ((P2PGame_c)controller).endWaitMode(tempP.getFirst(), tempP.getSecond());
+                    break;
+                case P2PIngameData.GAME_RESPUESTA:
+                    boolean tempR = data.obtenerDatos_resultados();
+                    ((P2PGame_c)controller).irAResultados(data.obtenerDatos_resultados());
+                    break;
+                case P2PIngameData.RESULTS_SIGUIENTEPREGUNTA:
+                    ((P2PResult_c)controller).siguientePregunta();
+                    break;
+            }
+        }
+
+        @Override
+        public void onPayloadTransferUpdate(@NonNull String s, @NonNull PayloadTransferUpdate payloadTransferUpdate) {
+            // No c xd
+        }
+    };
+
+    public void enviarDatos(P2PIngameData datos){
+        // POSIBLE ERROR EN EL TAMAÑO DE STREAM!!!!!!!!!!!
+        clientConns.sendPayload(
+                elOtroEndpoint,
+                Payload.fromStream(
+                        new ByteArrayInputStream(datos.getBytes())
+                )
+        );
+    }
+
+    public void desconectar(){
+
+    }
+
+    private byte[] fromPayloadToByteArr(Payload p){
+        byte[] bytes = null;
+        try{
+            InputStream stream = p.asStream().asInputStream();
+            bytes = new byte[stream.available()];
+            stream.read(bytes);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return bytes;
+    }
+}

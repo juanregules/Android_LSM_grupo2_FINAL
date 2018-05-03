@@ -10,8 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import itesm.mx.proyectofinal.extras.IMyScreen;
 import itesm.mx.proyectofinal.mano.intromanoclass;
+import itesm.mx.proyectofinal.p2p.P2PStarter_c;
 
 /**
  * Created by Martin RB on 27/03/2018.
@@ -72,11 +75,9 @@ public class MenuDeActividades extends Fragment implements View.OnClickListener 
             case R.id.botonp2p:
             {
                 if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new PantallaP2p()).commit();
-                    //cargaba PantallaDummy()
+                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new P2PStarter_c()).commit();
                 } else {
-                    getFragmentManager().beginTransaction().add(R.id.pantalla, new PantallaP2p()).commit();
-                    //cargaba PantallaDummy()
+                    getFragmentManager().beginTransaction().add(R.id.pantalla, new P2PStarter_c()).commit();
                 }
             };
 

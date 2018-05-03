@@ -21,13 +21,13 @@
             android:layout_height="0dp"
             android:layout_weight="90">
 
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:srcCompat="@drawable/lsmlogo"
                 tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="16dp" />
+                tools:layout_editor_absoluteY="16dp" />-->
         </FrameLayout>
     </LinearLayout>
 
