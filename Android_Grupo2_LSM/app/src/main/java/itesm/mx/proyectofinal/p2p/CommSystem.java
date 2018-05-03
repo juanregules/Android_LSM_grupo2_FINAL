@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Parcel;
 import android.os.ParcelFileDescriptor;
 import android.support.annotation.NonNull;
+import android.view.Gravity;
 import android.widget.Toast;
 
 import com.google.android.gms.nearby.Nearby;
@@ -25,6 +26,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -40,7 +42,7 @@ public class CommSystem {
     private Context contexto;
     private static CommSystem disObj;
 
-
+    private InputStream in;
 
     private CommSystem(Context contexto, Fragment controller, String miEndpoint){
         this.controller = controller;
@@ -99,6 +101,7 @@ public class CommSystem {
             switch (connectionResolution.getStatus().getStatusCode()){
                 case ConnectionsStatusCodes.STATUS_OK:
                     ((P2PWaitConn_c)controller).conexionEntrante(miEndpoint, elOtroEndpoint);
+                    clientConns.stopAdvertising();
                     break;
                 case ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED:
                     Toast.makeText(contexto, "Conexion negada", Toast.LENGTH_SHORT).show();
@@ -184,6 +187,7 @@ public class CommSystem {
     };
 
     public void conectar(String endpoint){
+        clientConns.stopDiscovery();
         clientConns.requestConnection(contexto.getPackageName(), endpoint, discov_clC);
     }
     private final ConnectionLifecycleCallback discov_clC = new ConnectionLifecycleCallback() {
@@ -228,10 +232,51 @@ public class CommSystem {
         @Override
         public void onPayloadReceived(@NonNull String endpointID, @NonNull Payload payload) {
             // Realizar acciones dependiendo del tipo de dato
-            P2PIngameData data = new P2PIngameData(
-                    fromPayloadToByteArr(payload)
-            );
+            try{
+                Toast.makeText(contexto, "processing", Toast.LENGTH_SHORT).show();
+                in = payload.asStream().asInputStream();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
 
+
+//            P2PIngameData data = new P2PIngameData(
+//                    fromPayloadToByteArr(payload)
+//            );
+        }
+
+        @Override
+        public void onPayloadTransferUpdate(@NonNull String s, @NonNull PayloadTransferUpdate payloadTransferUpdate) {
+            // No c xd
+            String datos = "";
+            //datos += String.valueOf(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.IN_PROGRESS);
+            datos += String.valueOf(payloadTransferUpdate.getBytesTransferred()) + " : ";
+            //datos += String.valueOf(payloadTransferUpdate.getPayloadId()) + " : ";
+            datos += String.valueOf(payloadTransferUpdate.getTotalBytes()) + " : ";
+
+            if(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.SUCCESS){
+                Toast t = Toast.makeText(contexto, datos + " - Correcto", Toast.LENGTH_LONG);
+                t.setGravity(Gravity.CENTER, 0, 50);
+                t.show();
+            }
+            if(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.IN_PROGRESS) {
+                Toast t = Toast.makeText(contexto, datos + " - in progress", Toast.LENGTH_LONG);
+                t.setGravity(Gravity.CENTER, 0, 50);
+                t.show();
+            }
+            if(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.FAILURE) {
+                Toast t = Toast.makeText(contexto, datos + " - fail", Toast.LENGTH_LONG);
+                t.setGravity(Gravity.CENTER, 0, 50);
+                t.show();
+            }
+            if(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.CANCELED){
+                Toast t = Toast.makeText(contexto, datos + " - Cancel", Toast.LENGTH_LONG);
+                t.setGravity(Gravity.CENTER, 0, 50);
+                t.show();
+            }
+
+            /*
             switch (data.getTipo()){
                 case P2PIngameData.GAME_PREGUNTA:
                     Tuple<String, byte[]> tempP = data.obtenerDatos_pregunta();
@@ -244,21 +289,20 @@ public class CommSystem {
                 case P2PIngameData.RESULTS_SIGUIENTEPREGUNTA:
                     ((P2PResult_c)controller).siguientePregunta();
                     break;
-            }
-        }
-
-        @Override
-        public void onPayloadTransferUpdate(@NonNull String s, @NonNull PayloadTransferUpdate payloadTransferUpdate) {
-            // No c xd
+            }*/
         }
     };
 
     public void enviarDatos(P2PIngameData datos){
         // POSIBLE ERROR EN EL TAMAÑO DE STREAM!!!!!!!!!!!
+        byte[] bytes = datos.getBytes();
+        int a = bytes.length;
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
+        byteArrayInputStream.available();
         clientConns.sendPayload(
                 elOtroEndpoint,
                 Payload.fromStream(
-                        new ByteArrayInputStream(datos.getBytes())
+                        byteArrayInputStream
                 )
         );
     }
