@@ -40,7 +40,7 @@ public class GlosarioMeses extends Fragment {
             ((DefaultItemAnimator) animator).setSupportsChangeAnimations(false);
         }
         Context context = getActivity();
-        adapter = new WordAdapter(WordDataFactory.makeWords("animales", context));
+        adapter = new WordAdapter(WordDataFactory.makeWords("meses", context));
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 

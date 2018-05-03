@@ -44,7 +44,6 @@ public class PuntajesControlador extends ListFragment {
         dbOp = new DB_Operations(contexto);
 
         // Procesos
-        fatherActivity.establecerPantallaAnterior(new ListaControlador());
 
         Bundle args = getArguments();
         if(args != null){

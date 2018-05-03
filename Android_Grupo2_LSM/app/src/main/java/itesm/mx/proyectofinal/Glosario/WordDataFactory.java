@@ -14,35 +14,35 @@ public class WordDataFactory {
     public static List<Word> makeWords(String type, Context current) {
         context = current;
         if (type == "animales")
-        return Arrays.asList(
-                makeAbejaWord(),
-                makeAguilaWord(),
-                makeAranaWord(),
-                makeArdillaWord(),
-                makeBurroWord(),
-                makeCaballoWord(),
-                makeCerdoWord(),
-                makeChangoWord(),
-                makeConejoWord(),
-                makeGatoWord(),
-                makeGorillaWord(),
-                makeGusanoWord(),
-                makeJirafaWord(),
-                makeLeonWord(),
-                makeMariposaWord(),
-                makeOsoWord(),
-                makePajaroWord(),
-                makePalomaWord(),
-                makePatoWord(),
-                makePerroWord(),
-                makePezWord(),
-                makeRatonWord(),
-                makeTigreWord(),
-                makeToroWord(),
-                makeTortugaWord(),
-                makeVacaWord(),
-                makeVivoraWord());
-        if (type == "abecedario")
+            return Arrays.asList(
+                    makeAbejaWord(),
+                    makeAguilaWord(),
+                    makeAranaWord(),
+                    makeArdillaWord(),
+                    makeBurroWord(),
+                    makeCaballoWord(),
+                    makeCerdoWord(),
+                    makeChangoWord(),
+                    makeConejoWord(),
+                    makeGatoWord(),
+                    makeGorillaWord(),
+                    makeGusanoWord(),
+                    makeJirafaWord(),
+                    makeLeonWord(),
+                    makeMariposaWord(),
+                    makeOsoWord(),
+                    makePajaroWord(),
+                    makePalomaWord(),
+                    makePatoWord(),
+                    makePerroWord(),
+                    makePezWord(),
+                    makeRatonWord(),
+                    makeTigreWord(),
+                    makeToroWord(),
+                    makeTortugaWord(),
+                    makeVacaWord(),
+                    makeVivoraWord());
+        else if (type == "abecedario")
             return Arrays.asList(
                     makeALetterWord(),
                     makeBLetterWord(),
@@ -73,7 +73,7 @@ public class WordDataFactory {
                     makeXLetterWord(),
                     makeYLetterWord(),
                     makeZLetterWord());
-        else
+        else if (type == "colores")
             return Arrays.asList(
                     MakeAzulWord(),
                     MakeBlancoWord(),
@@ -88,6 +88,33 @@ public class WordDataFactory {
                     MakeRosaWord(),
                     MakeAmarilloWord(),
                     MakeVerdeWord());
+        else if (type == "dias")
+            return Arrays.asList(
+                    MakeLunesWord(),
+                    MakeMartesWord(),
+                    MakeMiercolesWord(),
+                    MakeJuevesWord(),
+                    MakeViernesWord(),
+                    MakeSabadoWord(),
+                    MakeDomingoWord());
+        else if (type == "meses")
+            return Arrays.asList(
+                    MakeEneroWord(),
+                    MakeFebreroWord(),
+                    MakeMarzoWord(),
+                    MakeAbrilWord(),
+                    MakeMayoWord(),
+                    MakeJunioWord(),
+                    MakeJulioWord(),
+                    MakeAgostoWord(),
+                    MakeSeptiempreWord(),
+                    MakeOctubreWord(),
+                    MakeNoviembreWord(),
+                    MakeDiciembreWord() );
+        else if (type == "comida")
+            return Arrays.asList();
+
+        else return null;
     }
 
 
@@ -799,7 +826,7 @@ public class WordDataFactory {
         return Arrays.asList(video);
     }
     public static Word MakeAmarilloWord() {
-        return new Word("Morado", makeAmarilloContents(), R.drawable.amarillo);
+        return new Word("Amarillo", makeAmarilloContents(), R.drawable.amarillo);
     }
 
     public static List<Content> makeAmarilloContents() {
@@ -808,9 +835,196 @@ public class WordDataFactory {
         return Arrays.asList(video);
     }
 
+    //Dias de la semana
+    public static Word MakeLunesWord() {
+        return new Word("Lunes", makeLunesContents(), R.drawable.blanco);
+    }
+
+    public static List<Content> makeLunesContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.lunes;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeMartesWord() {
+        return new Word("Martes", makeMartesContents(), R.drawable.blanco);
+    }
+
+    public static List<Content> makeMartesContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.martes;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
 
 
+    public static Word MakeMiercolesWord() {
+        return new Word("Miercoles", makeMiercolesContents(), R.drawable.blanco);
+    }
 
+    public static List<Content> makeMiercolesContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.miercoles;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeJuevesWord() {
+        return new Word("Jueves", makeJuevesContents(), R.drawable.blanco);
+    }
+
+    public static List<Content> makeJuevesContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.jueves;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeViernesWord() {
+        return new Word("Viernes", makeViernesContents(), R.drawable.blanco);
+    }
+
+    public static List<Content> makeViernesContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.viernes;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeSabadoWord() {
+        return new Word("Sábado", makeSabadoContents(), R.drawable.blanco);
+    }
+
+    public static List<Content> makeSabadoContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.sabado;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeDomingoWord() {
+        return new Word("Domingo", makeDomingoContents(), R.drawable.blanco);
+    }
+
+    public static List<Content> makeDomingoContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.domingo;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeEneroWord() {
+        return new Word("Enero", makeEneroContents(), R.drawable.enero);
+    }
+
+    public static List<Content> makeEneroContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.enero;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeFebreroWord() {
+        return new Word("Febrero", makeFebreroContents(), R.drawable.febrero);
+    }
+
+    public static List<Content> makeFebreroContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.febrero;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeMarzoWord() {
+        return new Word("Marzo", makeMarzoContents(), R.drawable.marzo);
+    }
+
+    public static List<Content> makeMarzoContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.marzo;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeAbrilWord() {
+        return new Word("Abril", makeAbrilContents(), R.drawable.abril);
+    }
+
+    public static List<Content> makeAbrilContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.abril;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeMayoWord() {
+        return new Word("Mayo", makeMayoContents(), R.drawable.mayo);
+    }
+
+    public static List<Content> makeMayoContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.mayo;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeJunioWord() {
+        return new Word("Junio", makeJunioContents(), R.drawable.junio);
+    }
+
+    public static List<Content> makeJunioContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.junio;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeJulioWord() {
+        return new Word("Julio", makeJulioContents(), R.drawable.julio);
+    }
+
+    public static List<Content> makeJulioContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.julio;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeAgostoWord() {
+        return new Word("Agosto", makeAgostoContents(), R.drawable.agosto);
+    }
+
+    public static List<Content> makeAgostoContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.agosto;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeSeptiempreWord() {
+        return new Word("Septiembre", makeSeptiembreContents(), R.drawable.septiembre);
+    }
+
+    public static List<Content> makeSeptiembreContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.septiembre;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeOctubreWord() {
+        return new Word("Octubre", makeOctubreContents(), R.drawable.octubre);
+    }
+
+    public static List<Content> makeOctubreContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.octubre;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeNoviembreWord() {
+        return new Word("Noviembre", makeNoviembreoContents(), R.drawable.noviembre);
+    }
+
+    public static List<Content> makeNoviembreoContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.noviembre;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeDiciembreWord() {
+        return new Word("Diciembre", makeDiciembreContents(), R.drawable.diembre);
+    }
+
+    public static List<Content> makeDiciembreContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.diciembre;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
 
 }
-

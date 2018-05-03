@@ -22,7 +22,7 @@ import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.extras.IMyScreen;
 import itesm.mx.proyectofinal.usuario.PerfilControlador;
 
-public class MainActivity extends AppCompatActivity implements IMyScreen {
+public class MainActivity extends AppCompatActivity {
     public static String PACKAGE_NAME;
     //ImageView fondo;
     Fragment fragmentoAnterior;
@@ -121,21 +121,6 @@ public class MainActivity extends AppCompatActivity implements IMyScreen {
         } else {
             getFragmentManager().beginTransaction().add(R.id.pantalla, new PantallaGlosario()).commit();
         }
-
     }
 
-    @Override
-    public void onBackPressed(){
-        if(fragmentoAnterior != null){
-            getFragmentManager().beginTransaction().replace(R.id.pantalla, fragmentoAnterior).commit();
-        }
-    }
-    @Override
-    public void cambiarPantalla(Fragment siguientePantalla) {
-        getFragmentManager().beginTransaction().replace(R.id.pantalla, siguientePantalla).commit();
-    }
-    @Override
-    public void establecerPantallaAnterior(Fragment pantallaAnterior) {
-        fragmentoAnterior = pantallaAnterior;
-    }
 }
