@@ -12,11 +12,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/imageView2"
             android:layout_width="160dp"
             android:layout_height="300dp"
-            app:srcCompat="@drawable/mano2" />
+            app:srcCompat="@drawable/mano2" />-->
 
     <Button
         android:id="@+id/botonmano"
@@ -30,11 +30,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            app:srcCompat="@drawable/p2p" />
+            app:srcCompat="@drawable/p2p" />-->
 
         <Button
             android:id="@+id/botonp2p"

@@ -16,6 +16,7 @@ public class P2PResult_c extends Fragment implements View.OnClickListener {
     private Context contexto;
     private P2P_v vista;
     private Bundle b;
+    CommSystem commSystem;
 
     @Nullable
     @Override
@@ -32,13 +33,13 @@ public class P2PResult_c extends Fragment implements View.OnClickListener {
 
         b = getArguments();
         vista.initResultado(b.getBoolean("esAcierto"), b.getBoolean("esAsker"));
+         commSystem = CommSystem.createCommSystem(contexto, this, b.getString("nombreMio"));
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.resultado_btnContinuar:
-                CommSystem commSystem = CommSystem.createCommSystem(contexto, this, b.getString("nombreMio"));
                 P2PIngameData ingameData = new P2PIngameData(P2PIngameData.RESULTS_SIGUIENTEPREGUNTA);
                 commSystem.enviarDatos(ingameData);
                 siguientePregunta();
