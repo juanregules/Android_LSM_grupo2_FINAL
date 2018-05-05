@@ -173,10 +173,9 @@ public class P2P_v {
     }
 
     public void answerer_unsetWait(){
-        ask_tvEsperando.setVisibility(View.INVISIBLE);
-        ask_btnTomarFoto.setClickable(true);
-        ask_btnRendirse.setClickable(true);
-        ask_btnPreguntar.setClickable(true);
+        ans_tvEsperando.setVisibility(View.INVISIBLE);
+        ans_btnRendirse.setClickable(true);
+        ans_btnResponder.setClickable(true);
     }
 
     public void answerer_setPhoto(byte[] foto){

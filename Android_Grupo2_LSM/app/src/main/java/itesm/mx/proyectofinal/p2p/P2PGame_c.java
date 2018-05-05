@@ -3,14 +3,20 @@ package itesm.mx.proyectofinal.p2p;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.util.Date;
 
+import id.zelory.compressor.Compressor;
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
 import itesm.mx.proyectofinal.extras.IMyScreen;
@@ -123,6 +129,10 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
         vista.asker_setWait();
         String ans = vista.asker_getAnswer();
         byte[] photo = vista.asker_getPhoto();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(photo,0, photo.length);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
+        photo = outputStream.toByteArray();
         P2PIngameData ingameData = new P2PIngameData(P2PIngameData.GAME_PREGUNTA);
         ingameData.agregarDatos_pregunta(ans, photo);
 
