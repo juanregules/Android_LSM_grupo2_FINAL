@@ -112,9 +112,35 @@ public class WordDataFactory {
                     MakeNoviembreWord(),
                     MakeDiciembreWord() );
         else if (type == "comida")
-            return Arrays.asList();
-
-        else return null;
+            return Arrays.asList(
+                    MakeAceiteWord(),
+                    MakeAguaWord(),
+                    MakeArrozWord(),
+                    MakeCoffeeWord(),
+                    MakeCaldoWord(),
+                    MakeCarneWord(),
+                    MakeCervezaWord(),
+                    MakeChileWord(),
+                    MakeChocolateWord(),
+                    MakeCocaColaWord(),
+                    MakeDulceWord(),
+                    MakeEnsaladaWord(),
+                    MakeFrutaWord(),
+                    MakeGalletaWord(),
+                    MakeHamburguesaWord(),
+                    MakeHuevoWord(),
+                    MakeLecheWord(),
+                    MakePanWord(),
+                    MakePastelWord(),
+                    MakePescadoWord(),
+                    MakePizzaWord(),
+                    MakePolloWord(),
+                    MakeQuesoWord(),
+                    MakeRefrescoWord(),
+                    MakeSopaWord(),
+                    MakeTacoWord(),
+                    MakeVerduraWord());
+        else return Arrays.asList();
     }
 
 
@@ -1023,6 +1049,253 @@ public class WordDataFactory {
 
     public static List<Content> makeDiciembreContents() {
         String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.diciembre;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeAceiteWord() {
+        return new Word("Aceite", makeAceiteContents(), R.drawable.aceite);
+    }
+    public static List<Content> makeAceiteContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.aceite;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeAguaWord() {
+        return new Word("Agua", makeAguaContents(), R.drawable.agua);
+    }
+    public static List<Content> makeAguaContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.agua;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeArrozWord() {
+        return new Word("Arroz", makeArrozContents(), R.drawable.arroz);
+    }
+    public static List<Content> makeArrozContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.arroz;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeCoffeeWord() {
+        return new Word("Café", makeCoffeeContents(), R.drawable.coffee);
+    }
+    public static List<Content> makeCoffeeContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.coffee;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeCaldoWord() {
+        return new Word("Caldo", makeCaldoContents(), R.drawable.caldo);
+    }
+    public static List<Content> makeCaldoContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.caldo;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeCarneWord() {
+        return new Word("Carne", makeCarneContents(), R.drawable.carne);
+    }
+    public static List<Content> makeCarneContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.carne;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeCervezaWord() {
+        return new Word("Cerveza", makeCervezaContents(), R.drawable.cerveza);
+    }
+    public static List<Content> makeCervezaContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.cerveza;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeChileWord() {
+        return new Word("Chile", makeChileContents(), R.drawable.chile);
+    }
+    public static List<Content> makeChileContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.chile;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeChocolateWord() {
+        return new Word("Chocolate", makeChocolateContents(), R.drawable.chocolate);
+    }
+    public static List<Content> makeChocolateContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.chocolate;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeCocaColaWord() {
+        return new Word("Coca-Cola", makeCocaColaContents(), R.drawable.cocacola);
+    }
+    public static List<Content> makeCocaColaContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.cocacola;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeDulceWord() {
+        return new Word("Dulce", makeDulceContents(), R.drawable.dulce);
+    }
+    public static List<Content> makeDulceContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.dulce;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeEnsaladaWord() {
+        return new Word("Ensalada", makeEnsaladaContents(), R.drawable.ensalada);
+    }
+    public static List<Content> makeEnsaladaContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.ensalada;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeFrutaWord() {
+        return new Word("Fruta", makeFrutaContents(), R.drawable.fruta);
+    }
+    public static List<Content> makeFrutaContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.fruta;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeGalletaWord() {
+        return new Word("Galleta", makeGalletaContents(), R.drawable.galleta);
+    }
+    public static List<Content> makeGalletaContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.galleta;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+
+    public static Word MakeHamburguesaWord() {
+        return new Word("Hamburguesa", makeHamburguesaContents(), R.drawable.hamburguesa);
+    }
+    public static List<Content> makeHamburguesaContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.hamburguesa;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+
+    public static Word MakeHuevoWord() {
+        return new Word("Huevo", makeHuevoContents(), R.drawable.huevo);
+    }
+    public static List<Content> makeHuevoContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.huevo;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeLecheWord() {
+        return new Word("Leche", makeLecheContents(), R.drawable.leche);
+    }
+    public static List<Content> makeLecheContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.leche;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakePanWord() {
+        return new Word("Pan", makePanContents(), R.drawable.pan);
+    }
+    public static List<Content> makePanContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.pan;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakePastelWord() {
+        return new Word("Pastel", makePastelContents(), R.drawable.pastel);
+    }
+    public static List<Content> makePastelContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.pastel;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakePescadoWord() {
+        return new Word("Pescado", makePescadoContents(), R.drawable.pescado);
+    }
+    public static List<Content> makePescadoContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.pescado;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+
+    public static Word MakePizzaWord() {
+        return new Word("Pizza", makePizzaContents(), R.drawable.pizza);
+    }
+    public static List<Content> makePizzaContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.pizza;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+
+    public static Word MakePolloWord() {
+        return new Word("Pollo", makePolloContents(), R.drawable.pollo);
+    }
+    public static List<Content> makePolloContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.pollo;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeQuesoWord() {
+        return new Word("Queso", makeQuesoContents(), R.drawable.queso);
+    }
+    public static List<Content> makeQuesoContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.queso;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeRefrescoWord() {
+        return new Word("Refresco", makeRefrescoContents(), R.drawable.refresco);
+    }
+    public static List<Content> makeRefrescoContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.refresco;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeSopaWord() {
+        return new Word("Sopa", makeSopaContents(), R.drawable.sopa);
+    }
+    public static List<Content> makeSopaContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.sopa;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeTacoWord() {
+        return new Word("Taco", makeTacoContents(), R.drawable.taco);
+    }
+    public static List<Content> makeTacoContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.taco;
+        Content video = new Content(name, false);
+        return Arrays.asList(video);
+    }
+
+    public static Word MakeVerduraWord() {
+        return new Word("Verdura", makeVerduraContents(), R.drawable.verdura);
+    }
+    public static List<Content> makeVerduraContents() {
+        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.verdura;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
