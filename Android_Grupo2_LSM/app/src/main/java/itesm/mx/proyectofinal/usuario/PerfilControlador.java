@@ -123,17 +123,17 @@ public class PerfilControlador extends Fragment implements View.OnClickListener 
             // Empieza a modificar
             case R.id.usrscn_btnEdith:
                 iniEditar();
-                fatherActivity.establecerPantallaAnterior(new PerfilControlador());
+                //fatherActivity.establecerPantallaAnterior(new PerfilControlador());
                 break;
             // Deja de modificar
             case R.id.usrscn_btnFinishEdith:
                 finEditar(true);
-                fatherActivity.establecerPantallaAnterior(null);
+                //fatherActivity.establecerPantallaAnterior(null);
                 break;
             // Cancela la modificacion
             case R.id.usrscn_btnCancelEdith:
                 finEditar(false);
-                fatherActivity.establecerPantallaAnterior(null);
+               // fatherActivity.establecerPantallaAnterior(null);
                 break;
             // Ir a los puntajes
             case R.id.usrscn_btnScores:
