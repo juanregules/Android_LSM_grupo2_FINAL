@@ -38,6 +38,7 @@ public class CommSystem {
     private Fragment controller;
     private ConnectionsClient clientConns;
     private String elOtroEndpoint;
+    private String elOtroEndpointName;
     private String miEndpoint;
     private Context contexto;
     private static CommSystem disObj;
@@ -84,7 +85,6 @@ public class CommSystem {
                         // Notificar el error
                         Toast.makeText(contexto, "Error al buscar...", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                        int a = 0; // TODO
                     }
                 });
     }
@@ -92,8 +92,9 @@ public class CommSystem {
         @Override
         public void onConnectionInitiated(@NonNull String endPointID, @NonNull ConnectionInfo connectionInfo) {
             clientConns.acceptConnection(endPointID, announce_pC);
+
             // Notificar una conexion entrante
-            Toast.makeText(contexto, "Conectandose con " + endPointID, Toast.LENGTH_SHORT).show();
+            Toast.makeText(contexto, "Conectando", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -102,7 +103,7 @@ public class CommSystem {
             elOtroEndpoint = endPointID;
             switch (connectionResolution.getStatus().getStatusCode()){
                 case ConnectionsStatusCodes.STATUS_OK:
-                    ((P2PWaitConn_c)controller).conexionEntrante(miEndpoint, elOtroEndpoint);
+                    //Toast.makeText(contexto, "Esperando nombre", Toast.LENGTH_SHORT).show();
                     clientConns.stopAdvertising();
                     break;
                 case ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED:
@@ -132,7 +133,7 @@ public class CommSystem {
             // Realizar acciones dependiendo del tipo de dato
             payloadsReceived.add(payload.getId());
             try{
-                Toast.makeText(contexto, "processing", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(contexto, "processing", Toast.LENGTH_SHORT).show();
                 in = payload.asStream().asInputStream();
             }
             catch (Exception e){
@@ -145,37 +146,22 @@ public class CommSystem {
             // No c xd
             // No c xd
 
-            String datos = "";
+            //String datos = "";
             //datos += String.valueOf(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.IN_PROGRESS);
-            datos += String.valueOf(payloadTransferUpdate.getBytesTransferred()) + " : ";
+            //datos += String.valueOf(payloadTransferUpdate.getBytesTransferred()) + " : ";
             //datos += String.valueOf(payloadTransferUpdate.getPayloadId()) + " : ";
-            datos += String.valueOf(payloadTransferUpdate.getTotalBytes()) + " : ";
+            //datos += String.valueOf(payloadTransferUpdate.getTotalBytes()) + " : ";
 
             if(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.SUCCESS){
-                Toast t = Toast.makeText(contexto, datos + " - Correcto", Toast.LENGTH_LONG);
-                t.setGravity(Gravity.CENTER, 0, 50);
-                t.show();
+                //Toast t = Toast.makeText(contexto, datos + " - Correcto", Toast.LENGTH_LONG);
+                //t.setGravity(Gravity.CENTER, 0, 50);
+                //t.show();
 
                 Long packageID = payloadTransferUpdate.getPayloadId();
                 if(payloadsReceived.contains(packageID)){
                     dataJudger(new P2PIngameData(fromPayloadToByteArr(Payload.fromStream(in))));
                     payloadsReceived.remove(packageID);
                 }
-            }
-            if(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.IN_PROGRESS) {
-                Toast t = Toast.makeText(contexto, datos + " - in progress", Toast.LENGTH_LONG);
-                t.setGravity(Gravity.CENTER, 0, 50);
-                t.show();
-            }
-            if(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.FAILURE) {
-                Toast t = Toast.makeText(contexto, datos + " - fail", Toast.LENGTH_LONG);
-                t.setGravity(Gravity.CENTER, 0, 50);
-                t.show();
-            }
-            if(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.CANCELED){
-                Toast t = Toast.makeText(contexto, datos + " - Cancel", Toast.LENGTH_LONG);
-                t.setGravity(Gravity.CENTER, 0, 50);
-                t.show();
             }
         }
     };
@@ -203,7 +189,7 @@ public class CommSystem {
         @Override
         public void onEndpointFound(@NonNull String endpointID, @NonNull DiscoveredEndpointInfo discoveredEndpointInfo) {
             // Enviar nuevo endpoint
-            ((P2PWaitConn_c)controller).agregarConexion(endpointID);
+            ((P2PWaitConn_c)controller).agregarConexion(endpointID, discoveredEndpointInfo.getEndpointName());
         }
 
         @Override
@@ -213,16 +199,17 @@ public class CommSystem {
         }
     };
 
-    public void conectar(String endpoint){
+    public void conectar(String endpoint, String name){
         clientConns.stopDiscovery();
         clientConns.requestConnection(contexto.getPackageName(), endpoint, discov_clC);
+        elOtroEndpointName = name;
     }
     private final ConnectionLifecycleCallback discov_clC = new ConnectionLifecycleCallback() {
         @Override
         public void onConnectionInitiated(@NonNull String endpointID, @NonNull ConnectionInfo connectionInfo) {
             clientConns.acceptConnection(endpointID, discov_pC);
             // Notificar que se esta conectando
-            Toast.makeText(contexto, "Conectando a " + endpointID, Toast.LENGTH_SHORT).show();
+            Toast.makeText(contexto, "Conectando a " + elOtroEndpointName, Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -232,7 +219,15 @@ public class CommSystem {
             elOtroEndpoint = endpointID;
             switch (connectionResolution.getStatus().getStatusCode()){
                 case ConnectionsStatusCodes.STATUS_OK:
-                    Toast.makeText(contexto, "Conectado con " + elOtroEndpoint, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(contexto, "Conectado con " + elOtroEndpointName, Toast.LENGTH_SHORT).show();
+
+                    // Decirle al host cual es tu nombre
+                    P2PIngameData data = new P2PIngameData(P2PIngameData.WAITCON_KIMINONAWA);
+                    data.agregarDatos_nombre(miEndpoint);
+                    enviarDatos(data);
+
+                    ((P2PWaitConn_c)controller).iniciarConexion(elOtroEndpointName);
+
                     break;
                 case ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED:
                     Toast.makeText(contexto, "Conexion negada", Toast.LENGTH_SHORT).show();
@@ -260,7 +255,7 @@ public class CommSystem {
         public void onPayloadReceived(@NonNull String endpointID, @NonNull Payload payload) {
             payloadsReceived.add(payload.getId());
             try{
-                Toast.makeText(contexto, "processing", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(contexto, "processing", Toast.LENGTH_SHORT).show();
                 in = payload.asStream().asInputStream();
             }
             catch (Exception e){
@@ -272,16 +267,16 @@ public class CommSystem {
         public void onPayloadTransferUpdate(@NonNull String s, @NonNull PayloadTransferUpdate payloadTransferUpdate) {
             // No c xd
 
-            String datos = "";
+            //String datos = "";
             //datos += String.valueOf(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.IN_PROGRESS);
-            datos += String.valueOf(payloadTransferUpdate.getBytesTransferred()) + " : ";
+            //datos += String.valueOf(payloadTransferUpdate.getBytesTransferred()) + " : ";
             //datos += String.valueOf(payloadTransferUpdate.getPayloadId()) + " : ";
-            datos += String.valueOf(payloadTransferUpdate.getTotalBytes()) + " : ";
+            //datos += String.valueOf(payloadTransferUpdate.getTotalBytes()) + " : ";
 
             if(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.SUCCESS){
-                Toast t = Toast.makeText(contexto, datos + " - Correcto", Toast.LENGTH_LONG);
-                t.setGravity(Gravity.CENTER, 0, 50);
-                t.show();
+                //Toast t = Toast.makeText(contexto, datos + " - Correcto", Toast.LENGTH_LONG);
+                //t.setGravity(Gravity.CENTER, 0, 50);
+                //t.show();
 
                 Long packageID = payloadTransferUpdate.getPayloadId();
                 if(payloadsReceived.contains(packageID)){
@@ -290,27 +285,28 @@ public class CommSystem {
                 }
             }
             if(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.IN_PROGRESS) {
-                Toast t = Toast.makeText(contexto, datos + " - in progress", Toast.LENGTH_LONG);
-                t.setGravity(Gravity.CENTER, 0, 50);
-                t.show();
+                //Toast t = Toast.makeText(contexto, datos + " - in progress", Toast.LENGTH_LONG);
+                //t.setGravity(Gravity.CENTER, 0, 50);
+                //t.show();
             }
             if(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.FAILURE) {
-                Toast t = Toast.makeText(contexto, datos + " - fail", Toast.LENGTH_LONG);
-                t.setGravity(Gravity.CENTER, 0, 50);
-                t.show();
+                //Toast t = Toast.makeText(contexto, datos + " - fail", Toast.LENGTH_LONG);
+                //t.setGravity(Gravity.CENTER, 0, 50);
+                //t.show();
             }
             if(payloadTransferUpdate.getStatus() == PayloadTransferUpdate.Status.CANCELED){
-                Toast t = Toast.makeText(contexto, datos + " - Cancel", Toast.LENGTH_LONG);
-                t.setGravity(Gravity.CENTER, 0, 50);
-                t.show();
+                //Toast t = Toast.makeText(contexto, datos + " - Cancel", Toast.LENGTH_LONG);
+                //t.setGravity(Gravity.CENTER, 0, 50);
+                //t.show();
             }
         }
     };
 
+
+
     public void DEBUG_DETERMINARPAQUETE(PayloadTransferUpdate payloadTransferUpdate){
 
     }
-
     public void dataJudger(P2PIngameData data){
         switch (data.getTipo()){
             case P2PIngameData.GAME_PREGUNTA:
@@ -322,11 +318,17 @@ public class CommSystem {
                 ((P2PGame_c)controller).irAResultados(data.obtenerDatos_resultados());
                 break;
             case P2PIngameData.RESULTS_SIGUIENTEPREGUNTA:
-                ((P2PResult_c)controller).siguientePregunta();
+                if(controller instanceof P2PResult_c){
+                    ((P2PResult_c)controller).siguientePregunta();
+                }
+                break;
+            case P2PIngameData.WAITCON_KIMINONAWA:
+                elOtroEndpointName = data.obtenerDatos_nombre();
+                Toast.makeText(contexto, "Conectado con " + elOtroEndpointName, Toast.LENGTH_SHORT).show();
+                ((P2PWaitConn_c)controller).conexionEntrante(miEndpoint, elOtroEndpointName);
                 break;
         }
     }
-
     public void enviarDatos(P2PIngameData datos){
         // POSIBLE ERROR EN EL TAMAÑO DE STREAM!!!!!!!!!!!
         byte[] bytes = datos.getBytes();
@@ -340,11 +342,10 @@ public class CommSystem {
                 )
         );
     }
-
     public void desconectar(){
-
+        clientConns.disconnectFromEndpoint(elOtroEndpoint);
+        clientConns.stopAllEndpoints();
     }
-
     private byte[] fromPayloadToByteArr(Payload p){
         byte[] bytes = null;
         try{

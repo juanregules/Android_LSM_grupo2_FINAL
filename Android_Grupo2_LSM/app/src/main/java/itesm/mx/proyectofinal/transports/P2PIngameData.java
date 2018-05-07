@@ -22,6 +22,7 @@ public class P2PIngameData implements Parcelable {
 
     public static final byte GAME_PREGUNTA = 0x0;
     public static final byte GAME_RESPUESTA = 0x1;
+    public static final byte WAITCON_KIMINONAWA = 0x2;
     public static final byte RESULTS_SIGUIENTEPREGUNTA = 0x3;
 
     private byte tipo;
@@ -57,14 +58,11 @@ public class P2PIngameData implements Parcelable {
             ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
             ObjectInputStream out = new ObjectInputStream (bais);
 
-            int b = out.available(); // TODO
             tipo = out.readByte();
             int arrSize = out.readInt();
             for(int i = 0; i < arrSize; i++){
                 datos.add(out.readObject());
             }
-            int a = datos.size(); // TODO
-            a = a;
         }
         catch (Exception e){
             e.printStackTrace();
@@ -76,40 +74,48 @@ public class P2PIngameData implements Parcelable {
         this.tipo = tipo;
     }
 
+
     public void agregarDatos_pregunta(String pregunta, byte[] imagen){
+        if(tipo != GAME_PREGUNTA){
+            return;
+        }
         datos.add(pregunta);
         datos.add(imagen);
     }
 
-    // TODO
-    public static boolean DEBUG(byte[] imagen){
-
-        Object img = null;
-        byte[] test = null;
-        img = imagen;
-        test = (byte[]) img;
-        return imagen.equals(test);
-    }
-
     public void agregarDatos_resultados(boolean esAcierto) {
+        if(tipo != GAME_RESPUESTA){
+            return;
+        }
         datos.add(esAcierto);
     }
 
+    public void agregarDatos_nombre(String nombre){
+        if(tipo != WAITCON_KIMINONAWA){
+            return;
+        }
+        datos.add(nombre);
+    }
+
+
     public Tuple<String, byte[]> obtenerDatos_pregunta(){
+        if(tipo != GAME_PREGUNTA){
+            return null;
+        }
         return new Tuple<>(String.valueOf(datos.get(0)), (byte[])datos.get(1));
     }
 
     public boolean obtenerDatos_resultados(){
+        if(tipo != GAME_RESPUESTA){
+            return false;
+        }
         return (Boolean)(datos.get(0));
     }
 
-    public Tuple<Byte, ArrayList<Object>> obtenerDatos_internal(){
-        ArrayList<Object> temp = new ArrayList<>();
-        for(int i = 1; i < datos.size(); i++){
-            temp.add(datos.get(i));
-        }
-        return new Tuple<>((Byte)datos.get(0), temp);
+    public String obtenerDatos_nombre(){
+        return String.valueOf(datos.get(0));
     }
+
 
     public byte getTipo() {
         return tipo;
@@ -152,7 +158,6 @@ public class P2PIngameData implements Parcelable {
             out.writeInt(datos.size());
             for(Object o: datos){
                 out.writeObject(o);
-                int a = 1+1; // TODO
             }
             out.flush();
             bytes = baos.toByteArray();

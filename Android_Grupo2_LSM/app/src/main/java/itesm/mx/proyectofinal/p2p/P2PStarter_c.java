@@ -36,12 +36,6 @@ public class P2PStarter_c extends Fragment implements View.OnClickListener {
         contexto = getActivity();
         vista = new P2P_v(contexto, this);
         vista.initInicio();
-        ImageView i = ((Activity)contexto).findViewById(R.id.DEBUG);
-        byte[] b = ImageMastah.fromBitmapToByteArray(ImageMastah.getBitmapFromImageView(i));
-
-        if(P2PIngameData.DEBUG(b)){
-            Toast.makeText(contexto, "exito", Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override

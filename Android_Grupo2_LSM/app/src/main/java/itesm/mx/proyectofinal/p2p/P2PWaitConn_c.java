@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
 import itesm.mx.proyectofinal.extras.IMyScreen;
+import itesm.mx.proyectofinal.extras.Tuple;
 import itesm.mx.proyectofinal.transports.P2PIngameData;
 
 public class P2PWaitConn_c extends Fragment implements AdapterView.OnItemClickListener {
@@ -21,11 +22,12 @@ public class P2PWaitConn_c extends Fragment implements AdapterView.OnItemClickLi
     private Context contexto;
     private P2P_v vista;
     private boolean esCliente;
-    private ArrayList<String> listConns;
+    //private ArrayList<String> listConns;
     private String yo;
 
-    CommSystem commSystem;
-    DB_Operations dbOperations;
+    private CommSystem commSystem;
+    private DB_Operations dbOperations;
+    private ArrayList<Tuple<String, String>> connections;
 
     @Nullable
     @Override
@@ -49,6 +51,7 @@ public class P2PWaitConn_c extends Fragment implements AdapterView.OnItemClickLi
         yo = dbOperations.obtenerNombre();
         dbOperations.close();
 
+
         commSystem = CommSystem.createCommSystem(
                 contexto,
                 this,
@@ -58,8 +61,8 @@ public class P2PWaitConn_c extends Fragment implements AdapterView.OnItemClickLi
         // Inicio
         if(esCliente){
             commSystem.startDiscovery();
-            listConns = new ArrayList<>();
-            vista.waitConn_setConnectionsList(listConns);
+            connections = new ArrayList<>();
+            vista.waitConn_setConnectionsList(new ArrayList<String>());
         }
         else{
             commSystem.startAnnounce();
@@ -68,31 +71,43 @@ public class P2PWaitConn_c extends Fragment implements AdapterView.OnItemClickLi
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        iniciarConexion(listConns.get(i));
+        //iniciarConexion(connections.get(i));
+        Tuple <String, String> temp = connections.get(i);
+        commSystem.conectar(temp.getFirst(), temp.getSecond());
     }
 
 
     // Cliente
-    public void agregarConexion(String endpoint){
-        listConns.add(endpoint);
-        vista.waitConn_setConnectionsList(listConns);
+    public void agregarConexion(String endpoint, String username){
+        connections.add(new Tuple<String, String>(endpoint, username));
+        ArrayList<String> s = new ArrayList<>();
+        for (Tuple<String, String> con : connections) {
+            s.add(con.getSecond());
+        }
+        vista.waitConn_setConnectionsList(s);
     }
 
     public void eliminarConexion(String endpoint){
-        listConns.remove(endpoint);
-        vista.waitConn_setConnectionsList(listConns);
+        ArrayList<String> s = new ArrayList<>();
+        for (Tuple<String, String> con : connections) {
+            if(con.getFirst().equals(endpoint)){
+                connections.remove(con);
+            }
+            else{
+                s.add(con.getSecond());
+            }
+        }
+        vista.waitConn_setConnectionsList(s);
     }
 
-    public void iniciarConexion(String vs){
-        commSystem.conectar(vs);
-
+    public void iniciarConexion(String elOtroEndpointName){
         P2PGame_c game = new P2PGame_c();
         Bundle b = new Bundle();
         b.putBoolean("esAsker", false);
         b.putInt("puntajeMio", 0);
         b.putInt("puntajeVs", 0);
         b.putString("nombreMio", yo);
-        b.putString("nombreVs", vs);
+        b.putString("nombreVs", elOtroEndpointName);
         game.setArguments(b);
 
         getFragmentManager().beginTransaction()

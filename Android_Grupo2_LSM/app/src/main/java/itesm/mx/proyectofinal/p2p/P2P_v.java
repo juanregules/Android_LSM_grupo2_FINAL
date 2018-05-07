@@ -85,8 +85,8 @@ public class P2P_v {
         waitConn_lvConns = a.findViewById(R.id.waitConn_lvConns);
 
         if(esCliente){
-           waitConn_tvMensaje.setText("Buscando partidas");
-           waitConn_lvConns.setOnItemClickListener(itemClickListener);
+            waitConn_tvMensaje.setText("Buscando partidas");
+            waitConn_lvConns.setOnItemClickListener(itemClickListener);
         }
         else{
             waitConn_lvConns.setVisibility(View.INVISIBLE);
@@ -117,7 +117,6 @@ public class P2P_v {
 
         ans_btnResponder.setOnClickListener(clickListener);
         ans_btnRendirse.setOnClickListener(clickListener);
-        ans_btnRendirse.setClickable(false);
         ans_btnResponder.setClickable(false);
     }
 
@@ -152,7 +151,6 @@ public class P2P_v {
     public void asker_setWait(){
         ask_tvEsperando.setVisibility(View.VISIBLE);
         ask_btnTomarFoto.setClickable(false);
-        ask_btnRendirse.setClickable(false);
         ask_btnPreguntar.setClickable(false);
     }
 
@@ -174,7 +172,6 @@ public class P2P_v {
 
     public void answerer_unsetWait(){
         ans_tvEsperando.setVisibility(View.INVISIBLE);
-        ans_btnRendirse.setClickable(true);
         ans_btnResponder.setClickable(true);
     }
 

@@ -66,9 +66,9 @@ public class MenuDeActividades extends Fragment implements View.OnClickListener 
             case R.id.botonp2p:
             {
                 if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new P2PStarter_c()).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new P2PStarter_c()).addToBackStack(null).commit();
                 } else {
-                    getFragmentManager().beginTransaction().add(R.id.pantalla, new P2PStarter_c()).commit();
+                    getFragmentManager().beginTransaction().add(R.id.pantalla, new P2PStarter_c()).addToBackStack(null).commit();
                 }
             };
 

@@ -35,6 +35,7 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
 
     private CommSystem commSystem;
     private String respuesta;
+    public boolean cambioDePantalla = false;
 
     @Nullable
     @Override
@@ -113,10 +114,11 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
         operations.open();
         operations.agregarPuntuacion(gameData);
         operations.close();
-    }
+        commSystem.desconectar();
 
-    private void roleJudger(){
-
+        // Salir al menu principal
+        if(!getActivity().isDestroyed())
+            getFragmentManager().beginTransaction().replace(R.id.pantalla, new P2PStarter_c()).commit();
     }
 
 
@@ -153,6 +155,7 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
         b.putString("nombreVs", nombreVs);
 
         resultC.setArguments(b);
+        cambioDePantalla = true;
         getFragmentManager().beginTransaction()
                 .replace(R.id.pantalla, resultC)
                 .commit();
@@ -188,10 +191,17 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
         b.putString("nombreVs", nombreVs);
         resultC.setArguments(b);
 
-        resultC.setArguments(b);
+        cambioDePantalla = true;
         getFragmentManager().beginTransaction()
                 .replace(R.id.pantalla, resultC)
                 .commit();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(!cambioDePantalla){
+            desconeccion();
+        }
+    }
 }
