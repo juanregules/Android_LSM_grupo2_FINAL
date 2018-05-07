@@ -63,7 +63,8 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     int dedomovido=0;
     int dedoanterior=0;
     Context contexto;
-    IMyScreen fatherActivity;
+    //IMyScreen fatherActivity;
+    private IMyScreen screen;
 
 
     @Override
@@ -94,8 +95,11 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
 
         juega();
         contexto = getActivity();
-        setFatherActivity();
-        fatherActivity.establecerPantallaAnterior(new ListaControlador());
+        //setFatherActivity();
+
+
+//        screen.establecerPantallaAnterior(new ListaControlador());
+       // fatherActivity.establecerPantallaAnterior(new ListaControlador());
 
 
 
@@ -108,14 +112,15 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
         super.onSaveInstanceState(outState);
     }
 
-    private void setFatherActivity() {
+   /* private void setFatherActivity() {
         try{
-            fatherActivity = (IMyScreen) contexto;
+            //screen = (IMyScreen) contexto;
+            //fatherActivity = (IMyScreen) contexto;
         }
         catch (Exception e){
 
         }
-    }
+    }*/
 
 
 
@@ -236,7 +241,8 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
         super.onAttach(con);
         a = (Activity) con;
         try {
-            fatherActivity = (IMyScreen) a;
+            //fatherActivity = (IMyScreen) a;
+            screen = (IMyScreen)a;
         } catch (Exception e) {
             e.printStackTrace();
         }
