@@ -1,25 +1,18 @@
 package itesm.mx.proyectofinal.principal;
 
 import android.Manifest;
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
 
 import itesm.mx.proyectofinal.MenuDeActividades;
-import itesm.mx.proyectofinal.PantallaGlosario;
+import itesm.mx.proyectofinal.Glosario.PantallaGlosario;
 import itesm.mx.proyectofinal.R;
-import itesm.mx.proyectofinal.extras.IMyScreen;
 import itesm.mx.proyectofinal.usuario.PerfilControlador;
 
 public class MainActivity extends AppCompatActivity {
@@ -99,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         PACKAGE_NAME = getApplicationContext().getPackageName();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        cargarGlosario();
+
     }
     private void cargarUsuario() {
         if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {

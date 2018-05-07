@@ -1,4 +1,4 @@
-package itesm.mx.proyectofinal;
+package itesm.mx.proyectofinal.Glosario;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -16,6 +16,7 @@ import itesm.mx.proyectofinal.Glosario.GlosarioColores;
 import itesm.mx.proyectofinal.Glosario.GlosarioComida;
 import itesm.mx.proyectofinal.Glosario.GlosarioDias;
 import itesm.mx.proyectofinal.Glosario.GlosarioMeses;
+import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.expand.ExpandActivity;
 
 /**
