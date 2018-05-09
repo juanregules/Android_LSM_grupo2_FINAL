@@ -52,10 +52,10 @@ public class MenuDeActividades extends Fragment implements View.OnClickListener 
             case R.id.botonmano:
             {
                 if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new intromanoclass()).commit();//PantallaMano
+                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new intromanoclass()).addToBackStack(null).commit();//PantallaMano
                     //cargaba PantallaDummy()
                 } else {
-                    getFragmentManager().beginTransaction().add(R.id.pantalla, new intromanoclass()).commit();  //PantallaMano
+                    getFragmentManager().beginTransaction().add(R.id.pantalla, new intromanoclass()).addToBackStack(null).commit();  //PantallaMano
                     //cargaba PantallaDummy()
                 }
 

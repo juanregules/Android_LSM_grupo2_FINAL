@@ -7,4 +7,6 @@
     <color name="p2p_res_noRes">#ff00ff</color>
     <color name="p2p_res_correct">#4d4</color>
     <color name="p2p_res_incorrect">#d44</color>
+    <color name="white">#FFFFFF</color>
+
 </resources>

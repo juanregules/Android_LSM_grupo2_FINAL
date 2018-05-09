@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="itesm.mx.proyectofinal.principal.MainActivity">
 
 
@@ -16,6 +17,7 @@
 
         <TextView
             android:id="@+id/textView8"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="244dp"
             android:layout_weight="1"
