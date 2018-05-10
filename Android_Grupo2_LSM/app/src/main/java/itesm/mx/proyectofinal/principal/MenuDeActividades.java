@@ -1,4 +1,4 @@
-package itesm.mx.proyectofinal;
+package itesm.mx.proyectofinal.principal;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -12,7 +12,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import itesm.mx.proyectofinal.extras.IMyScreen;
+import itesm.mx.proyectofinal.R;
+import itesm.mx.proyectofinal.extras.ScreenManager;
 import itesm.mx.proyectofinal.mano.intromanoclass;
 import itesm.mx.proyectofinal.p2p.P2PStarter_c;
 
@@ -24,9 +25,7 @@ public class MenuDeActividades extends Fragment implements View.OnClickListener 
 
     Button botonpantallamano;
     Button botonpantallap2p;
-    TextView text;
-    Activity a;
-    //IMyScreen userScreen;
+    ScreenManager screenManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
@@ -37,8 +36,8 @@ public class MenuDeActividades extends Fragment implements View.OnClickListener 
         super.onActivityCreated(b);
 
         Activity a = getActivity();
-        botonpantallamano=a.findViewById(R.id.botonmano);
-        botonpantallap2p=a.findViewById(R.id.botonp2p);
+        botonpantallamano = a.findViewById(R.id.botonmano);
+        botonpantallap2p = a.findViewById(R.id.botonp2p);
         botonpantallap2p.setOnClickListener(this);
         botonpantallamano.setOnClickListener(this);
 

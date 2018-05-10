@@ -19,7 +19,7 @@ import java.util.Date;
 import id.zelory.compressor.Compressor;
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
-import itesm.mx.proyectofinal.extras.IMyScreen;
+import itesm.mx.proyectofinal.extras.ScreenManager;
 import itesm.mx.proyectofinal.transports.P2PGameData;
 import itesm.mx.proyectofinal.transports.P2PIngameData;
 

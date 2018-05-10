@@ -6,8 +6,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.text.Layout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +15,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
-import itesm.mx.proyectofinal.bdd.DB_Schema;
-import itesm.mx.proyectofinal.extras.IMyScreen;
+import itesm.mx.proyectofinal.extras.ScreenManager;
 import itesm.mx.proyectofinal.transports.GameData;
 import itesm.mx.proyectofinal.transports.ManoGameData;
-import itesm.mx.proyectofinal.usuario.ListaControlador;
-import itesm.mx.proyectofinal.usuario.PerfilControlador;
-import itesm.mx.proyectofinal.usuario.PuntajesControlador;
 
 /**
  * Created by 59159 on 16/04/2018.
@@ -64,7 +57,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     int dedoanterior=0;
     Context contexto;
     //IMyScreen fatherActivity;
-    private IMyScreen screen;
+    private ScreenManager screen;
 
 
     @Override
@@ -242,7 +235,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
         a = (Activity) con;
         try {
             //fatherActivity = (IMyScreen) a;
-            screen = (IMyScreen)a;
+            screen = (ScreenManager)a;
         } catch (Exception e) {
             e.printStackTrace();
         }

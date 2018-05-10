@@ -10,15 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import itesm.mx.proyectofinal.R;
-import itesm.mx.proyectofinal.extras.IMyScreen;
-import itesm.mx.proyectofinal.usuario.ListaControlador;
+import itesm.mx.proyectofinal.extras.ScreenManager;
 
 /**
  * Created by 59159 on 25/04/2018.
  */
 
 public class intromanoclass extends android.app.Fragment implements View.OnClickListener {
-    IMyScreen fatherActivity;
+    ScreenManager fatherActivity;
     Context contexto;
     Activity a;
     ImageButton botonintro;
@@ -36,7 +35,7 @@ public class intromanoclass extends android.app.Fragment implements View.OnClick
 
     private void setFatherActivity() {
         try{
-            fatherActivity = (IMyScreen) contexto;
+            fatherActivity = (ScreenManager) contexto;
         }
         catch (Exception e){
 
@@ -65,7 +64,7 @@ public class intromanoclass extends android.app.Fragment implements View.OnClick
         super.onAttach(con);
         a = (Activity) con;
         try {
-            fatherActivity = (IMyScreen) a;
+            fatherActivity = (ScreenManager) a;
         } catch (Exception e) {
             e.printStackTrace();
         }

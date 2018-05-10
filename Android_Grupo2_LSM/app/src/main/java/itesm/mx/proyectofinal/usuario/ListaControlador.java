@@ -8,15 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import itesm.mx.proyectofinal.MenuDeActividades;
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Schema;
-import itesm.mx.proyectofinal.extras.IMyScreen;
+import itesm.mx.proyectofinal.extras.ScreenManager;
 
 public class ListaControlador extends Fragment implements View.OnClickListener{
 
     private Context contexto;
-    private IMyScreen fatherActivity;
+    private ScreenManager fatherActivity;
     private ListaVista vista;
 
     @Nullable
@@ -51,7 +50,7 @@ public class ListaControlador extends Fragment implements View.OnClickListener{
 
     private void setFatherActivity(){
         try{
-            fatherActivity = (IMyScreen) contexto;
+            fatherActivity = (ScreenManager) contexto;
         }
         catch (Exception e){
             e.printStackTrace();

@@ -16,14 +16,14 @@ import java.util.ArrayList;
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
 import itesm.mx.proyectofinal.bdd.DB_Schema;
-import itesm.mx.proyectofinal.extras.IMyScreen;
+import itesm.mx.proyectofinal.extras.ScreenManager;
 import itesm.mx.proyectofinal.transports.ManoGameData;
 import itesm.mx.proyectofinal.transports.P2PGameData;
 
 public class PuntajesControlador extends ListFragment {
 
     Context contexto;
-    IMyScreen fatherActivity;
+    ScreenManager fatherActivity;
     SimpleDateFormat dateFormat;
     DB_Operations dbOp;
     PuntajesVista vista;
@@ -67,7 +67,7 @@ public class PuntajesControlador extends ListFragment {
 
     private void setFatherActivity() {
         try{
-            fatherActivity = (IMyScreen) contexto;
+            fatherActivity = (ScreenManager) contexto;
         }
         catch (Exception e){
 

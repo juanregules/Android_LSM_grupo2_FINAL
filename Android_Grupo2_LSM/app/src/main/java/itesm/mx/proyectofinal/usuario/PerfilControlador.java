@@ -1,31 +1,25 @@
 package itesm.mx.proyectofinal.usuario;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.IdRes;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
-import itesm.mx.proyectofinal.MenuDeActividades;
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
-import itesm.mx.proyectofinal.extras.IMyScreen;
 import itesm.mx.proyectofinal.extras.ImageMastah;
-import itesm.mx.proyectofinal.extras.Tuple;
+import itesm.mx.proyectofinal.extras.ScreenManager;
 
 public class PerfilControlador extends Fragment implements View.OnClickListener {
 
     private Context contexto;
     private DB_Operations dbOps;
-    private IMyScreen fatherActivity;
+    private ScreenManager fatherActivity;
     private PerfilVista vista;
 
     private byte[] fotoAntigua;
@@ -191,7 +185,7 @@ public class PerfilControlador extends Fragment implements View.OnClickListener 
 
     private void setFatherActivity(){
         try{
-            fatherActivity = (IMyScreen) contexto;
+            fatherActivity = (ScreenManager) contexto;
         }
         catch (Exception e){
             e.printStackTrace();

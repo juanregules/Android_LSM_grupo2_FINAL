@@ -11,8 +11,10 @@ import itesm.mx.proyectofinal.R;
 
 public class WordDataFactory {
     private static Context context;
+    private static String PACKAGE_NAME;
     public static List<Word> makeWords(String type, Context current) {
         context = current;
+        PACKAGE_NAME = context.getPackageName();
         if (type == "animales")
             return Arrays.asList(
                     makeAbejaWord(),
@@ -150,7 +152,8 @@ public class WordDataFactory {
 
 
     public static List<Content> makeAbejaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.abeja;
+
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.abeja;
         Content video = new Content(name, false);
     /*
     Content styx = new Content("Styx", false);
@@ -166,7 +169,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeAguilaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.aguila;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.aguila;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -176,7 +179,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeAranaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.arana;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.arana;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -186,7 +189,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeArdillaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.ardilla;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.ardilla;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -196,7 +199,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeBurroContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.burro;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.burro;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -206,7 +209,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeCaballoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.caballo;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.caballo;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -216,7 +219,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeCerdoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.cerdo;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.cerdo;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -226,7 +229,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeChangoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.chango;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.chango;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -236,7 +239,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeConejoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.conejo;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.conejo;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -246,7 +249,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeGatoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.gato;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.gato;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -256,7 +259,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeGorillaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.gorila;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.gorila;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -266,7 +269,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeGusanoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.gusano;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.gusano;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -276,7 +279,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeJirafaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.jirafa;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.jirafa;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -286,7 +289,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeLeonContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.leon;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.leon;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -296,7 +299,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeMariposaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.mariposa;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.mariposa;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -306,7 +309,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeOsoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.oso;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.oso;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -316,7 +319,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makePajaroContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.pajaro;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.pajaro;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -326,7 +329,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makePalomaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.paloma;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.paloma;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -336,7 +339,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makePatoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.pato;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.pato;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -346,7 +349,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makePerroContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.perro;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.perro;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -356,7 +359,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makePezContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.pez;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.pez;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -366,7 +369,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeRatonContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.raton;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.raton;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -376,7 +379,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeTigreContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.tigre;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.tigre;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -386,7 +389,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeToroContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.toro;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.toro;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -396,7 +399,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeTortugaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.tortuga;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.tortuga;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -406,7 +409,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeVacaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.vaca;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.vaca;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -416,7 +419,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeVivoraContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.vibora;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.vibora;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -522,7 +525,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeJLetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.j;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.j;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -533,7 +536,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeKLetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.k;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.k;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -554,7 +557,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeLLLetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.ll;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.ll;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -587,7 +590,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeNNLetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.nn;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.nn;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -620,7 +623,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeQLetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.q;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.q;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -641,7 +644,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeRRLetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.rr;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.rr;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -709,7 +712,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeXLetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.x;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.x;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -732,7 +735,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeZLetterContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.z;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.z;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -741,7 +744,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeAzulContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.azul;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.azul;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -752,7 +755,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeBlancoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.blanco;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.blanco;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -762,7 +765,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeCafeContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.cafe;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.cafe;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -772,7 +775,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeGrisContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.gris;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.gris;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -782,7 +785,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeMoradoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.morado;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.morado;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -793,7 +796,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeNaranjaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.naranja;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.naranja;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -802,7 +805,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeNegroContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.negro;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.negro;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -811,7 +814,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeOroContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.oro;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.oro;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -820,7 +823,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makePlataContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.plata;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.plata;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -829,7 +832,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeRojoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.rojo;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.rojo;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -838,7 +841,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeRosaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.rosa;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.rosa;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -847,7 +850,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeVerdeContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.verde;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.verde;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -856,7 +859,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeAmarilloContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.amarillo;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.amarillo;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -867,7 +870,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeLunesContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.lunes;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.lunes;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -877,7 +880,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeMartesContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.martes;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.martes;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -888,7 +891,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeMiercolesContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.miercoles;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.miercoles;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -898,7 +901,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeJuevesContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.jueves;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.jueves;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -908,7 +911,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeViernesContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.viernes;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.viernes;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -918,7 +921,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeSabadoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.sabado;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.sabado;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -928,7 +931,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeDomingoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.domingo;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.domingo;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -938,7 +941,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeEneroContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.enero;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.enero;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -948,7 +951,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeFebreroContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.febrero;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.febrero;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -958,7 +961,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeMarzoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.marzo;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.marzo;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -968,7 +971,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeAbrilContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.abril;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.abril;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -978,7 +981,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeMayoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.mayo;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.mayo;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -988,7 +991,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeJunioContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.junio;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.junio;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -998,7 +1001,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeJulioContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.julio;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.julio;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1008,7 +1011,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeAgostoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.agosto;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.agosto;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1018,7 +1021,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeSeptiembreContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.septiembre;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.septiembre;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1028,7 +1031,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeOctubreContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.octubre;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.octubre;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1038,7 +1041,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeNoviembreoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.noviembre;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.noviembre;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1048,7 +1051,7 @@ public class WordDataFactory {
     }
 
     public static List<Content> makeDiciembreContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.diciembre;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.diciembre;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1057,7 +1060,7 @@ public class WordDataFactory {
         return new Word("Aceite", makeAceiteContents(), R.drawable.aceite);
     }
     public static List<Content> makeAceiteContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.aceite;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.aceite;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1066,7 +1069,7 @@ public class WordDataFactory {
         return new Word("Agua", makeAguaContents(), R.drawable.agua);
     }
     public static List<Content> makeAguaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.agua;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.agua;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1075,7 +1078,7 @@ public class WordDataFactory {
         return new Word("Arroz", makeArrozContents(), R.drawable.arroz);
     }
     public static List<Content> makeArrozContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.arroz;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.arroz;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1084,7 +1087,7 @@ public class WordDataFactory {
         return new Word("Café", makeCoffeeContents(), R.drawable.coffee);
     }
     public static List<Content> makeCoffeeContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.coffee;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.coffee;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1093,7 +1096,7 @@ public class WordDataFactory {
         return new Word("Caldo", makeCaldoContents(), R.drawable.caldo);
     }
     public static List<Content> makeCaldoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.caldo;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.caldo;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1102,7 +1105,7 @@ public class WordDataFactory {
         return new Word("Carne", makeCarneContents(), R.drawable.carne);
     }
     public static List<Content> makeCarneContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.carne;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.carne;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1111,7 +1114,7 @@ public class WordDataFactory {
         return new Word("Cerveza", makeCervezaContents(), R.drawable.cerveza);
     }
     public static List<Content> makeCervezaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.cerveza;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.cerveza;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1120,7 +1123,7 @@ public class WordDataFactory {
         return new Word("Chile", makeChileContents(), R.drawable.chile);
     }
     public static List<Content> makeChileContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.chile;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.chile;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1129,7 +1132,7 @@ public class WordDataFactory {
         return new Word("Chocolate", makeChocolateContents(), R.drawable.chocolate);
     }
     public static List<Content> makeChocolateContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.chocolate;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.chocolate;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1138,7 +1141,7 @@ public class WordDataFactory {
         return new Word("Coca-Cola", makeCocaColaContents(), R.drawable.cocacola);
     }
     public static List<Content> makeCocaColaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.cocacola;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.cocacola;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1147,7 +1150,7 @@ public class WordDataFactory {
         return new Word("Dulce", makeDulceContents(), R.drawable.dulce);
     }
     public static List<Content> makeDulceContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.dulce;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.dulce;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1156,7 +1159,7 @@ public class WordDataFactory {
         return new Word("Ensalada", makeEnsaladaContents(), R.drawable.ensalada);
     }
     public static List<Content> makeEnsaladaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.ensalada;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.ensalada;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1165,7 +1168,7 @@ public class WordDataFactory {
         return new Word("Fruta", makeFrutaContents(), R.drawable.fruta);
     }
     public static List<Content> makeFrutaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.fruta;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.fruta;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1174,7 +1177,7 @@ public class WordDataFactory {
         return new Word("Galleta", makeGalletaContents(), R.drawable.galleta);
     }
     public static List<Content> makeGalletaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.galleta;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.galleta;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1184,7 +1187,7 @@ public class WordDataFactory {
         return new Word("Hamburguesa", makeHamburguesaContents(), R.drawable.hamburguesa);
     }
     public static List<Content> makeHamburguesaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.hamburguesa;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.hamburguesa;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1194,7 +1197,7 @@ public class WordDataFactory {
         return new Word("Huevo", makeHuevoContents(), R.drawable.huevo);
     }
     public static List<Content> makeHuevoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.huevo;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.huevo;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1203,7 +1206,7 @@ public class WordDataFactory {
         return new Word("Leche", makeLecheContents(), R.drawable.leche);
     }
     public static List<Content> makeLecheContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.leche;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.leche;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1212,7 +1215,7 @@ public class WordDataFactory {
         return new Word("Pan", makePanContents(), R.drawable.pan);
     }
     public static List<Content> makePanContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.pan;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.pan;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1221,7 +1224,7 @@ public class WordDataFactory {
         return new Word("Pastel", makePastelContents(), R.drawable.pastel);
     }
     public static List<Content> makePastelContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.pastel;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.pastel;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1230,7 +1233,7 @@ public class WordDataFactory {
         return new Word("Pescado", makePescadoContents(), R.drawable.pescado);
     }
     public static List<Content> makePescadoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.pescado;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.pescado;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1240,7 +1243,7 @@ public class WordDataFactory {
         return new Word("Pizza", makePizzaContents(), R.drawable.pizza);
     }
     public static List<Content> makePizzaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.pizza;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.pizza;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1250,7 +1253,7 @@ public class WordDataFactory {
         return new Word("Pollo", makePolloContents(), R.drawable.pollo);
     }
     public static List<Content> makePolloContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.pollo;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.pollo;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1259,7 +1262,7 @@ public class WordDataFactory {
         return new Word("Queso", makeQuesoContents(), R.drawable.queso);
     }
     public static List<Content> makeQuesoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.queso;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.queso;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1268,7 +1271,7 @@ public class WordDataFactory {
         return new Word("Refresco", makeRefrescoContents(), R.drawable.refresco);
     }
     public static List<Content> makeRefrescoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.refresco;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.refresco;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1277,7 +1280,7 @@ public class WordDataFactory {
         return new Word("Sopa", makeSopaContents(), R.drawable.sopa);
     }
     public static List<Content> makeSopaContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.sopa;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.sopa;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1286,7 +1289,7 @@ public class WordDataFactory {
         return new Word("Taco", makeTacoContents(), R.drawable.taco);
     }
     public static List<Content> makeTacoContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.taco;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.taco;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }
@@ -1295,7 +1298,7 @@ public class WordDataFactory {
         return new Word("Verdura", makeVerduraContents(), R.drawable.verdura);
     }
     public static List<Content> makeVerduraContents() {
-        String name = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + R.raw.verdura;
+        String name = "android.resource://" + PACKAGE_NAME + "/" + R.raw.verdura;
         Content video = new Content(name, false);
         return Arrays.asList(video);
     }

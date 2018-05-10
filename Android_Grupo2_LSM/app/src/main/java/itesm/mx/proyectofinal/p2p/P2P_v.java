@@ -17,8 +17,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import itesm.mx.proyectofinal.R;
-import itesm.mx.proyectofinal.extras.IMyScreen;
 import itesm.mx.proyectofinal.extras.ImageMastah;
+import itesm.mx.proyectofinal.extras.ScreenManager;
 
 public class P2P_v {
 
@@ -56,7 +56,7 @@ public class P2P_v {
     private Context contexto;
     private View.OnClickListener clickListener;
     private AdapterView.OnItemClickListener itemClickListener;
-    private IMyScreen screen;
+    private ScreenManager screen;
     private Activity a;
 
     public P2P_v(Context contexto, View.OnClickListener clickListener){

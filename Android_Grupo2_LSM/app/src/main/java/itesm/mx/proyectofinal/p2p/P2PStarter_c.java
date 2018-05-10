@@ -13,9 +13,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import itesm.mx.proyectofinal.R;
-import itesm.mx.proyectofinal.extras.IMyScreen;
-import itesm.mx.proyectofinal.extras.ImageMastah;
-import itesm.mx.proyectofinal.transports.P2PIngameData;
 
 public class P2PStarter_c extends Fragment implements View.OnClickListener {
 
