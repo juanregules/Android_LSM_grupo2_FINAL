@@ -19,6 +19,8 @@ import java.util.Calendar;
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
 import itesm.mx.proyectofinal.extras.ScreenManager;
+import itesm.mx.proyectofinal.principal.MainActivity;
+import itesm.mx.proyectofinal.principal.MenuDeActividades;
 import itesm.mx.proyectofinal.transports.GameData;
 import itesm.mx.proyectofinal.transports.ManoGameData;
 
@@ -58,8 +60,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     int dedomovido=0;
     int dedoanterior=0;
     Context contexto;
-    //IMyScreen fatherActivity;
-    private ScreenManager screen;
+    ScreenManager screenManager;
 
 
     @Override
@@ -70,7 +71,16 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(Bundle b) {
         super.onActivityCreated(b);
+
         a=getActivity();
+
+
+        a = getActivity();
+        contexto = a;
+        screenManager = (MainActivity)a;
+        screenManager.setBack(new MenuDeActividades());
+
+
        //boton= a.findViewById(R.id.botonmanoA);
        botondedo1=a.findViewById(R.id.botondedo1a);
        botondedo2=a.findViewById(R.id.botondedo2);
@@ -102,8 +112,6 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
     }
-
-
 
 
     @Override
@@ -215,23 +223,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
         }
     }
 
-
-    @Override
-    public void onAttach(Context con) {
-        super.onAttach(con);
-        a = (Activity) con;
-        try {
-            //fatherActivity = (IMyScreen) a;
-            screen = (ScreenManager)a;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-
-
-    //AGREGA LOS PUNTOS A BASE DE DATOS
+        //AGREGA LOS PUNTOS A BASE DE DATOS
     public void agregarabasededatos(int puntos){
         DB_Operations db_operations=new DB_Operations(contexto);
         db_operations.open();
@@ -377,12 +369,6 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
 
 
     }
-
-
-
-
-
-
 
 
     public void cambiarimagen(){

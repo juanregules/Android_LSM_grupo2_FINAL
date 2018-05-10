@@ -11,14 +11,14 @@ import android.widget.ImageButton;
 
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.extras.ScreenManager;
+import itesm.mx.proyectofinal.principal.MainActivity;
 
 /**
  * Created by 59159 on 25/04/2018.
  */
 
 public class intromanoclass extends android.app.Fragment implements View.OnClickListener {
-    ScreenManager fatherActivity;
-    Context contexto;
+    ScreenManager screenManager;
     Activity a;
     ImageButton botonintro;
 
@@ -29,56 +29,21 @@ public class intromanoclass extends android.app.Fragment implements View.OnClick
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+    public void onActivityCreated(Bundle b) {
+        super.onActivityCreated(b);
+
+        a = getActivity();
+        screenManager = (MainActivity)a;
+
+        botonintro = a.findViewById(R.id.botonintro);
+        botonintro.setOnClickListener(this);
     }
 
-    private void setFatherActivity() {
-        try{
-            fatherActivity = (ScreenManager) contexto;
-        }
-        catch (Exception e){
-
-        }
-    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.botonintro:
-                if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new PantallaMano()).commit();
-                    //cargaba PantallaDummy()
-                } else {
-                    getFragmentManager().beginTransaction().add(R.id.pantalla, new PantallaMano()).commit();
-                    //cargaba PantallaDummy()
-                }
-
-        };
-
-
-    }
-
-
-    @Override
-    public void onAttach(Context con) {
-        super.onAttach(con);
-        a = (Activity) con;
-        try {
-            fatherActivity = (ScreenManager) a;
-        } catch (Exception e) {
-            e.printStackTrace();
+                screenManager.changeScreen(new PantallaMano());
         }
-
-    }
-
-    @Override
-    public void onActivityCreated(Bundle b) {
-        super.onActivityCreated(b);
-        botonintro=a.findViewById(R.id.botonintro);
-        botonintro.setOnClickListener(this);
-        contexto = getActivity();
-
-
-
     }
 }
