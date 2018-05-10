@@ -1,4 +1,4 @@
-package itesm.mx.proyectofinal.usuario;
+package itesm.mx.proyectofinal.perfil;
 
 import android.app.Activity;
 import android.content.Context;

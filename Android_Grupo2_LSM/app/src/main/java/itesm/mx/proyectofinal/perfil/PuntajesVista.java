@@ -1,4 +1,4 @@
-package itesm.mx.proyectofinal.usuario;
+package itesm.mx.proyectofinal.perfil;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
