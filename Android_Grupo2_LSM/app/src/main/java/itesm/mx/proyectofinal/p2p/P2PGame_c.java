@@ -10,16 +10,12 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 import java.util.Date;
 
-import id.zelory.compressor.Compressor;
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
-import itesm.mx.proyectofinal.extras.ScreenManager;
 import itesm.mx.proyectofinal.transports.P2PGameData;
 import itesm.mx.proyectofinal.transports.P2PIngameData;
 
@@ -47,7 +43,7 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
         nombreMio = b.getString("nombreMio");
         nombreVs = b.getString("nombreVs");
 
-        int lay = -1;
+        int lay;
         if(esAsker){
             lay = R.layout.p2p_asker;
         }
@@ -111,9 +107,7 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
         DB_Operations operations = new DB_Operations(contexto);
         P2PGameData gameData = new P2PGameData(nombreMio, puntajeMio, nombreVs, puntajeVs, new Date());
 
-        operations.open();
         operations.agregarPuntuacion(gameData);
-        operations.close();
         commSystem.desconectar();
 
         // Salir al menu principal

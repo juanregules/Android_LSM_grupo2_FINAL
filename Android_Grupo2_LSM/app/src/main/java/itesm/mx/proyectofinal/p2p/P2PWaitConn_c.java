@@ -47,9 +47,7 @@ public class P2PWaitConn_c extends Fragment implements AdapterView.OnItemClickLi
         vista.initWaitConn(esCliente);
 
         dbOperations = new DB_Operations(contexto);
-        dbOperations.open();
         yo = dbOperations.obtenerNombre();
-        dbOperations.close();
 
 
         commSystem = CommSystem.createCommSystem(

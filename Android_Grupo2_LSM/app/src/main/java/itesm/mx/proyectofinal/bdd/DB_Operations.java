@@ -33,12 +33,10 @@ public class DB_Operations {
     public DB_Operations(Context con){
         dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         DBHandler = new DB_Handler(con);
-        open();
-        //DBHandler.onUpgrade(db, 0,0);
     }
 
     // Open y close diferenciados por si a acaso
-    public void open(){
+    private void open(){
         try{
             if(db == null || !db.isOpen()){
                 db = DBHandler.getWritableDatabase();
@@ -47,7 +45,7 @@ public class DB_Operations {
             Log.e("SQL_UWU", e.toString());
         }
     }
-    public void close(){
+    private void close(){
         db.close();
     }
 
@@ -57,42 +55,49 @@ public class DB_Operations {
                 " SET " + DB_Schema.UsuarioTable.C_NOMBRE + " = '" + nombre + "'";
 
         db.execSQL(query);
+        close();
     }
     public void cambiarFoto(byte[] foto){
+        open();
         if(foto == null){
             return;
         }
         ContentValues values = new ContentValues();
         values.put(DB_Schema.UsuarioTable.C_IMAGEN, foto);
         db.update(DB_Schema.UsuarioTable.TABLE, values, DB_Schema.UsuarioTable.C_NOMBRE + " is not null", null);
-        /*db.execSQL(query);*/
+        close();
     }
     public String obtenerNombre(){
         Cursor c;
         String query;
 
+        String ret = null;
+        open();
         query = "SELECT *" + /*DB_Schema.UsuarioTable.C_NOMBRE +*/
                 " FROM " + DB_Schema.UsuarioTable.TABLE;
         c = db.rawQuery(query, null);
         if(c.moveToFirst()){
-            return c.getString(c.getColumnIndex(DB_Schema.UsuarioTable.C_NOMBRE));
+            ret = c.getString(c.getColumnIndex(DB_Schema.UsuarioTable.C_NOMBRE));
         }
         c.close();
-        return null;
+        close();
+        return ret;
     }
     public byte[] obtenerFoto(){
         Cursor c;
         String query;
 
+        open();
+        byte[] b = null;
         query = "SELECT " + DB_Schema.UsuarioTable.C_IMAGEN +
                 " FROM " + DB_Schema.UsuarioTable.TABLE;
         c = db.rawQuery(query, null);
         if(c.moveToFirst()){
-            byte[] b = c.getBlob(c.getColumnIndex(DB_Schema.UsuarioTable.C_IMAGEN));
-            return b;
+            b = c.getBlob(c.getColumnIndex(DB_Schema.UsuarioTable.C_IMAGEN));
         }
         c.close();
-        return null;
+        close();
+        return b;
     }
 
     public void agregarPuntuacion(GameData data) {
@@ -122,6 +127,7 @@ public class DB_Operations {
         Cursor c;
         Date fecha;
 
+        open();
         fecha = null;
         data = new ArrayList<>();
         query = "SELECT * "+
@@ -142,6 +148,7 @@ public class DB_Operations {
             ));
         }
         c.close();
+        close();
         return data;
     }
     public ManoGameData obtenerScoreMano() {
@@ -149,6 +156,8 @@ public class DB_Operations {
         Cursor c;
         Date fecha;
 
+        open();
+        ManoGameData ret = new ManoGameData(0, null);
         fecha = null;
         query = "SELECT * " +
                 " FROM " + DB_Schema.ManoTable.TABLE;
@@ -164,10 +173,8 @@ public class DB_Operations {
             );
         }
         c.close();
-        return new ManoGameData(
-                0,
-                null
-        );
+        close();
+        return ret;
     }
 
 
@@ -177,6 +184,7 @@ public class DB_Operations {
         Cursor c;
         ManoGameData m;
 
+        open();
         m = (ManoGameData)data;
         query = "SELECT " + DB_Schema.ManoTable._ID + ", " + DB_Schema.ManoTable.C_PUNTAJE +
                 " FROM " + DB_Schema.ManoTable.TABLE;
@@ -192,9 +200,6 @@ public class DB_Operations {
                 c.moveToFirst();
                 c.close();
             }
-            else{
-                //NO ES PUNTUACION MAXIMA
-            }
         }
         else{
             // NO HAY PUNTUACIONES REGISTRADAS
@@ -205,6 +210,7 @@ public class DB_Operations {
             c.moveToFirst();
             c.close();
         }
+        close();
     }
     private void agregarPuntuacionP2P(GameData data) {
         P2PGameData p;
@@ -212,6 +218,7 @@ public class DB_Operations {
         Cursor c;
         String fecha;
 
+        open();
         p = (P2PGameData)data;
         query = "SELECT " + DB_Schema.P2PTable._ID + ", " + DB_Schema.P2PTable.C_FECHA_HORA +
                 " FROM " + DB_Schema.P2PTable.TABLE +
@@ -273,5 +280,6 @@ public class DB_Operations {
             c.moveToFirst();
             c.close();
         }
+        close();
     }
 }

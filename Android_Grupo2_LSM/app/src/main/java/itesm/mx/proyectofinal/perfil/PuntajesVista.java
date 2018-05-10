@@ -7,7 +7,6 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import itesm.mx.proyectofinal.R;
-import itesm.mx.proyectofinal.transports.ManoGameData;
 
 public class PuntajesVista {
 

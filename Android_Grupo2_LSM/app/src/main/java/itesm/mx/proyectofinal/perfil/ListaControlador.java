@@ -11,11 +11,12 @@ import android.view.ViewGroup;
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Schema;
 import itesm.mx.proyectofinal.extras.ScreenManager;
+import itesm.mx.proyectofinal.principal.MainActivity;
 
 public class ListaControlador extends Fragment implements View.OnClickListener{
 
     private Context contexto;
-    private ScreenManager fatherActivity;
+    private ScreenManager screenManager;
     private ListaVista vista;
 
     @Nullable
@@ -30,10 +31,11 @@ public class ListaControlador extends Fragment implements View.OnClickListener{
 
         // Declaracion
         contexto = getActivity();
-        setFatherActivity();
+        screenManager = (MainActivity)contexto;
         vista = new ListaVista(contexto, this);
 
         // Procesos
+        screenManager.setBack(new PerfilControlador());
     }
 
     @Override
@@ -48,27 +50,13 @@ public class ListaControlador extends Fragment implements View.OnClickListener{
         }
     }
 
-    private void setFatherActivity(){
-        try{
-            fatherActivity = (ScreenManager) contexto;
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
-
     private void consultarPuntuacion(String nombreJuego){
-        /*
+
         PuntajesControlador controlador = new PuntajesControlador();
         Bundle b = new Bundle();
         b.putString("nombreJuego", nombreJuego);
         controlador.setArguments(b);
-*/
-        if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-            getFragmentManager().beginTransaction().replace(R.id.pantalla, new PuntajesControlador()).addToBackStack(null).commit();
-        } else {
-            getFragmentManager().beginTransaction().add(R.id.pantalla, new PuntajesControlador()).addToBackStack(null).commit();
-        }
+
+        screenManager.changeScreen(controlador);
     }
 }

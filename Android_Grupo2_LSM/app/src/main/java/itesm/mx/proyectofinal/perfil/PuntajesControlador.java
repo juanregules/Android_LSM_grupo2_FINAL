@@ -7,8 +7,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,13 +15,14 @@ import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
 import itesm.mx.proyectofinal.bdd.DB_Schema;
 import itesm.mx.proyectofinal.extras.ScreenManager;
+import itesm.mx.proyectofinal.principal.MainActivity;
 import itesm.mx.proyectofinal.transports.ManoGameData;
 import itesm.mx.proyectofinal.transports.P2PGameData;
 
 public class PuntajesControlador extends ListFragment {
 
-    Context contexto;
-    ScreenManager fatherActivity;
+    private Context contexto;
+    ScreenManager screenManager;
     SimpleDateFormat dateFormat;
     DB_Operations dbOp;
     PuntajesVista vista;
@@ -39,15 +38,14 @@ public class PuntajesControlador extends ListFragment {
 
         contexto = getActivity();
         vista = new PuntajesVista(contexto, getListView());
-        setFatherActivity();
-        dateFormat = new SimpleDateFormat("dd/MM/YYYY hh:mm");
+        screenManager = (MainActivity)contexto;
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
         dbOp = new DB_Operations(contexto);
 
         // Procesos
-
+        screenManager.setBack(new ListaControlador());
         Bundle args = getArguments();
         if(args != null){
-            dbOp.open();
             switch (args.getString("nombreJuego")){
                 case DB_Schema.ManoTable.TABLE:
                     mostrarMano();
@@ -56,22 +54,12 @@ public class PuntajesControlador extends ListFragment {
                     mostrarP2P();
                     break;
             }
-            dbOp.close();
         }
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-    }
-
-    private void setFatherActivity() {
-        try{
-            fatherActivity = (ScreenManager) contexto;
-        }
-        catch (Exception e){
-
-        }
     }
 
     private void mostrarMano(){

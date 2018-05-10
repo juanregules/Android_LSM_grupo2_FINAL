@@ -84,9 +84,7 @@ public class P2PResult_c extends Fragment implements View.OnClickListener {
                     b.getInt("puntajeVs"),
                     new Date());
 
-            operations.open();
             operations.agregarPuntuacion(gameData);
-            operations.close();
             commSystem.desconectar();
 
             // Salir al menu principal

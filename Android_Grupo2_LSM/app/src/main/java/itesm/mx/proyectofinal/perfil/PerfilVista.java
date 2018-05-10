@@ -3,7 +3,6 @@ package itesm.mx.proyectofinal.usuario;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.extras.ImageMastah;
-import itesm.mx.proyectofinal.extras.Tuple;
 
 public class PerfilVista {
 

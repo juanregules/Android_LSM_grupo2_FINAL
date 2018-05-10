@@ -14,12 +14,12 @@ import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
 import itesm.mx.proyectofinal.extras.ImageMastah;
 import itesm.mx.proyectofinal.extras.ScreenManager;
+import itesm.mx.proyectofinal.principal.MainActivity;
 
 public class PerfilControlador extends Fragment implements View.OnClickListener {
 
-    private Context contexto;
     private DB_Operations dbOps;
-    private ScreenManager fatherActivity;
+    private ScreenManager screenManager;
     private PerfilVista vista;
 
     private byte[] fotoAntigua;
@@ -37,17 +37,15 @@ public class PerfilControlador extends Fragment implements View.OnClickListener 
         super.onActivityCreated(savedInstanceState);
 
         // Inicializacion de variables
-        contexto = getActivity();
-        setFatherActivity();
+        Context contexto = getActivity();
+        screenManager = (MainActivity) contexto;
         vista = new PerfilVista(contexto, this);
         dbOps = new DB_Operations(contexto);
         fotoAntigua = null;
         enEdicion = false;
         String textoAnterior;
 
-        /// Procesos
-        // Establecer boton de back
-
+        screenManager.setBack(null);
         if(savedInstanceState != null){
             enEdicion = savedInstanceState.getBoolean("enEdicion");
         }
@@ -76,8 +74,6 @@ public class PerfilControlador extends Fragment implements View.OnClickListener 
                 vista.setNombre(nombre);
             }
         }
-
-
     }
 
     @Override
@@ -86,18 +82,6 @@ public class PerfilControlador extends Fragment implements View.OnClickListener 
         savedInstanceState.putByteArray("fotoNueva", vista.getImagen());
         savedInstanceState.putByteArray("fotoAntigua", fotoAntigua);
         savedInstanceState.putString("textoAnterior", vista.getNombreEditable());
-    }
-
-    @Override
-    public void onPause(){
-        super.onPause();
-        dbOps.close();
-    }
-
-    @Override
-    public void onResume(){
-        super.onResume();
-        dbOps.open();
     }
 
     @Override
@@ -151,14 +135,11 @@ public class PerfilControlador extends Fragment implements View.OnClickListener 
     }
 
     private void abrirPantallaPuntajes(){
-        if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-            getFragmentManager().beginTransaction().replace(R.id.pantalla, new ListaControlador()).addToBackStack(null).commit();
-        } else {
-            getFragmentManager().beginTransaction().add(R.id.pantalla, new ListaControlador()).addToBackStack(null).commit();
-        }
+        screenManager.changeScreen(new ListaControlador());
     }
 
     private void iniEditar(){
+        screenManager.setBack(new PerfilControlador());
         vista.setEdicion();
         vista.setNombreEditable(vista.getNombre());
         fotoAntigua = vista.getImagen();
@@ -180,15 +161,6 @@ public class PerfilControlador extends Fragment implements View.OnClickListener 
             vista.setImagen(
                     ImageMastah.fromByteArrayToBitmap(fotoAntigua)
             );
-        }
-    }
-
-    private void setFatherActivity(){
-        try{
-            fatherActivity = (ScreenManager) contexto;
-        }
-        catch (Exception e){
-            e.printStackTrace();
         }
     }
 }

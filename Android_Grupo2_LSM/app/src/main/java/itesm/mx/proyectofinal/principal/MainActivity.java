@@ -1,9 +1,6 @@
 package itesm.mx.proyectofinal.principal;
 
-import android.Manifest;
 import android.app.Fragment;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -69,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements ScreenManager, Bo
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        changeScreen(fragmentoAnterior);
+        if(fragmentoAnterior != null)
+            changeScreen(fragmentoAnterior);
     }
 }

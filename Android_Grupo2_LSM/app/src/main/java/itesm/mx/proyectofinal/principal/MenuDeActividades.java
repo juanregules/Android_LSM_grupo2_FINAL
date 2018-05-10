@@ -23,9 +23,9 @@ import itesm.mx.proyectofinal.p2p.P2PStarter_c;
 
 public class MenuDeActividades extends Fragment implements View.OnClickListener {
 
-    Button botonpantallamano;
-    Button botonpantallap2p;
-    ScreenManager screenManager;
+    private Button botonpantallamano;
+    private Button botonpantallap2p;
+    private ScreenManager screenManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
