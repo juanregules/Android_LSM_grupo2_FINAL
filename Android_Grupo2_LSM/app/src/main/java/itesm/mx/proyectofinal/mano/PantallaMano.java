@@ -53,6 +53,8 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
 
 
     Activity a;
+
+
     int dedomovido=0;
     int dedoanterior=0;
     Context contexto;
@@ -68,6 +70,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(Bundle b) {
         super.onActivityCreated(b);
+        a=getActivity();
        //boton= a.findViewById(R.id.botonmanoA);
        botondedo1=a.findViewById(R.id.botondedo1a);
        botondedo2=a.findViewById(R.id.botondedo2);
@@ -88,11 +91,6 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
 
         juega();
         contexto = getActivity();
-        //setFatherActivity();
-
-
-//        screen.establecerPantallaAnterior(new ListaControlador());
-       // fatherActivity.establecerPantallaAnterior(new ListaControlador());
 
 
 
@@ -105,24 +103,13 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
         super.onSaveInstanceState(outState);
     }
 
-   /* private void setFatherActivity() {
-        try{
-            //screen = (IMyScreen) contexto;
-            //fatherActivity = (IMyScreen) contexto;
-        }
-        catch (Exception e){
-
-        }
-    }*/
 
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            //case R.id.botonmanoA:
-              //  cambiarimagen();
-                //break;
+
             case R.id.botondedo1a:
                 if(dedo1b=="false"){dedo1b="true";
 
