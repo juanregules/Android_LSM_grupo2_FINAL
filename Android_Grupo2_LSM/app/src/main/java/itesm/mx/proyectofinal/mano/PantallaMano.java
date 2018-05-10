@@ -226,7 +226,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
         //AGREGA LOS PUNTOS A BASE DE DATOS
     public void agregarabasededatos(int puntos){
         DB_Operations db_operations=new DB_Operations(contexto);
-        db_operations.open();
+      //  db_operations.open();
 
         ManoGameData manoGameData=new ManoGameData(puntos, Calendar.getInstance().getTime());
         db_operations.agregarPuntuacion((GameData)manoGameData);
