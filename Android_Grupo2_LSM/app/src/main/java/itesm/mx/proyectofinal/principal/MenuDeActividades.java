@@ -36,54 +36,28 @@ public class MenuDeActividades extends Fragment implements View.OnClickListener 
         super.onActivityCreated(b);
 
         Activity a = getActivity();
+        screenManager = (MainActivity)a;
+
+
+        screenManager.setBack(null);
+
         botonpantallamano = a.findViewById(R.id.botonmano);
         botonpantallap2p = a.findViewById(R.id.botonp2p);
+
         botonpantallap2p.setOnClickListener(this);
         botonpantallamano.setOnClickListener(this);
-
-        //userScreen.establecerPantallaAnterior(null);
     }
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()){
             case R.id.botonmano:
-            {
-                if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new intromanoclass()).addToBackStack(null).commit();//PantallaMano
-                    //cargaba PantallaDummy()
-                } else {
-                    getFragmentManager().beginTransaction().add(R.id.pantalla, new intromanoclass()).addToBackStack(null).commit();  //PantallaMano
-                    //cargaba PantallaDummy()
-                }
+                screenManager.changeScreen(new intromanoclass());
+                break;
 
-            };
-
-
-            break;
             case R.id.botonp2p:
-            {
-                if (getFragmentManager().findFragmentById(R.id.pantalla) != null) {
-                    getFragmentManager().beginTransaction().replace(R.id.pantalla, new P2PStarter_c()).addToBackStack(null).commit();
-                } else {
-                    getFragmentManager().beginTransaction().add(R.id.pantalla, new P2PStarter_c()).addToBackStack(null).commit();
-                }
-            };
-
-
-            break;
-
-            default:
-                // Try catch vacio. Adrmiralo un momento
-                try {
-                    throw new Exception("No existe el boton: " + v.toString());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                screenManager.changeScreen(new P2PStarter_c());
                 break;
         }
     }
-
-
 }
