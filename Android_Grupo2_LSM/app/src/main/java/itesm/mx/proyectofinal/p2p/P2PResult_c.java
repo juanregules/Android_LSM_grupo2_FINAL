@@ -12,6 +12,8 @@ import java.util.Date;
 
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
+import itesm.mx.proyectofinal.extras.ScreenManager;
+import itesm.mx.proyectofinal.principal.MainActivity;
 import itesm.mx.proyectofinal.transports.P2PGameData;
 import itesm.mx.proyectofinal.transports.P2PIngameData;
 
@@ -20,7 +22,8 @@ public class P2PResult_c extends Fragment implements View.OnClickListener {
     private Context contexto;
     private P2P_v vista;
     private Bundle b;
-    CommSystem commSystem;
+    private CommSystem commSystem;
+    private ScreenManager screenManager;
 
     boolean cambioDePantalla = false;
 
@@ -36,8 +39,10 @@ public class P2PResult_c extends Fragment implements View.OnClickListener {
 
         contexto = getActivity();
         vista = new P2P_v(contexto, this);
+        screenManager = (MainActivity)contexto;
 
         b = getArguments();
+        screenManager.setBack(new P2PStarter_c());
         vista.initResultado(b.getBoolean("esAcierto"), b.getBoolean("esAsker"));
         commSystem = CommSystem.createCommSystem(contexto, this, b.getString("nombreMio"));
     }
@@ -72,23 +77,29 @@ public class P2PResult_c extends Fragment implements View.OnClickListener {
                 .commit();
     }
 
+    public void desconeccion(){
+        guardarDatos();
+        commSystem.desconectar();
+        ((MainActivity)contexto).onBackPressed();
+    }
+
+    private void guardarDatos(){
+        DB_Operations operations = new DB_Operations(contexto);
+        P2PGameData gameData = new P2PGameData(
+                b.getString("nombreMio"),
+                b.getInt("puntajeMio"),
+                b.getString("nombreVs"),
+                b.getInt("puntajeVs"),
+                new Date());
+
+        operations.agregarPuntuacion(gameData);
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         if(!cambioDePantalla){
-            DB_Operations operations = new DB_Operations(contexto);
-            P2PGameData gameData = new P2PGameData(
-                    b.getString("nombreMio"),
-                    b.getInt("puntajeMio"),
-                    b.getString("nombreVs"),
-                    b.getInt("puntajeVs"),
-                    new Date());
-
-            operations.agregarPuntuacion(gameData);
-            commSystem.desconectar();
-
-            // Salir al menu principal
-            getFragmentManager().beginTransaction().replace(R.id.pantalla, new P2PStarter_c()).commit();
+            desconeccion();
         }
     }
 }

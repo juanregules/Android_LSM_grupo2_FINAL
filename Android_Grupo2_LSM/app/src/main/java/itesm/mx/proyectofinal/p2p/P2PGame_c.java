@@ -16,6 +16,8 @@ import java.util.Date;
 
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
+import itesm.mx.proyectofinal.extras.ScreenManager;
+import itesm.mx.proyectofinal.principal.MainActivity;
 import itesm.mx.proyectofinal.transports.P2PGameData;
 import itesm.mx.proyectofinal.transports.P2PIngameData;
 
@@ -28,6 +30,7 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
     private String nombreMio;
     private String nombreVs;
     private boolean esAsker;
+    private ScreenManager screenManager;
 
     private CommSystem commSystem;
     private String respuesta;
@@ -60,13 +63,15 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
         contexto = getActivity();
         vista = new P2P_v(contexto, this);
         commSystem = CommSystem.createCommSystem(contexto, this, nombreMio);
+        screenManager = (MainActivity)contexto;
+
+        screenManager.setBack(new P2PStarter_c());
         if(esAsker){
             vista.initAsker();
         }
         else{
             vista.initAnswerer();
         }
-
     }
 
     @Override
@@ -111,8 +116,9 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
         commSystem.desconectar();
 
         // Salir al menu principal
-        if(!getActivity().isDestroyed())
-            getFragmentManager().beginTransaction().replace(R.id.pantalla, new P2PStarter_c()).commit();
+        ((MainActivity)contexto).onBackPressed();
+//        if(!getActivity().isDestroyed())
+//            getFragmentManager().beginTransaction().replace(R.id.pantalla, new P2PStarter_c()).commit();
     }
 
 

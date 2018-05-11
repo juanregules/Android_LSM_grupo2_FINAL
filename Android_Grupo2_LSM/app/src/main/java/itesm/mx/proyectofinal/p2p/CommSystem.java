@@ -31,6 +31,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import itesm.mx.proyectofinal.extras.Tuple;
+import itesm.mx.proyectofinal.transports.P2PGameData;
 import itesm.mx.proyectofinal.transports.P2PIngameData;
 
 public class CommSystem {
@@ -39,6 +40,7 @@ public class CommSystem {
     private ConnectionsClient clientConns;
     private String elOtroEndpoint;
     private String elOtroEndpointName;
+    private String elOtroEndpointName_Temp;
     private String miEndpoint;
     private Context contexto;
     private static CommSystem disObj;
@@ -119,7 +121,12 @@ public class CommSystem {
         public void onDisconnected(@NonNull String endPointID) {
             // Guardar datos y salir al menu principal
             try{
-                ((P2PGame_c)controller).desconeccion();
+                if(controller instanceof P2PGame_c) {
+                    ((P2PGame_c) controller).desconeccion();
+                }
+                else if(controller instanceof P2PResult_c){
+                    ((P2PResult_c) controller).desconeccion();
+                }
             }
             catch (Exception e){
                 Toast.makeText(contexto, "Debes presionar el boton de rendicion. No se guardaran los datos", Toast.LENGTH_SHORT).show();
@@ -181,7 +188,6 @@ public class CommSystem {
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(contexto, "Error al buscar!", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-                        int a= 0; // TODO
                     }
                 });
     }
@@ -189,20 +195,38 @@ public class CommSystem {
         @Override
         public void onEndpointFound(@NonNull String endpointID, @NonNull DiscoveredEndpointInfo discoveredEndpointInfo) {
             // Enviar nuevo endpoint
-            ((P2PWaitConn_c)controller).agregarConexion(endpointID, discoveredEndpointInfo.getEndpointName());
+            ((P2PWaitConn_c)controller).enlistarConexion(endpointID, discoveredEndpointInfo.getEndpointName());
         }
 
         @Override
         public void onEndpointLost(@NonNull String endPointID) {
             // Remover endpoint
-            ((P2PWaitConn_c)controller).eliminarConexion(endPointID);
+            ((P2PWaitConn_c)controller).deslistarConexion(endPointID);
         }
     };
 
-    public void conectar(String endpoint, String name){
-        clientConns.stopDiscovery();
-        clientConns.requestConnection(contexto.getPackageName(), endpoint, discov_clC);
-        elOtroEndpointName = name;
+    public void conectar(final String endpoint, String name){
+        elOtroEndpointName_Temp = name;
+        clientConns.requestConnection(contexto.getPackageName(), endpoint, discov_clC).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(contexto, "Oponente desconectado", Toast.LENGTH_SHORT).show();
+                ((P2PWaitConn_c)controller).deslistarConexion(endpoint);
+                ((P2PWaitConn_c)controller).limpiarConexiones();
+                desconectar();
+                startDiscovery();
+            }
+        }).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast t = Toast.makeText(contexto, "Conectando...", Toast.LENGTH_SHORT);
+                t.setGravity(1, 0, 20);
+                t.show();
+                clientConns.stopDiscovery();
+                elOtroEndpointName = elOtroEndpointName_Temp;
+            }
+        });
+
     }
     private final ConnectionLifecycleCallback discov_clC = new ConnectionLifecycleCallback() {
         @Override
@@ -242,7 +266,12 @@ public class CommSystem {
         public void onDisconnected(@NonNull String s) {
             // Salir al menu principal
             try{
-                ((P2PGame_c)controller).desconeccion();
+                if(controller instanceof P2PGame_c) {
+                    ((P2PGame_c) controller).desconeccion();
+                }
+                else if(controller instanceof P2PResult_c){
+                    ((P2PResult_c) controller).desconeccion();
+                }
             }
             catch (Exception e){
                 Toast.makeText(contexto, "Debes presionar el boton de rendicion. No se guardaran los datos", Toast.LENGTH_SHORT).show();
@@ -343,7 +372,9 @@ public class CommSystem {
         );
     }
     public void desconectar(){
-        clientConns.disconnectFromEndpoint(elOtroEndpoint);
+        if(elOtroEndpoint != null)
+            clientConns.disconnectFromEndpoint(elOtroEndpoint);
+        clientConns.stopDiscovery();
         clientConns.stopAllEndpoints();
     }
     private byte[] fromPayloadToByteArr(Payload p){

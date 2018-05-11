@@ -15,6 +15,7 @@ import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
 import itesm.mx.proyectofinal.extras.ScreenManager;
 import itesm.mx.proyectofinal.extras.Tuple;
+import itesm.mx.proyectofinal.principal.MainActivity;
 import itesm.mx.proyectofinal.transports.P2PIngameData;
 
 public class P2PWaitConn_c extends Fragment implements AdapterView.OnItemClickListener {
@@ -22,8 +23,9 @@ public class P2PWaitConn_c extends Fragment implements AdapterView.OnItemClickLi
     private Context contexto;
     private P2P_v vista;
     private boolean esCliente;
-    //private ArrayList<String> listConns;
     private String yo;
+    private ScreenManager screenManager;
+    private boolean seConecto;
 
     private CommSystem commSystem;
     private DB_Operations dbOperations;
@@ -44,23 +46,19 @@ public class P2PWaitConn_c extends Fragment implements AdapterView.OnItemClickLi
 
         contexto = getActivity();
         vista = new P2P_v(contexto, this);
-        vista.initWaitConn(esCliente);
-
+        screenManager = (MainActivity)contexto;
         dbOperations = new DB_Operations(contexto);
         yo = dbOperations.obtenerNombre();
+        commSystem = CommSystem.createCommSystem(contexto, this, yo);
+        seConecto = false;
 
-
-        commSystem = CommSystem.createCommSystem(
-                contexto,
-                this,
-                yo);
-
+        vista.initWaitConn(esCliente);
 
         // Inicio
         if(esCliente){
             commSystem.startDiscovery();
             connections = new ArrayList<>();
-            vista.waitConn_setConnectionsList(new ArrayList<String>());
+            limpiarConexiones();
         }
         else{
             commSystem.startAnnounce();
@@ -69,15 +67,14 @@ public class P2PWaitConn_c extends Fragment implements AdapterView.OnItemClickLi
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        //iniciarConexion(connections.get(i));
         Tuple <String, String> temp = connections.get(i);
         commSystem.conectar(temp.getFirst(), temp.getSecond());
     }
 
 
     // Cliente
-    public void agregarConexion(String endpoint, String username){
-        connections.add(new Tuple<String, String>(endpoint, username));
+    public void enlistarConexion(String endpoint, String username){
+        connections.add(new Tuple<>(endpoint, username));
         ArrayList<String> s = new ArrayList<>();
         for (Tuple<String, String> con : connections) {
             s.add(con.getSecond());
@@ -85,7 +82,7 @@ public class P2PWaitConn_c extends Fragment implements AdapterView.OnItemClickLi
         vista.waitConn_setConnectionsList(s);
     }
 
-    public void eliminarConexion(String endpoint){
+    public void deslistarConexion(String endpoint){
         ArrayList<String> s = new ArrayList<>();
         for (Tuple<String, String> con : connections) {
             if(con.getFirst().equals(endpoint)){
@@ -98,6 +95,10 @@ public class P2PWaitConn_c extends Fragment implements AdapterView.OnItemClickLi
         vista.waitConn_setConnectionsList(s);
     }
 
+    public void limpiarConexiones(){
+        vista.waitConn_setConnectionsList(new ArrayList<String>());
+    }
+
     public void iniciarConexion(String elOtroEndpointName){
         P2PGame_c game = new P2PGame_c();
         Bundle b = new Bundle();
@@ -108,9 +109,8 @@ public class P2PWaitConn_c extends Fragment implements AdapterView.OnItemClickLi
         b.putString("nombreVs", elOtroEndpointName);
         game.setArguments(b);
 
-        getFragmentManager().beginTransaction()
-                .replace(R.id.pantalla, game)
-                .commit();
+        seConecto = true;
+        screenManager.changeScreen(game);
     }
 
 
@@ -125,8 +125,16 @@ public class P2PWaitConn_c extends Fragment implements AdapterView.OnItemClickLi
         b.putString("nombreVs", vs);
         game.setArguments(b);
 
-        getFragmentManager().beginTransaction()
-                .replace(R.id.pantalla, game)
-                .commit();
+        seConecto = true;
+        screenManager.changeScreen(game);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(!seConecto){
+            // Salio sin conectarse a nadie
+            commSystem.desconectar();
+        }
     }
 }

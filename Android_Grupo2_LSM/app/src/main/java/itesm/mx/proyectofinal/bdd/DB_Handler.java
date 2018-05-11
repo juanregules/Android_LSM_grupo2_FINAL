@@ -17,7 +17,7 @@ import android.util.Log;
 * LAS FUNCIONES DE CREACION Y ACTUALIZACION DE BASE DE DATOS*/
 public class DB_Handler extends SQLiteOpenHelper {
     private static String DATABASE_NAME = "IdontknowwhyItdoesntevenmatterhowhardyoutry.db";
-    private static int DATABAE_VERSION = 1;
+    private static int DATABAE_VERSION = 2;
 
     protected DB_Handler(Context con){
         super(con, DATABASE_NAME, null, DATABAE_VERSION);

@@ -36,8 +36,18 @@ public class P2PAdapter extends ArrayAdapter{
                     (LayoutInflater)contexto.getSystemService(contexto.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.usrscn_score_p2p, null);
         }
+
+
         P2PGameData gameData = data.get(position);
         if(gameData != null){
+            if(gameData.getPuntajeMio() == -1){
+                row.findViewById(R.id.usrscn_score_p2p_tvSinPuntaje).setVisibility(View.VISIBLE);
+                return row;
+            }
+            else{
+                row.findViewById(R.id.usrscn_score_p2p_llPuntaje).setVisibility(View.VISIBLE);
+            }
+
             int puntajeMio = gameData.getPuntajeMio();
             int puntajeVs = gameData.getPuntajeVs();
             if(puntajeMio < puntajeVs){
@@ -77,5 +87,6 @@ public class P2PAdapter extends ArrayAdapter{
                     .setText(String.valueOf(puntajeVs));
         }
         return row;
+
     }
 }

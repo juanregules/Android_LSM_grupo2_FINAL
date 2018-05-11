@@ -31,6 +31,10 @@ public class PuntajesVista {
         );
     }
     public void mostrarDatos_p2p(ArrayList<P2PGameData> lista){
+        if(lista.size() == 0){
+            lista.add(new P2PGameData(null,-1,null,-1,null));
+        }
+
         listView.setAdapter(
                 new P2PAdapter(
                         contexto,
