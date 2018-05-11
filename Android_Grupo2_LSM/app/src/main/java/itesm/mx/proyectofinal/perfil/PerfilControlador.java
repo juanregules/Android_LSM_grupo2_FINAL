@@ -62,9 +62,11 @@ public class PerfilControlador extends Fragment implements View.OnClickListener 
             );
         }
         else{
-            vista.setImagen(
-                    ImageMastah.fromByteArrayToBitmap(dbOps.obtenerFoto())
-            );
+            byte[] b = dbOps.obtenerFoto();
+            if(b != null)
+                vista.setImagen(
+                    ImageMastah.fromByteArrayToBitmap(b)
+                );
 
             String nombre = dbOps.obtenerNombre();
             if(nombre.equals("")){

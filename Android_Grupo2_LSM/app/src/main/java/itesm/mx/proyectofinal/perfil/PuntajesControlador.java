@@ -70,43 +70,9 @@ public class PuntajesControlador extends ListFragment {
 
         data.add(manoData);
         vista.mostrarDatos_mano(data);
-//        ArrayList<String> datos = new ArrayList<>();
-//
-//
-//        if(manoData.getFecha() == null){
-//            datos.add("No has jugado partidas de la mano.\nJuega ya en la sección de actividades");
-//        }
-//        else{
-//            datos.add(
-//                    String.format("Maximo puntaje: %s. Fecha: %s",
-//                            manoData.getPuntaje(),
-//                            dateFormat.format(manoData.getFecha().toString())
-//                    )
-//            );
-//        }
-//
-//        vista.mostrarDatos(datos);
     }
 
     private void mostrarP2P(){
         vista.mostrarDatos_p2p(dbOp.obtenerScoreP2P());
-//        if(p2pData.size() == 0){
-//            datos.add("No has jugado partidas de P2P.\nJuega ya en la sección de actividades");
-//        }
-//        else{
-//            for(P2PGameData dat : p2pData){
-//                datos.add(
-//                        String.format("%s: %s <---> %s :%s\nFecha: %s",
-//                                dat.getNombreMio(),
-//                                dat.getPuntajeMio(),
-//                                dat.getPuntajeVs(),
-//                                dat.getNombreVs(),
-//                                dateFormat.format(dat.getFecha()))
-//                );
-//            }
-//        }
-//
-//
-//        vista.mostrarDatos(datos);
     }
 }
