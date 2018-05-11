@@ -21,7 +21,9 @@ public class MainActivity extends AppCompatActivity implements ScreenManager, Bo
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Lenguaje de Señas Mexicano");
+        }
         ((BottomNavigationView) findViewById(R.id.navigation)).setOnNavigationItemSelectedListener(this);
         cargarGlosario();
     }
