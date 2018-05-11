@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import itesm.mx.proyectofinal.Glosario.PantallaGlosario;
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.extras.ScreenManager;
-import itesm.mx.proyectofinal.usuario.PerfilControlador;
+import itesm.mx.proyectofinal.perfil.PerfilControlador;
 
 public class MainActivity extends AppCompatActivity implements ScreenManager, BottomNavigationView.OnNavigationItemSelectedListener{
     Fragment fragmentoAnterior;

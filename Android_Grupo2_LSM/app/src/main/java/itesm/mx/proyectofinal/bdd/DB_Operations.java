@@ -140,10 +140,10 @@ public class DB_Operations {
             } catch (ParseException e) { e.printStackTrace();}
 
             data.add(new P2PGameData(
-                    c.getString(c.getColumnIndex(DB_Schema.P2PTable.C_NOMBRE_CONTRINCANTE)),
-                    c.getInt(c.getColumnIndex(DB_Schema.P2PTable.C_PUNTAJE_CONTRINCANTE)),
                     c.getString(c.getColumnIndex(DB_Schema.P2PTable.C_NOMBRE_MIO)),
                     c.getInt(c.getColumnIndex(DB_Schema.P2PTable.C_PUNTAJE_MIO)),
+                    c.getString(c.getColumnIndex(DB_Schema.P2PTable.C_NOMBRE_CONTRINCANTE)),
+                    c.getInt(c.getColumnIndex(DB_Schema.P2PTable.C_PUNTAJE_CONTRINCANTE)),
                     fecha
             ));
         }

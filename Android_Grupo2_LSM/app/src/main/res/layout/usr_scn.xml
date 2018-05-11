@@ -21,7 +21,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="56dp"
-        android:background="@color/colorPrimaryDark"
+        android:src="@drawable/usr_placeholder"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toTopOf="@+id/textView" />
