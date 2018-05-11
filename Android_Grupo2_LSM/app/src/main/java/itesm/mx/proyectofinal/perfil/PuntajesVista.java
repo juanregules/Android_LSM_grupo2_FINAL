@@ -7,6 +7,10 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import itesm.mx.proyectofinal.R;
+import itesm.mx.proyectofinal.perfil.ListviewAdapters.ManoAdapter;
+import itesm.mx.proyectofinal.perfil.ListviewAdapters.P2PAdapter;
+import itesm.mx.proyectofinal.transports.ManoGameData;
+import itesm.mx.proyectofinal.transports.P2PGameData;
 
 public class PuntajesVista {
 
@@ -18,11 +22,18 @@ public class PuntajesVista {
         listView = ls;
     }
 
-    public void mostrarDatos(ArrayList<String> lista){
+    public void mostrarDatos_mano(ArrayList<ManoGameData> lista){
         listView.setAdapter(
-                new ArrayAdapter<String>(
+                new ManoAdapter(
                         contexto,
-                        R.layout.support_simple_spinner_dropdown_item,
+                        lista
+                )
+        );
+    }
+    public void mostrarDatos_p2p(ArrayList<P2PGameData> lista){
+        listView.setAdapter(
+                new P2PAdapter(
+                        contexto,
                         lista
                 )
         );

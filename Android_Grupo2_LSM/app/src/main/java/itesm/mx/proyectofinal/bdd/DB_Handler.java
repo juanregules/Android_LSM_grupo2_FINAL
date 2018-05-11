@@ -62,7 +62,7 @@ public class DB_Handler extends SQLiteOpenHelper {
         // Insertar fila de informacion del Usuario
         String insertar = "INSERT INTO " + DB_Schema.UsuarioTable.TABLE +
                 " (" + DB_Schema.UsuarioTable.C_NOMBRE +
-                ") VALUES (" + "'NONAME'" + ");";
+                ") VALUES (" + "'Usuario'" + ");";
         Log.i("Query_onCreate", insertar);
         Cursor c = db.rawQuery(insertar, null);
         c.moveToFirst();

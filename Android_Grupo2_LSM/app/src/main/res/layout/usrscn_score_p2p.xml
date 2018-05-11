@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:weightSum="100">
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/usrscn_score_p2p_clMio"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/p2p_res_incorrect"
+            android:layout_weight="37.5">
+
+            <TextView
+                android:id="@+id/usrscn_score_p2p_tvNombreMio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="AAAAAAAAAAAAAAA"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/usrscn_score_p2p_tvPuntajeMio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="999999999"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/usrscn_score_p2p_tvNombreMio" />
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/usrscn_score_p2p_tvFecha"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="99/99/99 99:99"
+            android:textAlignment="center"
+            android:gravity="bottom"
+            android:background="#fff"
+            android:textStyle="italic"
+            android:layout_gravity="bottom"
+            android:layout_weight="25"/>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/usrscn_score_p2p_clVs"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/p2p_res_incorrect"
+            android:layout_weight="37.5">
+
+            <TextView
+                android:id="@+id/usrscn_score_p2p_tvNombreVs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="AAAAAAAAAAAAAAA"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/usrscn_score_p2p_tvPuntajeVs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="999999999"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/usrscn_score_p2p_tvNombreVs" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
