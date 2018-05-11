@@ -1,6 +1,7 @@
 package itesm.mx.proyectofinal.principal;
 
 import android.app.Fragment;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -10,7 +11,7 @@ import android.view.MenuItem;
 import itesm.mx.proyectofinal.Glosario.PantallaGlosario;
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.extras.ScreenManager;
-import itesm.mx.proyectofinal.usuario.PerfilControlador;
+import itesm.mx.proyectofinal.perfil.PerfilControlador;
 
 public class MainActivity extends AppCompatActivity implements ScreenManager, BottomNavigationView.OnNavigationItemSelectedListener{
     Fragment fragmentoAnterior;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements ScreenManager, Bo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
 
         ((BottomNavigationView) findViewById(R.id.navigation)).setOnNavigationItemSelectedListener(this);
