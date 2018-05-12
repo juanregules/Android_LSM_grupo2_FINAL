@@ -16,6 +16,7 @@ import itesm.mx.proyectofinal.perfil.PerfilControlador;
 public class MainActivity extends AppCompatActivity implements ScreenManager, BottomNavigationView.OnNavigationItemSelectedListener{
     Fragment fragmentoAnterior;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +32,13 @@ public class MainActivity extends AppCompatActivity implements ScreenManager, Bo
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.navigation_home:
-                cargarGlosario();
+                    cargarGlosario();
                 return true;
             case R.id.navigation_dashboard:
-                cargarLista();
+                    cargarLista();
                 return true;
             case R.id.navigation_notifications:
-                cargarUsuario();
+                    cargarUsuario();
                 return true;
         }
         return false;

@@ -51,7 +51,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     ImageButton botondedo4;
     ImageButton botondedo5;
     Button botonbackmano;
-    ImageButton botonreiniciar;
+    Button botonreiniciar;
 
 
     Activity a;

@@ -13,33 +13,33 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="280dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="106dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="80dp"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="horizontal ">
 
                 <TextView
                     android:id="@+id/formaletra"
-                    android:layout_width="match_parent"
+                    android:layout_width="143dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Forma la letra A"
-                    android:textSize="20sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/resultado"
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="incorrecto"
@@ -48,8 +48,8 @@
 
                 <ImageView
                     android:id="@+id/color"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/rojo" />
 
@@ -59,7 +59,7 @@
         <ImageView
             android:id="@+id/imagenmano"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             app:srcCompat="@drawable/ttttt" />
 
@@ -67,27 +67,31 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <ImageButton
+            <Button
                 android:id="@+id/reiniciar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="bottom"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/reset" />
+                android:background="@color/colorPrimary"
+                android:text="RENICIAR"
+                android:textColor="@color/common_google_signin_btn_text_dark_default"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal">
 
