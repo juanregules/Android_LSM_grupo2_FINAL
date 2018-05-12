@@ -23,8 +23,8 @@
             android:layout_height="150dp"
             android:layout_weight="1"
             android:backgroundTint="@color/colorPrimary"
-            android:text="forma la letra A"
-            android:textSize="16sp" />
+            android:text="Forma la letra A"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/resultado"
@@ -35,12 +35,19 @@
             android:textAlignment="textEnd"
             android:textSize="16sp" />
 
+        <ImageView
+            android:id="@+id/color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/rojo" />
+
     </LinearLayout>
 
     <ImageView
         android:id="@+id/imagenmano"
         android:layout_width="match_parent"
-        android:layout_height="334dp"
+        android:layout_height="304dp"
         android:layout_weight="1"
         app:srcCompat="@drawable/ttttt" />
 
@@ -50,12 +57,12 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/reiniciar"
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="reiniciar" />
+            app:srcCompat="@drawable/reset" />
     </LinearLayout>
 
     <LinearLayout

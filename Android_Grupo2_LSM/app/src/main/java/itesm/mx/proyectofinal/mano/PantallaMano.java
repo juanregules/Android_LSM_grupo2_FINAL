@@ -51,7 +51,7 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
     ImageButton botondedo4;
     ImageButton botondedo5;
     Button botonbackmano;
-    Button botonreiniciar;
+    ImageButton botonreiniciar;
 
 
     Activity a;
@@ -245,12 +245,19 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
 
                     resultado.setText("CORRECTO!! puntos:" + puntos);
                     TextView formaletra = (TextView) a.findViewById(R.id.formaletra);
-                    formaletra.setText("forma la letra b");
+                    formaletra.setText("Forma la letra   B");
                     letraactual = "b";
+                    ImageView color =(ImageView)a.findViewById(R.id.color);
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.verde);
+                    color.setImageBitmap(bimage);
+
 
                 } else {
                     TextView resultado = (TextView) a.findViewById(R.id.resultado);
                     resultado.setText("ASI NO ES!! puntos:" + puntos);
+                    ImageView color =(ImageView)a.findViewById(R.id.color);
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.rojo);
+                    color.setImageBitmap(bimage);
                 }
                 ;
                 break;
@@ -264,8 +271,21 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
 
                     resultado.setText("CORRECTO!! puntos:" + puntos);
                     TextView formaletra = (TextView) a.findViewById(R.id.formaletra);
-                    formaletra.setText("forma la letra e");
+                    formaletra.setText("Forma la letra E");
                     letraactual = "e";
+                    ImageView color =(ImageView)a.findViewById(R.id.color);
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.verde);
+                    color.setImageBitmap(bimage);
+
+                }
+                ///
+                ///
+                else {
+                    TextView resultado = (TextView) a.findViewById(R.id.resultado);
+                    resultado.setText("ASI NO ES!! puntos:" + puntos);
+                    ImageView color =(ImageView)a.findViewById(R.id.color);
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.rojo);
+                    color.setImageBitmap(bimage);
                 }
                 ;
                 break;
@@ -278,13 +298,19 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
 
                     resultado.setText("CORRECTO!! puntos:" + puntos);
                     TextView formaletra = (TextView) a.findViewById(R.id.formaletra);
-                    formaletra.setText("forma la letra i");
+                    formaletra.setText("Forma la letra I");
                     letraactual = "i";
+                    ImageView color =(ImageView)a.findViewById(R.id.color);
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.verde);
+                    color.setImageBitmap(bimage);
 
-                } else {
-                    TextView resultado = (TextView) a.findViewById(R.id.resultado);
-                    resultado.setText("ASI NO ES!! puntos:" + puntos);
-                }
+                }  else {
+                TextView resultado = (TextView) a.findViewById(R.id.resultado);
+                resultado.setText("ASI NO ES!! puntos:" + puntos);
+                ImageView color =(ImageView)a.findViewById(R.id.color);
+                Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.rojo);
+                color.setImageBitmap(bimage);
+            }
                 ;
                 break;
 
@@ -299,12 +325,18 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
 
                     resultado.setText("CORRECTO!! puntos:" + puntos);
                     TextView formaletra = (TextView) a.findViewById(R.id.formaletra);
-                    formaletra.setText("forma la letra L");
+                    formaletra.setText("Forma la letra L");
                     letraactual = "L";
+                    ImageView color =(ImageView)a.findViewById(R.id.color);
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.verde);
+                    color.setImageBitmap(bimage);
 
-                } else {
+                }  else {
                     TextView resultado = (TextView) a.findViewById(R.id.resultado);
                     resultado.setText("ASI NO ES!! puntos:" + puntos);
+                    ImageView color =(ImageView)a.findViewById(R.id.color);
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.rojo);
+                    color.setImageBitmap(bimage);
                 }
                 ;
                 break;
@@ -319,12 +351,18 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
 
                     resultado.setText("CORRECTO!! puntos:" + puntos);
                     TextView formaletra = (TextView) a.findViewById(R.id.formaletra);
-                    formaletra.setText("forma la letra v");
+                    formaletra.setText("Forma la letra V");
                     letraactual = "v";
+                    ImageView color =(ImageView)a.findViewById(R.id.color);
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.verde);
+                    color.setImageBitmap(bimage);
 
                 } else {
                     TextView resultado = (TextView) a.findViewById(R.id.resultado);
                     resultado.setText("ASI NO ES!! puntos:" + puntos);
+                    ImageView color =(ImageView)a.findViewById(R.id.color);
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.rojo);
+                    color.setImageBitmap(bimage);
                 }
                 ;
                 break;
@@ -339,12 +377,18 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
 
                     resultado.setText("CORRECTO!! puntos:" + puntos);
                     TextView formaletra = (TextView) a.findViewById(R.id.formaletra);
-                    formaletra.setText("forma la letra w");
+                    formaletra.setText("Forma la letra W");
                     letraactual = "w";
+                    ImageView color =(ImageView)a.findViewById(R.id.color);
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.verde);
+                    color.setImageBitmap(bimage);
 
-                } else {
+                }  else {
                     TextView resultado = (TextView) a.findViewById(R.id.resultado);
                     resultado.setText("ASI NO ES!! puntos:" + puntos);
+                    ImageView color =(ImageView)a.findViewById(R.id.color);
+                    Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.rojo);
+                    color.setImageBitmap(bimage);
                 }
                 ;
                 break;
@@ -359,10 +403,18 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
                 TextView formaletra=(TextView)a.findViewById(R.id.formaletra);
                 formaletra.setText("HAZ GANADO");
                 letraactual="HAZ GANADO";
+                ImageView color =(ImageView)a.findViewById(R.id.color);
+                Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.verde);
+                color.setImageBitmap(bimage);
                 ///YADEBERIA DE JALAR
 
-            }else { TextView resultado=(TextView)a.findViewById(R.id.resultado);
-                resultado.setText("ASI NO ES!! puntos:"+puntos);};
+            } else {
+                TextView resultado = (TextView) a.findViewById(R.id.resultado);
+                resultado.setText("ASI NO ES!! puntos:" + puntos);
+                ImageView color =(ImageView)a.findViewById(R.id.color);
+                Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.rojo);
+                color.setImageBitmap(bimage);
+            }
                 break;
         }
 
