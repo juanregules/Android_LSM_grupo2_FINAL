@@ -71,7 +71,10 @@ public class MainActivity extends AppCompatActivity implements ScreenManager, Bo
 
     @Override
     public void onBackPressed() {
-        if(fragmentoAnterior != null)
+        if(fragmentoAnterior != null) {
             changeScreen(fragmentoAnterior);
+        }else {
+            super.onBackPressed();
+        }
     }
 }

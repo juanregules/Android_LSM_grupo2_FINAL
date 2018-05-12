@@ -8,5 +8,6 @@
     <color name="p2p_res_correct">#4d4</color>
     <color name="p2p_res_incorrect">#d44</color>
     <color name="white">#EEEEEE</color>
+    <color name="manobg">#FFFFFF</color>
 
 </resources>

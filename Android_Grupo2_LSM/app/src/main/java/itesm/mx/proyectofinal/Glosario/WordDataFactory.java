@@ -165,7 +165,7 @@ public class WordDataFactory {
     }
 
     public static Word makeAguilaWord() {
-        return new Word("Aguila", makeAguilaContents(), R.drawable.aguila);
+        return new Word("Águila", makeAguilaContents(), R.drawable.aguila);
     }
 
     public static List<Content> makeAguilaContents() {
@@ -761,7 +761,7 @@ public class WordDataFactory {
     }
 
     public static Word MakeCafeWord() {
-        return new Word("Cafe", makeCafeContents(), R.drawable.cafe);
+        return new Word("Café", makeCafeContents(), R.drawable.cafe);
     }
 
     public static List<Content> makeCafeContents() {
@@ -887,7 +887,7 @@ public class WordDataFactory {
 
 
     public static Word MakeMiercolesWord() {
-        return new Word("Miercoles", makeMiercolesContents(), R.drawable.blanco);
+        return new Word("Miércoles", makeMiercolesContents(), R.drawable.blanco);
     }
 
     public static List<Content> makeMiercolesContents() {
