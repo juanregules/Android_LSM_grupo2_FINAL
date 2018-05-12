@@ -394,15 +394,15 @@ public class PantallaMano extends Fragment implements View.OnClickListener {
                 break;
 
             case "w":if(dedo1b=="false"&&dedo2b=="true"&&dedo3b=="true"&&dedo4b=="true"&&dedo5b=="false"){
-                TextView resultado=(TextView)a.findViewById(R.id.resultado);
+                TextView resultado = (TextView) a.findViewById(R.id.resultado);
                 puntos++;
 
                 agregarabasededatos(puntos);
 
-                resultado.setText("CORRECTO!! puntos:"+puntos);
-                TextView formaletra=(TextView)a.findViewById(R.id.formaletra);
-                formaletra.setText("HAZ GANADO");
-                letraactual="HAZ GANADO";
+                resultado.setText("CORRECTO!! puntos:" + puntos);
+                TextView formaletra = (TextView) a.findViewById(R.id.formaletra);
+                formaletra.setText("Forma la letra A");
+                letraactual = "a";
                 ImageView color =(ImageView)a.findViewById(R.id.color);
                 Bitmap bimage= BitmapFactory.decodeResource(this.getResources(),R.drawable.verde);
                 color.setImageBitmap(bimage);
