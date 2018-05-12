@@ -57,14 +57,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="INDIVIDUAL" />
+            android:backgroundTint="@color/colorPrimary"
+            android:text="INDIVIDUAL"
+            android:textColor="@android:color/background_light" />
 
         <Button
             android:id="@+id/usrscn_scores_menu_btnP2P"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Versus" />
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Versus"
+            android:textColor="@android:color/background_light" />
 
     </LinearLayout>
 

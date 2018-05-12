@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:background="#EE5555"
         android:text="Terminar partidA"
+        android:textColor="@android:color/background_light"
         android:textSize="19sp"
-        android:layout_marginBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,9 +34,10 @@
     <Button
         android:id="@+id/asker_btnTomarFoto"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="112dp"
+        android:layout_width="124dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="8dp"
         android:background="@color/colorPrimary"
         android:text="Tomar foto"
         app:layout_constraintEnd_toEndOf="@+id/asker_ivFoto"
@@ -59,7 +60,7 @@
     <Button
         android:id="@+id/asker_btnPreguntar"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="115dp"
+        android:layout_width="125dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
@@ -67,10 +68,10 @@
         android:text="Preguntar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/asker_etRespuesta"
-        app:layout_constraintHorizontal_bias="0.594"
+        app:layout_constraintHorizontal_bias="0.359"
         app:layout_constraintStart_toStartOf="@+id/asker_etRespuesta"
         app:layout_constraintTop_toBottomOf="@+id/asker_etRespuesta"
-        app:layout_constraintVertical_bias="0.342" />
+        app:layout_constraintVertical_bias="0.733" />
 
     <TextView
         android:id="@+id/asker_tvEsperando"

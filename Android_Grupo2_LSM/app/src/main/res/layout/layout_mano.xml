@@ -79,6 +79,7 @@
 
             <Button
                 android:id="@+id/reiniciar"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_gravity="bottom"
@@ -98,35 +99,35 @@
             <ImageButton
                 android:id="@+id/botondedo1a"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="95dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/meniqueoff" />
 
             <ImageButton
                 android:id="@+id/botondedo2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="95dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/anularoff" />
 
             <ImageButton
                 android:id="@+id/botondedo3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="95dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/mediooff" />
 
             <ImageButton
                 android:id="@+id/botondedo4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="95dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/indiceoff" />
 
             <ImageButton
                 android:id="@+id/botondedo5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="95dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/pulgaroff" />
 
