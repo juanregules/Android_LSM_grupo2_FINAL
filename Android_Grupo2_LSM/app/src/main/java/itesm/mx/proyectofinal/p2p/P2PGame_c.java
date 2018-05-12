@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,8 @@ import itesm.mx.proyectofinal.principal.MainActivity;
 import itesm.mx.proyectofinal.transports.P2PGameData;
 import itesm.mx.proyectofinal.transports.P2PIngameData;
 
+import static android.app.Activity.RESULT_OK;
+
 public class P2PGame_c extends Fragment implements View.OnClickListener {
 
     private Context contexto;
@@ -35,6 +38,7 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
     private CommSystem commSystem;
     private String respuesta;
     public boolean cambioDePantalla = false;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Nullable
     @Override
@@ -99,6 +103,15 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap bFoto = (Bitmap) extras.get("data");
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bFoto.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] bitFoto = stream.toByteArray();
+            bFoto.recycle();
+            vista.asker_setPhoto(bitFoto);
+        }
     }
 
     private void rendirse(){
@@ -124,7 +137,8 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
 
     // Asker
     private void tomarFoto(){
-
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
     }
 
     private void enviarPregunta(){
