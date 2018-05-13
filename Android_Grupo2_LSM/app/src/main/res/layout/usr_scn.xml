@@ -106,6 +106,7 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/colorPrimary"
             android:text="Editar datos"
+            android:textColor="@android:color/background_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -116,6 +117,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
             android:text="puntuaciones"
+            android:textColor="@android:color/background_light"
             app:layout_constraintBottom_toTopOf="@+id/usrscn_btnEdith"
             app:layout_constraintEnd_toEndOf="@+id/usrscn_btnEdith"
             app:layout_constraintStart_toStartOf="@+id/usrscn_btnEdith" />

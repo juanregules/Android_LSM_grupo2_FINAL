@@ -23,6 +23,7 @@ public class PerfilControlador extends Fragment implements View.OnClickListener 
     private PerfilVista vista;
 
     private byte[] fotoAntigua;
+    public byte[] byteArray;
     private boolean enEdicion;
 
     private final int CAMERA_REQUEST = 1;
@@ -76,6 +77,11 @@ public class PerfilControlador extends Fragment implements View.OnClickListener 
                 vista.setNombre(nombre);
             }
         }
+
+
+        if (savedInstanceState != null) {
+            byteArray = savedInstanceState.getByteArray("picture");
+        }
     }
 
     @Override
@@ -84,6 +90,7 @@ public class PerfilControlador extends Fragment implements View.OnClickListener 
         savedInstanceState.putByteArray("fotoNueva", vista.getImagen());
         savedInstanceState.putByteArray("fotoAntigua", fotoAntigua);
         savedInstanceState.putString("textoAnterior", vista.getNombreEditable());
+        savedInstanceState.putByteArray("picture", byteArray);
     }
 
     @Override
