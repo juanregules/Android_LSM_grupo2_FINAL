@@ -38,7 +38,7 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
     private CommSystem commSystem;
     private String respuesta;
     public boolean cambioDePantalla = false;
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int RIC = 1;
 
     @Nullable
     @Override
@@ -103,7 +103,7 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+        if (requestCode == RIC && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap bFoto = (Bitmap) extras.get("data");
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -138,7 +138,7 @@ public class P2PGame_c extends Fragment implements View.OnClickListener {
     // Asker
     private void tomarFoto(){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+        startActivityForResult(intent, RIC);
     }
 
     private void enviarPregunta(){
