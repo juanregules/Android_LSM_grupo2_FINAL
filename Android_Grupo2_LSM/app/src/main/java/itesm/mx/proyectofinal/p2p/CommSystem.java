@@ -67,12 +67,16 @@ public class CommSystem {
             if(!controller.equals(CommSystem.disObj.controller)){
                 CommSystem.disObj.controller = controller;
             }
+            if(!miNombre.equals(disObj.miEndpoint)){
+                CommSystem.disObj.miEndpoint = miNombre;
+            }
         }
         return disObj;
     }
 
 
     public void startAnnounce(){
+
         clientConns.startAdvertising(miEndpoint, contexto.getPackageName(), announce_clC, new AdvertisingOptions.Builder().setStrategy(Strategy.P2P_STAR).build())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -94,9 +98,6 @@ public class CommSystem {
         @Override
         public void onConnectionInitiated(@NonNull String endPointID, @NonNull ConnectionInfo connectionInfo) {
             clientConns.acceptConnection(endPointID, announce_pC);
-
-            // Notificar una conexion entrante
-            Toast.makeText(contexto, "Conectando", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -105,7 +106,6 @@ public class CommSystem {
             elOtroEndpoint = endPointID;
             switch (connectionResolution.getStatus().getStatusCode()){
                 case ConnectionsStatusCodes.STATUS_OK:
-                    //Toast.makeText(contexto, "Esperando nombre", Toast.LENGTH_SHORT).show();
                     clientConns.stopAdvertising();
                     break;
                 case ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED:
@@ -219,9 +219,6 @@ public class CommSystem {
         }).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast t = Toast.makeText(contexto, "Conectando...", Toast.LENGTH_SHORT);
-                t.setGravity(1, 0, 20);
-                t.show();
                 clientConns.stopDiscovery();
                 elOtroEndpointName = elOtroEndpointName_Temp;
             }
@@ -233,7 +230,6 @@ public class CommSystem {
         public void onConnectionInitiated(@NonNull String endpointID, @NonNull ConnectionInfo connectionInfo) {
             clientConns.acceptConnection(endpointID, discov_pC);
             // Notificar que se esta conectando
-            Toast.makeText(contexto, "Conectando a " + elOtroEndpointName, Toast.LENGTH_SHORT).show();
         }
 
         @Override

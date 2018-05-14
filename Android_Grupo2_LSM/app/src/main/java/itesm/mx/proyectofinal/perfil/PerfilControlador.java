@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import itesm.mx.proyectofinal.R;
 import itesm.mx.proyectofinal.bdd.DB_Operations;
@@ -157,6 +158,11 @@ public class PerfilControlador extends Fragment implements View.OnClickListener 
 
     private void finEditar(boolean seGuardar){
         if(seGuardar){
+            if(vista.getNombreEditable().length() > 10){
+                Toast.makeText(getActivity(), "El nombre no puede superar los 10 caracteres", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             vista.unSetEdicion();
 
             vista.setNombre(vista.getNombreEditable());

@@ -54,7 +54,7 @@ public class DB_Operations {
         String query = "UPDATE " + DB_Schema.UsuarioTable.TABLE +
                 " SET " + DB_Schema.UsuarioTable.C_NOMBRE + " = '" + nombre + "'";
 
-        db.execSQL(query);
+         db.execSQL(query);
         close();
     }
     public void cambiarFoto(byte[] foto){

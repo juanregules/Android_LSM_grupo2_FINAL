@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/asker_ivFoto"
-        android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_width="247dp"
+        android:layout_height="220dp"
         android:layout_marginEnd="80dp"
         android:layout_marginStart="80dp"
         android:layout_marginTop="8dp"
@@ -62,16 +62,14 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="125dp"
         android:layout_height="49dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:background="@color/colorPrimary"
         android:text="Preguntar"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/asker_etRespuesta"
-        app:layout_constraintHorizontal_bias="0.359"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="@+id/asker_etRespuesta"
-        app:layout_constraintTop_toBottomOf="@+id/asker_etRespuesta"
-        app:layout_constraintVertical_bias="0.733" />
+        app:layout_constraintTop_toBottomOf="@+id/asker_etRespuesta" />
 
     <TextView
         android:id="@+id/asker_tvEsperando"
@@ -80,8 +78,10 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
-        android:text="Esperando a [nombre]"
+        android:text="Esperando al enemigo"
+        android:textColor="#CC5"
         android:textSize="30sp"
+        android:textStyle="bold"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/asker_ivFoto"
         app:layout_constraintEnd_toEndOf="@+id/asker_ivFoto"
